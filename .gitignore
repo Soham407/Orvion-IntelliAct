@@ -1,2 +1,5 @@
 .playwright-mcp/
 /*.png
+.DS_Store
+node_modules/
+.vite-dev.log

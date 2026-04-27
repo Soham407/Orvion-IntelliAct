@@ -162,25 +162,138 @@
     .scroll-line-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, #00A9E3, transparent); animation: scroll-pulse 1.8s ease-in-out infinite; }
     @keyframes scroll-pulse { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
 
-    /* â”€â”€ Marquee â”€â”€ */
-    .marquee-strip { background: #00A9E3; padding: 13px 0; overflow: hidden; position: relative; z-index: 5; }
-    .marquee-track { display: flex; align-items: center; width: max-content; animation: ticker 40s linear infinite; }
-    .marquee-track:hover { animation-play-state: paused; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    .marquee-item { padding: 0 30px; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; white-space: nowrap; }
-    .marquee-sep { color: rgba(255,255,255,.4); font-size: 1rem; padding: 0 4px; }
+    /* â”€â”€ Customer logo rail â”€â”€ */
+    .marquee-strip {
+      position: relative; z-index: 5; overflow: hidden;
+      background: linear-gradient(180deg, #f4fbf6 0%, #eef8f2 100%);
+      border-top: 1px solid rgba(36, 59, 48, .08);
+      border-bottom: 1px solid rgba(36, 59, 48, .08);
+      padding: 22px 0;
+    }
+    .marquee-strip::before,
+    .marquee-strip::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: min(10vw, 120px); z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-strip::before {
+      left: 0;
+      background: linear-gradient(90deg, #f4fbf6 0%, rgba(244,251,246,0) 100%);
+    }
+    .marquee-strip::after {
+      right: 0;
+      background: linear-gradient(270deg, #eef8f2 0%, rgba(238,248,242,0) 100%);
+    }
+    .logo-marquee-track {
+      display: flex; align-items: center; width: max-content;
+      animation: logo-ticker 36s linear infinite;
+    }
+    .logo-marquee-track:hover { animation-play-state: paused; }
+    .logo-marquee-group {
+      display: flex; align-items: center; gap: 18px; padding-right: 18px; flex-shrink: 0;
+    }
+    @keyframes logo-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .logo-marquee-card {
+      display: flex; align-items: center; justify-content: center;
+      width: 170px; height: 86px; padding: 14px 20px; flex-shrink: 0;
+      border-radius: 22px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(36, 59, 48, .1);
+      box-shadow: 0 12px 28px rgba(36, 59, 48, .08);
+    }
+    .logo-marquee-card img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+      filter: saturate(.95) contrast(1.02);
+    }
+    @media (max-width: 640px) {
+      .marquee-strip { padding: 18px 0; }
+      .logo-marquee-group { gap: 14px; padding-right: 14px; }
+      .logo-marquee-card { width: 138px; height: 74px; padding: 12px 16px; border-radius: 18px; }
+    }
 
     /* â”€â”€ Shared â”€â”€ */
     .abar { display: block; width: 44px; height: 3px; background: #00A9E3; margin-bottom: 14px; }
     .abar-c { margin: 0 auto 14px; }
-    .svc-card { border: 1px solid #e5e7eb; transition: border-color .3s, transform .3s, box-shadow .3s; }
-    .svc-card:hover { border-color: #00A9E3; transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,169,227,.1); }
-    .svc-icon { width: 48px; height: 48px; border: 1px solid rgba(0,169,227,.3); display: flex; align-items: center; justify-content: center; }
-    .proj-card { overflow: hidden; position: relative; }
-    .proj-card .img-ph, .proj-card img { transition: transform .55s ease; }
-    .proj-card:hover .img-ph, .proj-card:hover img { transform: scale(1.07); }
-    .proj-card .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,46,.9) 0%, transparent 60%); opacity: 0; transition: opacity .35s; }
-    .proj-card:hover .overlay { opacity: 1; }
+    .services-sec { background: #eef8f2; }
+    .svc-head { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+    .svc-kicker { color: #1a1a2e; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; }
+    .svc-grid {
+      display: grid; gap: 28px;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .svc-card {
+      background: #fff; border-radius: 32px; padding: 22px 22px 28px;
+      border: 1px solid rgba(255,255,255,.85);
+      box-shadow: 0 18px 42px rgba(36, 59, 48, .08);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 24px 52px rgba(36, 59, 48, .13); }
+    .svc-media {
+      width: 100%; height: 280px; border-radius: 24px; overflow: hidden; background: #dfe9e4;
+      margin-bottom: 24px;
+    }
+    .svc-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .svc-title {
+      color: #1f2937; font-size: clamp(1.7rem, 2.2vw, 2.2rem); line-height: 1.08;
+      font-family: 'Lusitana', Georgia, serif; margin-bottom: 12px;
+    }
+    .svc-copy { color: #8c918f; font-size: 1.04rem; line-height: 1.8; }
+    .svc-note { color: #8c918f; font-size: .92rem; text-align: center; margin-top: 20px; }
+    .portfolio-sec { background: #fff; }
+    .feature-shell {
+      display: grid; gap: 34px; align-items: end; margin-bottom: 44px;
+    }
+    .feature-kicker {
+      color: #1a1a2e; font-size: .82rem; letter-spacing: .24em; text-transform: uppercase;
+      padding-bottom: 14px; text-align: right;
+    }
+    .feature-heading {
+      font-family: Georgia, serif; color: #1a1a2e; line-height: .98;
+      font-size: clamp(3rem, 5.5vw, 5.2rem); max-width: 640px; width: 640px; margin-right: auto;
+    }
+    .feature-heading .line { display: block; }
+    .feature-heading .line + .line { margin-top: .02em; }
+    .feature-heading .line-1 { padding-left: .02em; }
+    .feature-heading .line-2 { white-space: nowrap; }
+    .feature-heading .line-3 { margin-top: .06em; }
+    .feature-heading .accent-word { color: #00A9E3; }
+    .feature-grid { display: grid; gap: 28px; }
+    .feature-card { display: block; }
+    .feature-media {
+      width: 100%; height: 304px; border-radius: 26px; overflow: hidden;
+      background: #dde1e7; margin-bottom: 16px;
+    }
+    .feature-media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .55s ease;
+    }
+    .feature-card:hover .feature-media img { transform: scale(1.06); }
+    .feature-tag {
+      color: #1a1a2e; font-size: .84rem; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .feature-title {
+      margin-top: 10px; color: #1f2937; font-family: Georgia, serif;
+      font-size: clamp(1.75rem, 2.15vw, 2.15rem); line-height: 1.08;
+    }
+    .feature-meta {
+      margin-top: 10px; color: #b0b0b8; font-size: .95rem;
+    }
+    @media (min-width: 1024px) {
+      .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-shell { grid-template-columns: 1fr minmax(180px, 240px); }
+      .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1023px) {
+      .feature-media { height: 260px; }
+      .feature-heading { width: auto; max-width: 640px; }
+      .feature-kicker { text-align: left; }
+    }
+    @media (max-width: 767px) {
+      .feature-shell { gap: 20px; }
+      .feature-heading { max-width: none; }
+      .svc-card { padding: 18px 18px 24px; }
+      .svc-media { height: 240px; }
+    }
     .img-ph { background-color: #dde1e7; display: flex; align-items: center; justify-content: center; width: 100%; }
     .media-img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .about-img-wrap { position: relative; }
@@ -188,7 +301,6 @@
     .about-badge { position: absolute; top: 20px; left: 20px; background: rgba(26,26,46,.92); padding: 12px 18px; }
     .ind-tag { border: 1px solid rgba(0,169,227,.25); transition: background .25s, border-color .25s, color .25s; }
     .ind-tag:hover { background: #00A9E3; border-color: #00A9E3; color: #fff; }
-    .stat-num { font-family: Georgia, serif; font-size: 3.25rem; font-weight: 700; color: #00A9E3; line-height: 1; }
     .cta-sec { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d3a 100%); }
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #f5f5f5; }
@@ -280,39 +392,39 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
+<!-- CUSTOMER LOGOS -->
 <div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">HMI Design</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Process Automation</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Control Systems</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">HMI Design</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Process Automation</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Control Systems</span><span class="marquee-sep">Â·</span>
-    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">Â·</span>
-  </div>
-</div>
-
-<!-- STATS STRIP -->
-<section class="bg-ink py-14">
-  <div class="max-w-7xl mx-auto px-6 lg:px-14">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-white/10">
-      <div class="text-center gs-reveal"><div class="stat-num" data-count="25" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Years Experience</div></div>
-      <div class="text-center gs-reveal"><div class="stat-num" data-count="500" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Projects Delivered</div></div>
-      <div class="text-center gs-reveal"><div class="stat-num" data-count="150" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Clients Served</div></div>
-      <div class="text-center gs-reveal"><div class="stat-num" data-count="12" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Industries</div></div>
+  <div class="logo-marquee-track" aria-label="Customer logos">
+    <div class="logo-marquee-group" aria-hidden="false">
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/SHEL.png" alt="Shell logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/CHENNPETRO.NS_BIG.png" alt="Chennai Petroleum logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/NTPC.NS.png" alt="NTPC logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/THERMAX.NS_BIG.png" alt="Thermax logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/GAIL.NS_BIG.png" alt="GAIL logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/IOC.NS_BIG.png" alt="Indian Oil logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/ADANIENT.NS.png" alt="Adani Enterprises logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/NALCO.png" alt="NALCO logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/BPCL.NS_BIG.png" alt="BPCL logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/TKA.F_BIG.png" alt="Toyo Kanetsu logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/HINDPETRO.NS_BIG.png" alt="HPCL logo" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/RELIANCE.NS_BIG.png" alt="Reliance logo" /></div>
+    </div>
+    <div class="logo-marquee-group" aria-hidden="true">
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/SHEL.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/CHENNPETRO.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/NTPC.NS.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/THERMAX.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/GAIL.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/IOC.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/ADANIENT.NS.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/NALCO.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/BPCL.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/TKA.F_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/HINDPETRO.NS_BIG.png" alt="" /></div>
+      <div class="logo-marquee-card"><img src="public/images/Top_Customer_connect/RELIANCE.NS_BIG.png" alt="" /></div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ABOUT -->
 <section class="py-24 px-6 lg:px-14">
@@ -335,61 +447,78 @@
 </section>
 
 <!-- SERVICES -->
-<section class="py-24 px-6 lg:px-14 bg-gray-50">
+<section class="services-sec py-24 px-6 lg:px-14">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 gs-reveal">
-      <span class="abar abar-c"></span>
-      <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">What We Do</p>
-      <h2 class="text-4xl font-bold" style="font-family:Georgia,serif; color:#1a1a2e;">Core Services</h2>
+    <div class="svc-head gs-reveal">
+      <p class="svc-kicker mb-4">What We Do</p>
+      <h2 class="text-4xl lg:text-5xl font-bold" style="font-family:'Lusitana', Georgia, serif; color:#1a1a2e;">Core Services</h2>
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">PLC Programming</h3>
-        <p class="text-sm leading-relaxed">Advanced programmable logic controller solutions â€” Siemens, Allen-Bradley, Mitsubishi â€” for precise, reliable industrial control.</p>
-      </div>
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">SCADA Systems</h3>
-        <p class="text-sm leading-relaxed">Supervisory control and data acquisition systems for real-time monitoring, data logging, and operational visibility.</p>
-      </div>
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">HMI Design</h3>
-        <p class="text-sm leading-relaxed">Intuitive human-machine interfaces that make complex operations transparent, accessible, and easy for operators to control.</p>
-      </div>
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Process Automation</h3>
-        <p class="text-sm leading-relaxed">End-to-end automation of industrial processes â€” reducing manual intervention, cutting costs, and boosting throughput.</p>
-      </div>
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Industrial IoT</h3>
-        <p class="text-sm leading-relaxed">Connected industrial solutions that enable smart data collection, remote diagnostics, and predictive maintenance.</p>
-      </div>
-      <div class="svc-card bg-white p-8 gs-reveal">
-        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Electrical Engineering</h3>
-        <p class="text-sm leading-relaxed">Control panel design, power distribution, instrumentation, and field commissioning services for complete project delivery.</p>
-      </div>
+    <div class="svc-grid">
+        <article class="svc-card gs-reveal">
+          <div class="svc-media"><img src="public/images/chemical 1.png" alt="PLC programming service" /></div>
+          <h3 class="svc-title">PLC programming</h3>
+          <p class="svc-copy">Reliable control logic across Siemens, Rockwell, Mitsubishi, Schneider, and ABB platforms.</p>
+        </article>
+        <article class="svc-card gs-reveal">
+          <div class="svc-media"><img src="public/images/water scada.jpeg" alt="SCADA systems service" /></div>
+          <h3 class="svc-title">SCADA systems</h3>
+          <p class="svc-copy">Real-time supervisory control, alarms, historian logging, and plant-wide visibility.</p>
+        </article>
+        <article class="svc-card gs-reveal">
+          <div class="svc-media"><img src="public/images/2151977869.jpg" alt="HMI design service" /></div>
+          <h3 class="svc-title">HMI design</h3>
+          <p class="svc-copy">Operator-first interfaces built for clarity, fast response, and cleaner decision making.</p>
+        </article>
+        <article class="svc-card gs-reveal">
+          <div class="svc-media"><img src="public/images/oil+refinery+in+Atlanta-+GA.jpeg" alt="Process automation service" /></div>
+          <h3 class="svc-title">Process automation</h3>
+          <p class="svc-copy">End-to-end automation engineering for batch, continuous, and discrete operations.</p>
+        </article>
     </div>
+    <p class="svc-note">Four core automation capabilities presented directly for faster scanning.</p>
   </div>
 </section>
 
 <!-- FEATURED PROJECTS -->
-<section class="py-24 px-6 lg:px-14">
+<section class="portfolio-sec py-28 px-6 lg:px-14">
   <div class="max-w-7xl mx-auto">
-    <div class="flex flex-wrap items-end justify-between mb-12">
-      <div class="gs-reveal"><span class="abar"></span><p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Portfolio</p><h2 class="text-4xl font-bold" style="font-family:Georgia,serif; color:#1a1a2e;">Featured Projects</h2></div>
-      <a href="projects.html" class="text-accent text-xs tracking-[.22em] uppercase flex items-center gap-3 group gs-reveal">All Projects <span class="h-px w-8 bg-accent transition-all group-hover:w-14"></span></a>
+    <div class="feature-shell">
+      <div class="gs-reveal">
+        <h2 class="feature-heading">
+          <span class="line line-1">Featured projects</span>
+          <span class="line line-2">and insights from</span>
+          <span class="line line-3 accent-word">industry</span>
+        </h2>
+      </div>
+      <div class="gs-reveal">
+        <p class="feature-kicker">Portfolio</p>
+      </div>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-      <div class="proj-card col-span-2 h-96 gs-reveal"><img src="public/images/chemical 1.png" alt="Industrial control systems" class="media-img" /><div class="overlay flex items-end p-6"><div><p class="text-accent text-xs tracking-[.2em] uppercase">PLC &amp; Control</p><p class="text-white font-bold text-lg" style="font-family:Georgia,serif;">Industrial Control Systems</p></div></div></div>
-      <div class="proj-card h-48 gs-reveal"><img src="public/images/water scada.jpeg" alt="SCADA monitoring infrastructure" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">SCADA</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Monitoring System</p></div></div></div>
-      <div class="proj-card h-48 gs-reveal"><img src="public/images/oil+refinery+in+Atlanta-+GA.jpeg" alt="Process control refinery" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Automation</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Process Control</p></div></div></div>
-      <div class="proj-card h-48 gs-reveal"><img src="public/images/2150957727.jpg" alt="Power plant automation" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Electrical</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Panel Engineering</p></div></div></div>
-      <div class="proj-card h-48 gs-reveal"><img src="public/images/Software Industry.jpg" alt="Industrial IoT systems" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Industrial IoT</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Smart Monitoring</p></div></div></div>
+    <div class="feature-grid">
+      <a href="projects.html" class="feature-card gs-reveal">
+        <div class="feature-media">
+          <img src="public/images/chemical 1.png" alt="Industrial control systems" />
+        </div>
+        <p class="feature-tag">PLC &amp; Controls</p>
+        <h3 class="feature-title">How industrial control systems are modernizing plant performance</h3>
+        <p class="feature-meta">Process automation &nbsp;•&nbsp; Featured project</p>
+      </a>
+      <a href="projects.html" class="feature-card gs-reveal">
+        <div class="feature-media">
+          <img src="public/images/oil+refinery+in+Atlanta-+GA.jpeg" alt="Process control refinery" />
+        </div>
+        <p class="feature-tag">Process Automation</p>
+        <h3 class="feature-title">The impact of process automation on complex industrial operations</h3>
+        <p class="feature-meta">Control engineering &nbsp;•&nbsp; Commissioning</p>
+      </a>
+      <a href="projects.html" class="feature-card gs-reveal">
+        <div class="feature-media">
+          <img src="public/images/Software Industry.jpg" alt="Industrial IoT systems" />
+        </div>
+        <p class="feature-tag">Industrial IoT</p>
+        <h3 class="feature-title">The benefits of connecting automation systems to real-time insights</h3>
+        <p class="feature-meta">Smart monitoring &nbsp;•&nbsp; Remote visibility</p>
+      </a>
     </div>
   </div>
 </section>
@@ -501,22 +630,6 @@
     .from('#hero-btns',  { y: 20, opacity: 0, duration: 0.5,  ease: 'power2.out' }, '-=0.25')
     .from('#hero-right', { x: 40, opacity: 0, duration: 0.7,  ease: 'power2.out' }, 0.4)
     .from('#hero-card',  { y: 28, opacity: 0, scale: 0.92, duration: 0.75, ease: 'back.out(1.7)' }, 0.85);
-/* â”€â”€ Scroll-triggered stat counters â”€â”€ */
-  document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
-    var target = parseInt(el.dataset.count, 10);
-    var suffix = el.dataset.suffix || '';
-    ScrollTrigger.create({
-      trigger: el, start: 'top 85%', once: true,
-      onEnter: function() {
-        var obj = { val: 0 };
-        gsap.to(obj, {
-          val: target, duration: 1.8, ease: 'power2.out',
-          onUpdate: function() { el.textContent = Math.round(obj.val) + suffix; }
-        });
-      }
-    });
-  });
-
   /* â”€â”€ ScrollTrigger section reveals â”€â”€ */
   gsap.utils.toArray('.gs-reveal').forEach(function(el, i) {
     gsap.from(el, {
@@ -535,8 +648,7 @@
   document.getElementById('menu-btn').addEventListener('click', function() {
     document.getElementById('mob-menu').classList.toggle('hidden');
   });
+
 </script>
 </body>
 </html>
-
-
