@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions � IntelliAct Automation</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent:   '#00A9E3',
+            ink:      '#1a1a2e',
+            charcoal: '#2d2d3a',
+            muted:    '#5E5E5E',
+            warm:     '#827272',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, body { font-family: 'Lusitana', Georgia, serif; }
+    body { overflow-x: hidden; }
+
+    /* -- Nav -- */
+    #nav { transition: background .35s ease, box-shadow .35s ease; }
+    #nav.solid {
+      background: rgba(255,255,255,.97) !important;
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
+
+    /* -- Page hero -- */
+    .page-hero {
+      background:
+        linear-gradient(110deg, rgba(26,26,46,.94) 48%, rgba(26,26,46,.55) 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,169,227,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,169,227,.05) 1px, transparent 1px);
+      background-size: 55px 55px;
+      pointer-events: none;
+    }
+
+    /* -- Accent bar -- */
+    .abar { display: block; width: 44px; height: 3px; background: #00A9E3; margin-bottom: 14px; }
+    .abar-center { margin: 0 auto 14px; }
+
+    /* -- Animations -- */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .a1 { animation: fadeUp .7s ease .1s both; }
+    .a2 { animation: fadeUp .7s ease .25s both; }
+    .a3 { animation: fadeUp .7s ease .40s both; }
+
+    /* -- Scroll reveal -- */
+    .reveal {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.on { opacity:1; transform:translateY(0); }
+    .reveal.d1 { transition-delay: .05s; }
+    .reveal.d2 { transition-delay: .15s; }
+    .reveal.d3 { transition-delay: .25s; }
+    .reveal.d4 { transition-delay: .35s; }
+    .reveal.d5 { transition-delay: .45s; }
+    .reveal.d6 { transition-delay: .55s; }
+
+    /* -- Solution section alternating -- */
+    .sol-section { scroll-margin-top: 80px; }
+    .sol-section:nth-child(even) { background: #f9fafb; }
+
+    /* -- Image placeholder -- */
+    .img-ph {
+      background-color: #dde1e7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* -- Word-split -- */
+    .word-outer { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
+    .word-inner { display: inline-block; }
+    .page-h1 { visibility: hidden; }
+
+    /* -- Marquee -- */
+    .marquee-strip { background: #00A9E3; padding: 12px 0; overflow: hidden; }
+    .marquee-track { display: flex; align-items: center; width: max-content; animation: ticker 38s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-item { padding: 0 28px; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; white-space: nowrap; }
+    .marquee-sep { color: rgba(255,255,255,.4); padding: 0 4px; }
+
+    /* -- Sol image -- */
+    .sol-img-wrap { position: relative; overflow: hidden; }
+    .sol-img-wrap img, .sol-img-wrap .img-ph { transition: transform .6s ease; }
+    .sol-img-wrap:hover img, .sol-img-wrap:hover .img-ph { transform: scale(1.04); }
+    .sol-img-wrap .sol-num {
+      position: absolute; bottom: -1px; right: -1px;
+      background: #00A9E3;
+      color: #fff;
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* -- Feature list -- */
+    .feat-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .feat-item:last-child { border-bottom: none; }
+    .feat-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #00A9E3; flex-shrink: 0; margin-top: 7px;
+    }
+
+    /* -- Process step -- */
+    .step-num {
+      font-family: Georgia, serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(0,169,227,.15);
+      line-height: 1;
+    }
+    .step-card {
+      border-top: 3px solid transparent;
+      transition: border-color .3s;
+    }
+    .step-card:hover { border-color: #00A9E3; }
+
+    /* -- Industry tag -- */
+    .ind-tag {
+      border: 1px solid rgba(0,169,227,.25);
+      transition: background .25s, border-color .25s, color .25s;
+    }
+    .ind-tag:hover {
+      background: #00A9E3; border-color: #00A9E3; color: #fff;
+    }
+
+    /* -- CTA -- */
+    .cta-sec { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d3a 100%); }
+
+    /* -- Scrollbar -- */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f5f5f5; }
+    ::-webkit-scrollbar-thumb { background: #00A9E3; border-radius: 3px; }
+
+    /* -- Quick-nav pills -- */
+    .qnav-pill {
+      border: 1px solid #e5e7eb;
+      color: #5E5E5E;
+      transition: background .25s, border-color .25s, color .25s;
+      white-space: nowrap;
+    }
+    .qnav-pill:hover {
+      background: #00A9E3; border-color: #00A9E3; color: #fff;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-muted">
+
+<!-- ---------------- NAVBAR ---------------- -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-14 py-4 solid">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="public/images/Logo/LOGO.png"
+           alt="Orvion IntelliAct Automation" class="h-16 md:h-20 object-contain" />
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html"     class="text-ink text-xs tracking-[.18em] uppercase hover:text-accent transition-colors">Home</a>
+      <a href="solutions.html" class="text-accent text-xs tracking-[.18em] uppercase border-b border-accent pb-0.5">Solutions</a>
+      <a href="projects.html"  class="text-ink text-xs tracking-[.18em] uppercase hover:text-accent transition-colors">Projects</a>
+      <a href="index.html#contact"
+         class="px-5 py-2 border border-accent text-accent text-xs tracking-[.18em] uppercase hover:bg-accent hover:text-white transition-all">
+        Contact Us
+      </a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden text-ink">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-100 px-1">
+    <div class="flex flex-col gap-5 pt-4">
+      <a href="index.html"         class="text-ink text-xs tracking-[.18em] uppercase">Home</a>
+      <a href="solutions.html"     class="text-accent text-xs tracking-[.18em] uppercase">Solutions</a>
+      <a href="projects.html"      class="text-ink text-xs tracking-[.18em] uppercase">Projects</a>
+      <a href="index.html#contact" class="text-accent text-xs tracking-[.18em] uppercase">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ---------------- PAGE HERO ---------------- -->
+<section class="page-hero relative flex items-center pt-20" style="min-height:58vh;">
+  <div class="hero-grid"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-14 w-full py-20">
+    <p class="text-accent text-xs tracking-[.28em] uppercase mb-4" id="ph-label" style="opacity:0">What We Offer</p>
+    <h1 class="page-h1 text-white font-bold leading-tight" id="ph-headline"
+        style="font-family:Georgia,serif; font-size:clamp(2.4rem,5vw,4rem);">
+      Engineered Solutions for Modern Industry
+    </h1>
+    <p class="text-white/60 text-base mt-4 max-w-xl" id="ph-sub" style="opacity:0">
+      From control system design to full-scale process automation, IntelliAct delivers
+      end-to-end industrial solutions built for performance, safety, and longevity.
+    </p>
+
+    <!-- Quick navigation pills -->
+    <div class="flex flex-wrap gap-2 mt-8 a3">
+      <a href="#plc"        class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">PLC &amp; Controls</a>
+      <a href="#scada"      class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">SCADA Systems</a>
+      <a href="#hmi"        class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">HMI Design</a>
+      <a href="#process"    class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">Process Automation</a>
+      <a href="#iot"        class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">Industrial IoT</a>
+      <a href="#electrical" class="qnav-pill px-4 py-1.5 text-xs tracking-[.12em] uppercase">Electrical Engineering</a>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- MARQUEE ---------------- -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Process Automation</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">HMI Design</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Control Systems</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Process Automation</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">HMI Design</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Control Systems</span><span class="marquee-sep">�</span>
+    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">�</span>
+  </div>
+</div>
+
+<!-- ---------------- SOLUTION 1 � PLC ---------------- -->
+<section id="plc" class="sol-section py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal d1">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 01</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          PLC Programming &amp;<br/>Control Systems
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          We specialise in programming and commissioning programmable logic controllers
+          across all major platforms � Siemens, Allen-Bradley (Rockwell), Mitsubishi,
+          Schneider, and ABB. Whether it's a greenfield installation or an upgrade of
+          legacy equipment, we deliver robust, well-documented control logic.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Siemens S7 / TIA Portal programming</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Allen-Bradley Studio 5000 / RSLogix</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Safety PLC &amp; SIL-rated systems</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Legacy system migration &amp; modernisation</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">FAT / SAT support and documentation</span></div>
+        </div>
+      </div>
+
+      <div class="sol-img-wrap reveal d2">
+        <img src="public/images/chemical 1.png" alt="PLC programming and control system" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">01</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- SOLUTION 2 � SCADA ---------------- -->
+<section id="scada" class="sol-section py-24 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="sol-img-wrap reveal d1 order-2 lg:order-1">
+        <img src="public/images/water scada.jpeg" alt="SCADA systems and data acquisition" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">02</div>
+      </div>
+
+      <div class="reveal d2 order-1 lg:order-2">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 02</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          SCADA Systems &amp;<br/>Data Acquisition
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          Our SCADA solutions give operations teams real-time visibility and control
+          across entire facilities. We design, develop, and commission SCADA platforms
+          that integrate seamlessly with field devices, PLCs, and enterprise systems,
+          delivering actionable data at every level.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Wonderware, iFIX, Ignition SCADA platforms</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">OPC-UA / Modbus / Profibus integration</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Historian data logging &amp; reporting</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Alarm management &amp; event logging</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Redundant server architectures</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- SOLUTION 3 � HMI ---------------- -->
+<section id="hmi" class="sol-section py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal d1">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 03</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          HMI Design &amp;<br/>Operator Interfaces
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          Effective human-machine interfaces reduce operator error and improve response
+          times. We design HMI screens with clarity, ergonomics, and ISA-101 best
+          practices in mind � making complex processes simple for operators to
+          understand and act upon.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Siemens WinCC / Comfort Panel HMI</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Rockwell FactoryTalk View design</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">ISA-101 compliant screen design</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Touchscreen and panel PC integration</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Operator training and documentation</span></div>
+        </div>
+      </div>
+
+      <div class="sol-img-wrap reveal d2">
+        <img src="public/images/2151977869.jpg" alt="HMI operator interface" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">03</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- SOLUTION 4 � PROCESS ---------------- -->
+<section id="process" class="sol-section py-24 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="sol-img-wrap reveal d1 order-2 lg:order-1">
+        <img src="public/images/oil+refinery+in+Atlanta-+GA.jpeg" alt="Process automation refinery" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">04</div>
+      </div>
+
+      <div class="reveal d2 order-1 lg:order-2">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 04</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          Process Automation &amp;<br/>Control Engineering
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          From single machine automation to entire plant integration, our process
+          automation expertise spans continuous, batch, and discrete manufacturing.
+          We manage projects end-to-end � from P&amp;ID review and control narrative
+          development through to commissioning and handover.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Continuous &amp; batch process control</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">PID loop tuning &amp; optimisation</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">DCS integration (Honeywell, Yokogawa, ABB)</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">HAZOP review support &amp; SIS design</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Commissioning, startup, and optimisation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- SOLUTION 5 � IoT ---------------- -->
+<section id="iot" class="sol-section py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal d1">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 05</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          Industrial IoT &amp;<br/>Connected Operations
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          The Industrial Internet of Things bridges the operational technology (OT)
+          and information technology (IT) layers of your business. IntelliAct designs
+          and deploys IIoT architectures that connect field devices to cloud dashboards,
+          enabling predictive maintenance, energy monitoring, and real-time OEE tracking.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Edge computing &amp; gateway configuration</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">MQTT / REST API data pipelines</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Cloud dashboards &amp; analytics</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Predictive maintenance systems</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">OEE and energy monitoring platforms</span></div>
+        </div>
+      </div>
+
+      <div class="sol-img-wrap reveal d2">
+        <img src="public/images/Software Industry.jpg" alt="Industrial IoT connected operations" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">05</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- SOLUTION 6 � ELECTRICAL ---------------- -->
+<section id="electrical" class="sol-section py-24 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="sol-img-wrap reveal d1 order-2 lg:order-1">
+        <img src="public/images/engg 1.png" alt="Electrical engineering and panel manufacturing" class="w-full h-[420px] object-cover" />
+        <div class="sol-num">06</div>
+      </div>
+
+      <div class="reveal d2 order-1 lg:order-2">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Solution 06</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-ink mb-5" style="font-family:Georgia,serif;">
+          Electrical Engineering &amp;<br/>Panel Manufacturing
+        </h2>
+        <p class="text-muted leading-relaxed mb-6">
+          Our in-house electrical engineering capabilities cover the complete scope �
+          from design drawings and material specifications to panel fabrication,
+          factory acceptance testing, and site installation. We manufacture control
+          panels, MCC panels, distribution boards, and instrumentation enclosures.
+        </p>
+        <div class="space-y-0">
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Control panel &amp; MCC design and build</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Single-line &amp; loop diagram engineering</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Cable scheduling &amp; routing design</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">Factory &amp; site acceptance testing</span></div>
+          <div class="feat-item"><span class="feat-dot"></span><span class="text-sm">As-built documentation &amp; handover</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- PROCESS STEPS ---------------- -->
+<section class="py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <span class="abar abar-center"></span>
+      <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">How We Work</p>
+      <h2 class="text-3xl lg:text-4xl font-bold text-ink" style="font-family:Georgia,serif;">
+        Our Delivery Process
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="step-card bg-white border border-gray-100 p-8 reveal d1">
+        <div class="step-num">01</div>
+        <h3 class="text-lg font-bold text-ink mt-2 mb-3" style="font-family:Georgia,serif;">Consultation &amp; Scoping</h3>
+        <p class="text-muted text-sm leading-relaxed">
+          We begin with a detailed site visit and requirements workshop to define project
+          scope, deliverables, and success criteria.
+        </p>
+      </div>
+
+      <div class="step-card bg-white border border-gray-100 p-8 reveal d2">
+        <div class="step-num">02</div>
+        <h3 class="text-lg font-bold text-ink mt-2 mb-3" style="font-family:Georgia,serif;">Engineering Design</h3>
+        <p class="text-muted text-sm leading-relaxed">
+          Our engineers prepare detailed designs � control narratives, P&amp;IDs, panel drawings,
+          and software specifications � for client review and approval.
+        </p>
+      </div>
+
+      <div class="step-card bg-white border border-gray-100 p-8 reveal d3">
+        <div class="step-num">03</div>
+        <h3 class="text-lg font-bold text-ink mt-2 mb-3" style="font-family:Georgia,serif;">Build &amp; Testing</h3>
+        <p class="text-muted text-sm leading-relaxed">
+          Panel fabrication, software development, and system integration are completed
+          in-house, followed by rigorous factory acceptance testing.
+        </p>
+      </div>
+
+      <div class="step-card bg-white border border-gray-100 p-8 reveal d4">
+        <div class="step-num">04</div>
+        <h3 class="text-lg font-bold text-ink mt-2 mb-3" style="font-family:Georgia,serif;">Commissioning &amp; Support</h3>
+        <p class="text-muted text-sm leading-relaxed">
+          Site installation, commissioning, operator training, and long-term technical
+          support ensure your system performs from day one.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- INDUSTRIES ---------------- -->
+<section class="py-20 px-6 lg:px-14 bg-ink">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div class="reveal d1">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Sectors</p>
+        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-5" style="font-family:Georgia,serif;">
+          Industries We Serve
+        </h2>
+        <p class="text-white/50 leading-relaxed">
+          Our cross-industry experience means we bring proven methodologies and
+          domain knowledge to every project � whatever your sector.
+        </p>
+      </div>
+
+      <div class="reveal d2">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Manufacturing</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Oil &amp; Gas</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Pharmaceuticals</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Water &amp; Wastewater</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Food &amp; Beverage</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Power &amp; Energy</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Chemical &amp; Petrochemical</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Mining &amp; Minerals</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Steel &amp; Metals</div>
+          <div class="ind-tag px-4 py-3 text-white/60 text-sm">Infrastructure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- GALLERY STRIP ---------------- -->
+<section class="py-4 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-3 lg:grid-cols-6 gap-2 reveal">
+      <img src="public/images/Icons/chemical.png" alt="Chemical automation" class="h-28 w-full object-cover" />
+      <img src="public/images/Icons/water.png" alt="Water treatment automation" class="h-28 w-full object-cover" />
+      <img src="public/images/Icons/power plant.png" alt="Power plant automation" class="h-28 w-full object-cover" />
+      <img src="public/images/Icons/metal - mining.png" alt="Mining automation" class="h-28 w-full object-cover" />
+      <img src="public/images/Icons/refinery.png" alt="Refinery automation" class="h-28 w-full object-cover" />
+      <img src="public/images/background effects/it.png" alt="Industrial software systems" class="h-28 w-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- CTA ---------------- -->
+<section class="cta-sec py-28 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal d1">
+        <span class="abar"></span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight"
+            style="font-family:Georgia,serif;">
+          Let's Engineer<br/>Your Next Project
+        </h2>
+      </div>
+      <div class="reveal d2">
+        <p class="text-white/55 text-base leading-relaxed mb-8">
+          Every industrial challenge is unique. Tell us about yours � our engineers
+          will assess your requirements and propose the right solution.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="index.html#contact"
+             class="px-8 py-4 bg-accent text-white text-xs tracking-[.18em] uppercase hover:bg-sky-500 transition-colors">
+            Contact Our Team
+          </a>
+          <a href="projects.html"
+             class="px-8 py-4 border border-white/25 text-white text-xs tracking-[.18em] uppercase hover:border-accent hover:text-accent transition-colors">
+            View Projects
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- FOOTER ---------------- -->
+<footer class="bg-ink border-t border-white/5 py-14 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <img src="public/images/Logo/LOGO.png"
+             alt="Orvion IntelliAct Automation" class="h-16 object-contain mb-4 bg-white p-1" />
+        <p class="text-white/35 text-sm leading-relaxed max-w-xs">
+          Precision automation solutions engineered for modern industrial operations.
+        </p>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs tracking-[.2em] uppercase mb-4">Navigation</p>
+        <ul class="space-y-2.5">
+          <li><a href="index.html"         class="text-white/35 text-sm hover:text-accent transition-colors">Home</a></li>
+          <li><a href="solutions.html"     class="text-white/35 text-sm hover:text-accent transition-colors">Solutions</a></li>
+          <li><a href="projects.html"      class="text-white/35 text-sm hover:text-accent transition-colors">Projects</a></li>
+          <li><a href="index.html#contact" class="text-white/35 text-sm hover:text-accent transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs tracking-[.2em] uppercase mb-4">Solutions</p>
+        <ul class="space-y-2.5">
+          <li><a href="#plc"        class="text-white/35 text-sm hover:text-accent transition-colors">PLC Programming</a></li>
+          <li><a href="#scada"      class="text-white/35 text-sm hover:text-accent transition-colors">SCADA Systems</a></li>
+          <li><a href="#hmi"        class="text-white/35 text-sm hover:text-accent transition-colors">HMI Design</a></li>
+          <li><a href="#process"    class="text-white/35 text-sm hover:text-accent transition-colors">Process Automation</a></li>
+          <li><a href="#iot"        class="text-white/35 text-sm hover:text-accent transition-colors">Industrial IoT</a></li>
+          <li><a href="#electrical" class="text-white/35 text-sm hover:text-accent transition-colors">Electrical Engineering</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/5 flex flex-wrap justify-between items-center gap-4">
+      <p class="text-white/25 text-xs">� 2024 IntelliAct Automation Pvt. Limited. All rights reserved.</p>
+      <p class="text-white/25 text-xs">intelliactind.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* -- Nav -- */
+  gsap.from('#nav', { y: -60, opacity: 0, duration: 0.6, ease: 'power2.out' });
+
+  /* -- Word-split page headline -- */
+  (function splitHeadline() {
+    var el = document.getElementById('ph-headline');
+    var words = el.textContent.trim().split(' ');
+    while (el.firstChild) el.removeChild(el.firstChild);
+    words.forEach(function(word, i) {
+      var outer = document.createElement('span');
+      outer.className = 'word-outer';
+      var inner = document.createElement('span');
+      inner.className = 'word-inner';
+      inner.textContent = word;
+      outer.appendChild(inner);
+      el.appendChild(outer);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+    el.style.visibility = 'visible';
+  })();
+
+  /* -- Page hero entrance -- */
+  gsap.timeline({ delay: 0.1 })
+    .from('#ph-label',   { y: 16, opacity: 0, duration: 0.5, ease: 'power2.out' })
+    .from('.word-inner', { y: '115%', duration: 0.7, stagger: 0.055, ease: 'power3.out' }, '-=0.2')
+    .from('#ph-sub',     { y: 16, opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+    .from('.qnav-pill',  { y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' }, '-=0.25');
+
+  /* -- ScrollTrigger reveals -- */
+  gsap.utils.toArray('.reveal').forEach(function(el, i) {
+    gsap.fromTo(el,
+      { y: 28, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.65, ease: 'power2.out',
+        delay: (i % 2) * 0.1,
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  /* -- Mobile menu -- */
+  document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+
+  /* -- Smooth scroll anchors -- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
+
+
+

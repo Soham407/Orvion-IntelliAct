@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IntelliAct Automation â€” Precision Industrial Solutions</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        accent: '#00A9E3', ink: '#1a1a2e', charcoal: '#2d2d3a', muted: '#5E5E5E'
+      }}}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, body { font-family: 'Lusitana', Georgia, serif; }
+    body { overflow-x: hidden; }
+
+    /* â”€â”€ Nav â”€â”€ */
+    #nav { transition: background .35s, box-shadow .35s; }
+    #nav.scrolled { background: rgba(255,255,255,.97) !important; box-shadow: 0 1px 0 rgba(0,0,0,.08); }
+    #nav.scrolled .nav-link  { color: #1a1a2e !important; }
+    #nav.scrolled .nav-link:hover { color: #00A9E3 !important; }
+    #nav.scrolled .nav-cta   { border-color: #00A9E3; color: #00A9E3; }
+    #nav.scrolled .nav-cta:hover { background: #00A9E3; color: #fff; }
+
+    /* â”€â”€ Hero â”€â”€ */
+    .hero {
+      position: relative; min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(8,17,30,.82) 0%, rgba(8,17,30,.68) 28%, rgba(8,17,30,.26) 58%, rgba(8,17,30,.52) 100%),
+        linear-gradient(180deg, rgba(9,21,37,.18) 0%, rgba(9,21,37,0) 26%, rgba(9,21,37,.55) 100%),
+        url('public/images/oil+refinery+in+Atlanta-+GA.jpeg') center center / cover no-repeat;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 18% 18%, rgba(255,255,255,.16) 0%, rgba(255,255,255,.05) 20%, transparent 44%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; right: -10vw; bottom: -20vh;
+      width: 42vw; height: 42vw; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,169,227,.18) 0%, rgba(0,169,227,.04) 44%, transparent 72%);
+      pointer-events: none;
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 72px 72px; pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 10;
+      display: grid; grid-template-columns: 1fr;
+      gap: 24px; padding-top: 118px; padding-bottom: 48px; width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .hero-inner { min-height: 100vh; }
+    }
+
+    /* â”€â”€ Headline word-split â”€â”€ */
+    .hero-headline {
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 5.8vw, 6rem);
+      font-weight: 700; color: #fff; line-height: .95;
+      max-width: 760px; margin: 16px 0 20px; visibility: hidden;
+      text-wrap: balance;
+    }
+    .word-outer { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
+    .word-inner { display: inline-block; }
+
+    /* â”€â”€ Hero label â”€â”€ */
+    .hero-label {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,.58); font-size: .72rem; letter-spacing: .26em; text-transform: uppercase;
+    }
+    .hero-label-bar { display: inline-block; width: 36px; height: 2px; background: #00A9E3; }
+    .hero-shell { display: flex; flex-direction: column; gap: 24px; }
+    .hero-left { position: relative; }
+    .hero-lead {
+      max-width: 480px; color: rgba(255,255,255,.78);
+      font-size: 1rem; line-height: 1.8;
+    }
+
+    /* â”€â”€ Buttons â”€â”€ */
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-pri { padding: 15px 32px; background: #00A9E3; border-radius: 999px; color: #fff; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; transition: background .3s, transform .3s; display: inline-block; }
+    .btn-pri:hover { background: #0891c2; transform: translateY(-2px); }
+    .btn-sec { padding: 15px 32px; border: 1px solid rgba(255,255,255,.34); border-radius: 999px; color: #fff; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; transition: border-color .3s, color .3s, background .3s; display: inline-block; backdrop-filter: blur(10px); }
+    .btn-sec:hover { border-color: #00A9E3; color: #fff; background: rgba(0,169,227,.12); }
+
+    /* â”€â”€ Proof counters â”€â”€ */
+    /* â”€â”€ Right column â”€â”€ */
+    .hero-right { display: flex; justify-content: flex-end; }
+    .hero-desc {
+      max-width: 320px; padding: 18px 20px; border-radius: 20px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.84); font-size: .95rem; line-height: 1.75;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    }
+    @media (max-width: 1023px) {
+      .hero-right { justify-content: flex-start; }
+      .hero-desc { max-width: 100%; }
+    }
+
+    /* â”€â”€ Floating card â”€â”€ */
+    .hero-float-card {
+      display: grid; grid-template-columns: 1fr;
+      gap: 16px; padding: 16px; width: min(100%, 320px); margin-left: auto;
+      border-radius: 28px;
+      background: rgba(242,246,250,.84); border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 22px 60px rgba(5,14,24,.28);
+      animation: hero-float 4.5s ease-in-out infinite;
+    }
+    @media (max-width: 1023px) { .hero-float-card { margin-left: 0; } }
+    @keyframes hero-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    .card-media {
+      width: 100%; height: 140px; object-fit: cover; border-radius: 18px; display: block;
+    }
+    .card-foot {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 18px;
+    }
+    .card-arrow {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 1px solid rgba(0,169,227,.5); color: #00A9E3;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      background: rgba(255,255,255,.6);
+    }
+    .card-label {
+      color: rgba(26,26,46,.55); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase;
+      display: block; margin-bottom: 6px;
+    }
+    .card-title {
+      color: #1a1a2e; font-family: Georgia, serif; font-size: 1.55rem; line-height: 1.02;
+    }
+    .card-copy {
+      color: #4f5966; font-size: .85rem; line-height: 1.55; margin-top: 8px; max-width: 200px;
+    }
+    .hero-bottom { display: grid; gap: 20px; align-items: end; }
+    @media (min-width: 1024px) {
+      .hero-bottom {
+        position: absolute; right: 0; bottom: 72px; width: 320px;
+      }
+      .hero-right {
+        position: absolute; top: 156px; right: 0; width: 320px;
+      }
+      .hero-shell { padding-right: 320px; }
+    }
+
+    /* â”€â”€ Scroll indicator â”€â”€ */
+    .scroll-line { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .scroll-line span { color: rgba(255,255,255,.3); font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; }
+    .scroll-line-bar { width: 1px; height: 36px; background: linear-gradient(to bottom, #00A9E3, transparent); animation: scroll-pulse 1.8s ease-in-out infinite; }
+    @keyframes scroll-pulse { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
+
+    /* â”€â”€ Marquee â”€â”€ */
+    .marquee-strip { background: #00A9E3; padding: 13px 0; overflow: hidden; position: relative; z-index: 5; }
+    .marquee-track { display: flex; align-items: center; width: max-content; animation: ticker 40s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-item { padding: 0 30px; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; white-space: nowrap; }
+    .marquee-sep { color: rgba(255,255,255,.4); font-size: 1rem; padding: 0 4px; }
+
+    /* â”€â”€ Shared â”€â”€ */
+    .abar { display: block; width: 44px; height: 3px; background: #00A9E3; margin-bottom: 14px; }
+    .abar-c { margin: 0 auto 14px; }
+    .svc-card { border: 1px solid #e5e7eb; transition: border-color .3s, transform .3s, box-shadow .3s; }
+    .svc-card:hover { border-color: #00A9E3; transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,169,227,.1); }
+    .svc-icon { width: 48px; height: 48px; border: 1px solid rgba(0,169,227,.3); display: flex; align-items: center; justify-content: center; }
+    .proj-card { overflow: hidden; position: relative; }
+    .proj-card .img-ph, .proj-card img { transition: transform .55s ease; }
+    .proj-card:hover .img-ph, .proj-card:hover img { transform: scale(1.07); }
+    .proj-card .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,46,.9) 0%, transparent 60%); opacity: 0; transition: opacity .35s; }
+    .proj-card:hover .overlay { opacity: 1; }
+    .img-ph { background-color: #dde1e7; display: flex; align-items: center; justify-content: center; width: 100%; }
+    .media-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap::after { content: ''; position: absolute; bottom: -18px; right: -18px; width: 160px; height: 160px; border: 1px solid rgba(0,169,227,.22); z-index: -1; }
+    .about-badge { position: absolute; top: 20px; left: 20px; background: rgba(26,26,46,.92); padding: 12px 18px; }
+    .ind-tag { border: 1px solid rgba(0,169,227,.25); transition: background .25s, border-color .25s, color .25s; }
+    .ind-tag:hover { background: #00A9E3; border-color: #00A9E3; color: #fff; }
+    .stat-num { font-family: Georgia, serif; font-size: 3.25rem; font-weight: 700; color: #00A9E3; line-height: 1; }
+    .cta-sec { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d3a 100%); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f5f5f5; }
+    ::-webkit-scrollbar-thumb { background: #00A9E3; border-radius: 3px; }
+  </style>
+</head>
+
+<body class="bg-white" style="color:#5E5E5E">
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-14 py-4" style="background:transparent;">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html">
+      <img src="public/images/Logo/LOGO.png" alt="Orvion IntelliAct Automation" class="h-16 md:h-20 object-contain" />
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html"     class="nav-link text-white text-xs tracking-[.18em] uppercase hover:text-accent transition-colors">Home</a>
+      <a href="solutions.html" class="nav-link text-white text-xs tracking-[.18em] uppercase hover:text-accent transition-colors">Solutions</a>
+      <a href="projects.html"  class="nav-link text-white text-xs tracking-[.18em] uppercase hover:text-accent transition-colors">Projects</a>
+      <a href="#contact" class="nav-cta px-5 py-2 border border-white/50 text-white text-xs tracking-[.18em] uppercase transition-all hover:bg-accent hover:border-accent">Contact Us</a>
+    </div>
+    <button id="menu-btn" class="md:hidden text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/20 px-1">
+    <div class="flex flex-col gap-5 pt-4">
+      <a href="index.html"     class="text-white text-xs tracking-[.18em] uppercase">Home</a>
+      <a href="solutions.html" class="text-white text-xs tracking-[.18em] uppercase">Solutions</a>
+      <a href="projects.html"  class="text-white text-xs tracking-[.18em] uppercase">Projects</a>
+      <a href="#contact"       class="text-accent text-xs tracking-[.18em] uppercase">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-0 hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-shell">
+        <p class="hero-label" id="hero-label">
+          <span class="hero-label-bar"></span>
+          IntelliAct Automation Pvt. Limited
+        </p>
+        <h1 class="hero-headline" id="hero-headline">Intelligent Automation For Demanding Industry</h1>
+        <p class="hero-lead">
+          We engineer PLC, SCADA, HMI, and process control systems that bring clarity,
+          uptime, and measurable performance to complex industrial operations.
+        </p>
+        <div class="hero-btns" id="hero-btns">
+          <a href="solutions.html" class="btn-pri">Explore Solutions</a>
+          <a href="projects.html"  class="btn-sec">View Projects</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right" id="hero-right">
+      <p class="hero-desc">
+        High-reliability automation for oil and gas, power, water, chemicals, and
+        manufacturing environments where system stability matters.
+      </p>
+    </div>
+    <div class="hero-bottom">
+      <div></div>
+      <div class="hero-float-card" id="hero-card">
+        <img src="public/images/water scada.jpeg" alt="Water SCADA infrastructure" class="card-media" />
+        <div class="card-foot">
+          <div>
+            <span class="card-label">Featured Capability</span>
+            <p class="card-title">SCADA &amp;<br/>Process Visibility</p>
+            <p class="card-copy">Unify field data, alarms, and operator control into one dependable automation layer.</p>
+          </div>
+          <div class="card-arrow" aria-hidden="true">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 17L17 7M9 7h8v8"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-line">
+    <span>Scroll</span>
+    <div class="scroll-line-bar"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">HMI Design</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Process Automation</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Control Systems</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">PLC Programming</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">SCADA Systems</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">HMI Design</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Process Automation</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Industrial IoT</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Electrical Engineering</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Control Systems</span><span class="marquee-sep">Â·</span>
+    <span class="marquee-item">Panel Manufacturing</span><span class="marquee-sep">Â·</span>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<section class="bg-ink py-14">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-white/10">
+      <div class="text-center gs-reveal"><div class="stat-num" data-count="25" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Years Experience</div></div>
+      <div class="text-center gs-reveal"><div class="stat-num" data-count="500" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Projects Delivered</div></div>
+      <div class="text-center gs-reveal"><div class="stat-num" data-count="150" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Clients Served</div></div>
+      <div class="text-center gs-reveal"><div class="stat-num" data-count="12" data-suffix="+">0</div><div class="text-white/40 text-xs tracking-[.2em] uppercase mt-2">Industries</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="about-img-wrap gs-reveal">
+        <img src="public/images/engg 1.png" alt="Automation engineering desk" class="media-img w-full h-[480px]" />
+        <div class="about-badge"><p class="text-accent text-xs tracking-[.22em] uppercase">Est. 2000</p><p class="text-white font-bold text-lg mt-0.5" style="font-family:Georgia,serif;">IntelliAct</p></div>
+      </div>
+      <div class="gs-reveal">
+        <span class="abar"></span>
+        <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Who We Are</p>
+        <h2 class="text-4xl font-bold mb-6" style="font-family:Georgia,serif; color:#1a1a2e;">Engineering the Future<br/>of Industrial Automation</h2>
+        <p class="leading-relaxed mb-5">IntelliAct Automation Pvt. Limited is a premier industrial automation company with decades of proven expertise. We bridge the gap between traditional operations and intelligent, connected manufacturing across some of India's most demanding industrial environments.</p>
+        <p class="leading-relaxed mb-8">Our certified engineers specialise in PLC programming, SCADA systems, HMI design, process automation, and industrial IoT â€” delivering systems that are reliable, scalable, and precisely tailored to your operational requirements.</p>
+        <a href="solutions.html" class="inline-flex items-center gap-3 text-accent text-xs tracking-[.22em] uppercase group">Our Solutions <span class="h-px w-8 bg-accent transition-all group-hover:w-14"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="py-24 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 gs-reveal">
+      <span class="abar abar-c"></span>
+      <p class="text-accent text-xs tracking-[.22em] uppercase mb-3">What We Do</p>
+      <h2 class="text-4xl font-bold" style="font-family:Georgia,serif; color:#1a1a2e;">Core Services</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">PLC Programming</h3>
+        <p class="text-sm leading-relaxed">Advanced programmable logic controller solutions â€” Siemens, Allen-Bradley, Mitsubishi â€” for precise, reliable industrial control.</p>
+      </div>
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">SCADA Systems</h3>
+        <p class="text-sm leading-relaxed">Supervisory control and data acquisition systems for real-time monitoring, data logging, and operational visibility.</p>
+      </div>
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">HMI Design</h3>
+        <p class="text-sm leading-relaxed">Intuitive human-machine interfaces that make complex operations transparent, accessible, and easy for operators to control.</p>
+      </div>
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Process Automation</h3>
+        <p class="text-sm leading-relaxed">End-to-end automation of industrial processes â€” reducing manual intervention, cutting costs, and boosting throughput.</p>
+      </div>
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Industrial IoT</h3>
+        <p class="text-sm leading-relaxed">Connected industrial solutions that enable smart data collection, remote diagnostics, and predictive maintenance.</p>
+      </div>
+      <div class="svc-card bg-white p-8 gs-reveal">
+        <div class="svc-icon mb-6"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <h3 class="text-lg font-bold mb-2" style="font-family:Georgia,serif; color:#1a1a2e;">Electrical Engineering</h3>
+        <p class="text-sm leading-relaxed">Control panel design, power distribution, instrumentation, and field commissioning services for complete project delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="py-24 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-wrap items-end justify-between mb-12">
+      <div class="gs-reveal"><span class="abar"></span><p class="text-accent text-xs tracking-[.22em] uppercase mb-3">Portfolio</p><h2 class="text-4xl font-bold" style="font-family:Georgia,serif; color:#1a1a2e;">Featured Projects</h2></div>
+      <a href="projects.html" class="text-accent text-xs tracking-[.22em] uppercase flex items-center gap-3 group gs-reveal">All Projects <span class="h-px w-8 bg-accent transition-all group-hover:w-14"></span></a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="proj-card col-span-2 h-96 gs-reveal"><img src="public/images/chemical 1.png" alt="Industrial control systems" class="media-img" /><div class="overlay flex items-end p-6"><div><p class="text-accent text-xs tracking-[.2em] uppercase">PLC &amp; Control</p><p class="text-white font-bold text-lg" style="font-family:Georgia,serif;">Industrial Control Systems</p></div></div></div>
+      <div class="proj-card h-48 gs-reveal"><img src="public/images/water scada.jpeg" alt="SCADA monitoring infrastructure" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">SCADA</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Monitoring System</p></div></div></div>
+      <div class="proj-card h-48 gs-reveal"><img src="public/images/oil+refinery+in+Atlanta-+GA.jpeg" alt="Process control refinery" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Automation</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Process Control</p></div></div></div>
+      <div class="proj-card h-48 gs-reveal"><img src="public/images/2150957727.jpg" alt="Power plant automation" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Electrical</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Panel Engineering</p></div></div></div>
+      <div class="proj-card h-48 gs-reveal"><img src="public/images/Software Industry.jpg" alt="Industrial IoT systems" class="media-img" /><div class="overlay flex items-end p-4"><div><p class="text-accent text-xs tracking-[.15em] uppercase">Industrial IoT</p><p class="text-white font-bold" style="font-family:Georgia,serif;">Smart Monitoring</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="py-16 px-6 lg:px-14 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10 gs-reveal"><p class="text-accent text-xs tracking-[.22em] uppercase mb-2">Sectors We Serve</p><h2 class="text-3xl font-bold" style="font-family:Georgia,serif; color:#1a1a2e;">Industries</h2></div>
+    <div class="flex flex-wrap justify-center gap-3 gs-reveal">
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Manufacturing</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Oil &amp; Gas</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Pharmaceuticals</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Water Treatment</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Food &amp; Beverage</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Power &amp; Energy</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Chemicals</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Mining</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Steel &amp; Metals</span>
+      <span class="ind-tag px-5 py-2 text-sm cursor-default">Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec py-28 px-6 lg:px-14" id="contact">
+  <div class="max-w-7xl mx-auto text-center">
+    <span class="abar abar-c gs-reveal"></span>
+    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-5 gs-reveal" style="font-family:Georgia,serif;">Ready to Automate<br/>Your Operations?</h2>
+    <p class="text-white/55 text-base max-w-lg mx-auto mb-10 gs-reveal">Let's discuss how IntelliAct can engineer and deliver the automation solution your industry demands.</p>
+    <div class="flex flex-wrap justify-center gap-4 mb-20 gs-reveal">
+      <a href="mailto:info@intelliactind.com" class="px-8 py-4 bg-accent text-white text-xs tracking-[.18em] uppercase hover:bg-sky-500 transition-colors">Get In Touch</a>
+      <a href="projects.html" class="px-8 py-4 border border-white/25 text-white text-xs tracking-[.18em] uppercase hover:border-accent hover:text-accent transition-colors">View Our Work</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 pt-12 border-t border-white/10">
+      <div class="gs-reveal"><p class="text-accent text-xs tracking-[.22em] uppercase mb-2">Email</p><a href="mailto:info@intelliactind.com" class="text-white hover:text-accent transition-colors">info@intelliactind.com</a></div>
+      <div class="gs-reveal"><p class="text-accent text-xs tracking-[.22em] uppercase mb-2">Website</p><p class="text-white">intelliactind.com</p></div>
+      <div class="gs-reveal"><p class="text-accent text-xs tracking-[.22em] uppercase mb-2">Headquarters</p><p class="text-white">India</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink border-t border-white/5 py-14 px-6 lg:px-14">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <img src="public/images/Logo/LOGO.png" alt="Orvion IntelliAct Automation" class="h-16 object-contain mb-4 bg-white p-1" />
+        <p class="text-white/35 text-sm leading-relaxed max-w-xs">Precision automation solutions engineered for modern industrial operations.</p>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs tracking-[.2em] uppercase mb-4">Navigation</p>
+        <ul class="space-y-2.5">
+          <li><a href="index.html"     class="text-white/35 text-sm hover:text-accent transition-colors">Home</a></li>
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">Solutions</a></li>
+          <li><a href="projects.html"  class="text-white/35 text-sm hover:text-accent transition-colors">Projects</a></li>
+          <li><a href="#contact"       class="text-white/35 text-sm hover:text-accent transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white/60 text-xs tracking-[.2em] uppercase mb-4">Services</p>
+        <ul class="space-y-2.5">
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">PLC Programming</a></li>
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">SCADA Systems</a></li>
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">HMI Design</a></li>
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">Process Automation</a></li>
+          <li><a href="solutions.html" class="text-white/35 text-sm hover:text-accent transition-colors">Industrial IoT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/5 flex flex-wrap justify-between items-center gap-4">
+      <p class="text-white/25 text-xs">Â© 2024 IntelliAct Automation Pvt. Limited. All rights reserved.</p>
+      <p class="text-white/25 text-xs">intelliactind.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* â”€â”€ Nav slide in â”€â”€ */
+  gsap.from('#nav', { y: -70, opacity: 0, duration: 0.7, ease: 'power2.out' });
+
+  /* â”€â”€ Word-split headline (safe DOM API, no innerHTML) â”€â”€ */
+  (function splitHeadline() {
+    var el = document.getElementById('hero-headline');
+    var words = el.textContent.trim().split(' ');
+    while (el.firstChild) el.removeChild(el.firstChild);
+
+    words.forEach(function(word, i) {
+      var outer = document.createElement('span');
+      outer.className = 'word-outer';
+      var inner = document.createElement('span');
+      inner.className = 'word-inner';
+      inner.textContent = word;
+      if (word === 'Intelligent') inner.style.color = '#00A9E3';
+      outer.appendChild(inner);
+      el.appendChild(outer);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+
+    el.style.visibility = 'visible';
+  })();
+
+  /* â”€â”€ Hero entrance timeline â”€â”€ */
+  var heroTL = gsap.timeline({ delay: 0.15 });
+  heroTL
+    .from('#hero-label', { y: 18, opacity: 0, duration: 0.55, ease: 'power2.out' })
+    .from('.word-inner',  { y: '115%', duration: 0.75, stagger: 0.055, ease: 'power3.out' }, '-=0.2')
+    .from('#hero-btns',  { y: 20, opacity: 0, duration: 0.5,  ease: 'power2.out' }, '-=0.25')
+    .from('#hero-right', { x: 40, opacity: 0, duration: 0.7,  ease: 'power2.out' }, 0.4)
+    .from('#hero-card',  { y: 28, opacity: 0, scale: 0.92, duration: 0.75, ease: 'back.out(1.7)' }, 0.85);
+/* â”€â”€ Scroll-triggered stat counters â”€â”€ */
+  document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%', once: true,
+      onEnter: function() {
+        var obj = { val: 0 };
+        gsap.to(obj, {
+          val: target, duration: 1.8, ease: 'power2.out',
+          onUpdate: function() { el.textContent = Math.round(obj.val) + suffix; }
+        });
+      }
+    });
+  });
+
+  /* â”€â”€ ScrollTrigger section reveals â”€â”€ */
+  gsap.utils.toArray('.gs-reveal').forEach(function(el, i) {
+    gsap.from(el, {
+      y: 32, opacity: 0, duration: 0.7, ease: 'power2.out',
+      delay: (i % 3) * 0.07,
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+
+  /* â”€â”€ Nav on scroll â”€â”€ */
+  window.addEventListener('scroll', function() {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* â”€â”€ Mobile menu â”€â”€ */
+  document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+</script>
+</body>
+</html>
+
+
