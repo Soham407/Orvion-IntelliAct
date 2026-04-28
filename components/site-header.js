@@ -46,26 +46,46 @@ const navItems = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  const toggleDropdown = (label) => {
+    if (activeDropdown === label) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(label);
+    }
+  };
+
   return (
-    <header className={scrolled ? "site-header scrolled" : "site-header"}>
+    <header 
+      className={`site-header ${scrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""}`}
+    >
       <div className="shell header-inner">
-        <Link href="/" className="brand-mark" onClick={() => setOpen(false)}>
+        <Link href="/" className="brand-mark" onClick={() => setIsOpen(false)}>
           <Image
             src="/images/Logo/LOGO.png"
             alt="Orvion IntelliAct Automation"
-            width={220}
-            height={72}
+            width={scrolled ? 180 : 220}
+            height={scrolled ? 58 : 72}
+            className="logo-img"
             priority
           />
         </Link>
@@ -75,17 +95,24 @@ export function SiteHeader() {
             <div key={item.label} className="nav-item">
               <Link
                 href={item.href}
-                className={pathname === item.href ? "nav-link active" : "nav-link"}
+                className={`nav-link ${pathname === item.href ? "active" : ""}`}
               >
                 {item.label}
+                {item.dropdown && (
+                  <svg className="chevron" viewBox="0 0 24 24" width="14" height="14">
+                    <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 9l6 6 6-6" />
+                  </svg>
+                )}
               </Link>
               {item.dropdown && (
                 <div className="dropdown-menu">
-                  {item.dropdown.map((subItem) => (
-                    <Link key={subItem.href} href={subItem.href} className="dropdown-link">
-                      {subItem.label}
-                    </Link>
-                  ))}
+                  <div className="dropdown-grid">
+                    {item.dropdown.map((subItem) => (
+                      <Link key={subItem.href} href={subItem.href} className="dropdown-link">
+                        <span className="dropdown-label">{subItem.label}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -97,10 +124,10 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="menu-toggle"
-          aria-expanded={open}
+          className={`menu-toggle ${isOpen ? "active" : ""}`}
+          aria-expanded={isOpen}
           aria-label="Toggle navigation"
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <span />
           <span />
@@ -108,24 +135,53 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {open ? (
+      {/* Mobile Navigation */}
+      <div className={`mobile-nav-overlay ${isOpen ? "visible" : ""}`}>
         <nav className="mobile-nav shell" aria-label="Mobile">
           {navItems.map((item) => (
-            <div key={item.label}>
-              <Link
-                href={item.href}
-                className={pathname === item.href ? "nav-link active" : "nav-link"}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
+            <div key={item.label} className="mobile-nav-item">
+              <div className="mobile-nav-header">
+                <Link
+                  href={item.href}
+                  className={`mobile-nav-link ${pathname === item.href ? "active" : ""}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+                {item.dropdown && (
+                  <button 
+                    className={`mobile-dropdown-toggle ${activeDropdown === item.label ? "active" : ""}`}
+                    onClick={() => toggleDropdown(item.label)}
+                    aria-label={`Toggle ${item.label} dropdown`}
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                      <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              
+              {item.dropdown && (
+                <div className={`mobile-dropdown ${activeDropdown === item.label ? "open" : ""}`}>
+                  {item.dropdown.map((subItem) => (
+                    <Link 
+                      key={subItem.href} 
+                      href={subItem.href} 
+                      className="mobile-dropdown-link"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {subItem.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
-          <Link href="/contact" className="nav-link accent-link" onClick={() => setOpen(false)}>
-            Contact
+          <Link href="/contact" className="mobile-cta" onClick={() => setIsOpen(false)}>
+            Contact Us
           </Link>
         </nav>
-      ) : null}
+      </div>
     </header>
   );
 }
