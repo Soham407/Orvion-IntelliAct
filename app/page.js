@@ -403,18 +403,22 @@ export default function HomePage() {
 
       <section className="section" id="directors">
         <div className="shell">
-          <p className="eyebrow gs-reveal">Meet the Directors</p>
+          <div className="section-center gs-reveal" style={{ marginBottom: '40px' }}>
+            <h2 className="logo-strip-title">Meet the Directors</h2>
+          </div>
           <div className="director-grid">
             {directors.map((director) => (
               <article className="director-card gs-reveal" key={director.name}>
-                <Image
-                  src={director.image}
-                  alt={director.name}
-                  width={900}
-                  height={720}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="director-photo"
-                />
+                <div className="director-photo-frame">
+                  <Image
+                    src={director.image}
+                    alt={director.name}
+                    width={900}
+                    height={1400}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="director-photo"
+                  />
+                </div>
                 <div className="director-copy">
                   <div className="director-header">
                     <span className="mini-label">{director.role}</span>
