@@ -5,3 +5,8 @@ node_modules/
 .vite-dev.log
 .next/
 out/
+
+# Unnecessary files
+"OIAPL PRESENTATION MASTER.pdf"
+details.md
+details_images/
