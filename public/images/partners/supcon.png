@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deutsche Messe – Maintenance</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="no-index, no-follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <style>
+        @font-face {
+            font-display: swap;
+            font-family: 'DMAG-Copy';
+            font-style: normal;
+            font-weight: bold;
+            src: url('https://www.hannovermesse.de/files/files/001/media/layout/fonts/348350-0-0-woff.woff') format('woff');
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body.maintenance {
+            min-height: 100vh;
+            margin: 0;
+            background-color: #004a99;
+            background-image: linear-gradient(224deg, #003771 0%, #004497 100%);
+            color: #fff;
+            font-family: 'DMAG-Copy', 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 1248px;
+            padding-right: 2.25rem;
+            padding-left: 2.25rem;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #004a99;
+        }
+
+        header .container {
+            display: flex;
+            height: 6rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo {
+            width: auto;
+            height: 2.5rem;
+        }
+
+        header .right {
+            font-size: 1.125rem;
+            font-weight: bold;
+            line-height: 1.25rem;
+        }
+
+        .content.container {
+            display: flex;
+            height: calc(80vh);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        main hr {
+            width: 100%;
+            border: 0;
+            border-top: solid 2px #fff;
+            margin: 3.75rem 0 3rem;
+            opacity: 0.2;
+        }
+
+        main .bottom {
+            opacity: 0.5;
+        }
+
+        main .title {
+            max-width: 750px;
+            margin: 0;
+            margin-bottom: 1.5rem;
+            font-size: 3.25rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        main .subline {
+            font-size: 1.125rem;
+            font-weight: bold;
+            line-height: 1.5rem;
+        }
+
+        @media screen and (max-width: 640px) {
+            header .right {
+                display: none;
+            }
+
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            header .right {
+                font-size: 0.875rem;
+            }
+
+            header .container {
+                height: 3rem;
+            }
+
+            header .logo {
+                height: 1.875rem;
+            }
+
+            main .title {
+                font-size: 1.875rem;
+            }
+
+            main .subline {
+                font-size: 0.875rem;
+                line-height: 1rem;
+            }
+        }
+    </style>
+<body class="maintenance">
+<!--index_ignore_begin-->
+<header>
+    <div class="container">
+        <div>
+<!--            <img class="logo" src="/img/messe-logo-home-messe.png"> -->
+        </div>
+        <div class="right">
+            Event your business.
+        </div>
+    </div>
+</header>
+<main class="content container">
+    <div class="top">
+        <h2 class="title">Unsere Server sind aktuell stark ausgelastet.</h2>
+        <p class="subline">Bitte entschuldigen Sie die Verzögerung! Versuchen Sie es bitte in Kürze noch einmal.</p>
+    </div>
+    <hr>
+    <div class="bottom">
+        <h3 class="title">Our servers are currently very busy.</h3>
+        <p class="subline">We apologize for the delay! Please try again shortly.</p>
+    </div>
+</main>
+<!--index_ignore_end-->
+</body>
+</html>
