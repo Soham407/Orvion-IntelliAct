@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
+  <title>Engineers India Limited</title>
+  <rect width="320" height="120" fill="#ffffff"/>
+  <text x="160" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#394150">ENGINEERS INDIA</text>
+  <text x="160" y="70" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#394150">LIMITED</text>
+  <line x1="76" y1="84" x2="244" y2="84" stroke="#00a9e3" stroke-width="4" stroke-linecap="round"/>
+</svg>
