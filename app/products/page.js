@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { PageHero } from "../../components/page-hero";
 
 const productSections = [
   {
@@ -108,11 +108,68 @@ const productSections = [
   },
 ];
 
+const productHeroHighlights = [
+  { value: "11", label: "Product modules" },
+  { value: "SIL3", label: "Safety coverage" },
+  { value: "SCADA to EIO", label: "Control stack span" },
+];
+
 export default function ProductsPage() {
   const mainRef = useRef(null);
+  const heroLabelRef = useRef(null);
+  const heroHeadlineRef = useRef(null);
+  const heroCopyRef = useRef(null);
+  const heroActionsRef = useRef(null);
+  const heroPanelRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    const heroTimeline = gsap.timeline({ delay: 0.12 });
+
+    if (heroLabelRef.current) {
+      heroTimeline.fromTo(
+        heroLabelRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }
+      );
+    }
+
+    if (heroHeadlineRef.current) {
+      heroTimeline.fromTo(
+        heroHeadlineRef.current,
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" },
+        "-=0.2"
+      );
+    }
+
+    if (heroCopyRef.current) {
+      heroTimeline.fromTo(
+        heroCopyRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+        "-=0.35"
+      );
+    }
+
+    if (heroActionsRef.current) {
+      heroTimeline.fromTo(
+        heroActionsRef.current,
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+        "-=0.3"
+      );
+    }
+
+    if (heroPanelRef.current) {
+      heroTimeline.fromTo(
+        heroPanelRef.current,
+        { x: 24, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+        "-=0.45"
+      );
+    }
 
     const reveals = mainRef.current?.querySelectorAll(".gs-reveal") ?? [];
     reveals.forEach((el) => {
@@ -140,19 +197,79 @@ export default function ProductsPage() {
 
   return (
     <div ref={mainRef}>
-      <PageHero
-        eyebrow="Products"
-        title="Control and Safety System"
-        description="A focused product page covering the control, safety, SCADA, PLC, RTU, protection, and remote I/O stack from the original website."
-      >
-        <div className="tag-row left">
-          {productSections.map((section) => (
-            <a className="industry-tag" href={`#${section.id}`} key={section.id}>
-              {section.title}
-            </a>
-          ))}
+      <section className="page-hero dark products-hero">
+        <div className="hero-grid" />
+        <div className="shell page-hero-inner products-hero-inner">
+          <div className="products-hero-copy">
+            <p className="eyebrow" ref={heroLabelRef}>
+              Products
+            </p>
+            <h1 ref={heroHeadlineRef}>Control and Safety System</h1>
+            <p className="hero-copy" ref={heroCopyRef}>
+              A consolidated control-layer portfolio covering supervision,
+              distributed control, programmable control, safety integrity, signal
+              isolation, surge protection, and field-ready remote I/O deployment.
+            </p>
+
+            <div className="hero-actions" ref={heroActionsRef}>
+              <a href="#scada" className="button primary">
+                Explore Control Stack
+              </a>
+              <a href="#safety-plc" className="button secondary light">
+                Explore Safety Layer
+              </a>
+              <Link href="/contact" className="button secondary light">
+                Discuss Product Fit
+              </Link>
+            </div>
+
+            <div className="products-hero-stats">
+              {productHeroHighlights.map((item) => (
+                <div className="products-hero-stat" key={item.label}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside className="products-hero-panel" ref={heroPanelRef}>
+            <div className="products-hero-card">
+              <span className="card-label">Portfolio View</span>
+              <h2>From SCADA and DCS to certified safety and field protection</h2>
+              <p>
+                This opening section now frames the page as a connected product
+                stack, making it easier to understand how each module fits the
+                broader automation and protection architecture.
+              </p>
+            </div>
+
+            <div className="products-hero-visual">
+              <Image
+                src="/images/chemical 1.png"
+                alt="Industrial control and safety systems"
+                width={900}
+                height={560}
+                sizes="(max-width: 1024px) 100vw, 32vw"
+              />
+              <div className="products-hero-overlay">
+                <span>Includes</span>
+                <p>SCADA, DCS, PLC, RTU, safety PLC, SIL3 barriers and relays, HART tools, surge protection, and remote I/O.</p>
+              </div>
+            </div>
+          </aside>
         </div>
-      </PageHero>
+
+        <div className="shell">
+          <div className="tag-row left products-hero-tags">
+            {productSections.map((section) => (
+              <a className="industry-tag" href={`#${section.id}`} key={section.id}>
+                {section.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="shell section-center gs-reveal" style={{ marginBottom: "40px" }}>

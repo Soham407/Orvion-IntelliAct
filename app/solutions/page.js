@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { PageHero } from "../../components/page-hero";
 
 const powerPlantSections = [
   {
@@ -142,6 +142,12 @@ const warehouseSections = [
   },
 ];
 
+const heroHighlights = [
+  { value: "4", label: "Power plant workflows" },
+  { value: "5", label: "Warehouse solution blocks" },
+  { value: "11", label: "Operational entry points" },
+];
+
 function SectionBlock({ item, index, label }) {
   return (
     <section id={item.id} className="two-column" style={{ padding: "40px 0" }}>
@@ -172,9 +178,60 @@ function SectionBlock({ item, index, label }) {
 
 export default function SolutionsPage() {
   const mainRef = useRef(null);
+  const heroLabelRef = useRef(null);
+  const heroHeadlineRef = useRef(null);
+  const heroCopyRef = useRef(null);
+  const heroActionsRef = useRef(null);
+  const heroPanelRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    const heroTimeline = gsap.timeline({ delay: 0.12 });
+
+    if (heroLabelRef.current) {
+      heroTimeline.fromTo(
+        heroLabelRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }
+      );
+    }
+
+    if (heroHeadlineRef.current) {
+      heroTimeline.fromTo(
+        heroHeadlineRef.current,
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" },
+        "-=0.2"
+      );
+    }
+
+    if (heroCopyRef.current) {
+      heroTimeline.fromTo(
+        heroCopyRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+        "-=0.35"
+      );
+    }
+
+    if (heroActionsRef.current) {
+      heroTimeline.fromTo(
+        heroActionsRef.current,
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+        "-=0.3"
+      );
+    }
+
+    if (heroPanelRef.current) {
+      heroTimeline.fromTo(
+        heroPanelRef.current,
+        { x: 24, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+        "-=0.45"
+      );
+    }
 
     const reveals = mainRef.current?.querySelectorAll(".gs-reveal") ?? [];
     reveals.forEach((el) => {
@@ -202,19 +259,79 @@ export default function SolutionsPage() {
 
   return (
     <div ref={mainRef}>
-      <PageHero
-        eyebrow="Solutions"
-        title="Power Plant Automation and Warehouse Logistics"
-        description="A focused client-facing solutions page built from the original partner solution content for power plant automation and warehouse logistics."
-      >
-        <div className="tag-row left">
-          {[...powerPlantSections, ...warehouseSections].map((section) => (
-            <a className="industry-tag" href={`#${section.id}`} key={section.id}>
-              {section.title}
-            </a>
-          ))}
+      <section className="page-hero dark solutions-hero">
+        <div className="hero-grid" />
+        <div className="shell page-hero-inner solutions-hero-inner">
+          <div className="solutions-hero-copy">
+            <p className="eyebrow" ref={heroLabelRef}>
+              Solutions
+            </p>
+            <h1 ref={heroHeadlineRef}>Power Plant Automation and Warehouse Logistics</h1>
+            <p className="hero-copy" ref={heroCopyRef}>
+              Automation architecture for generation assets and material movement,
+              built to improve visibility, control discipline, and operating
+              throughput across critical industrial environments.
+            </p>
+
+            <div className="hero-actions" ref={heroActionsRef}>
+              <a href="#boiler-automation" className="button primary">
+                Explore Power Plant
+              </a>
+              <a href="#system-main-functions" className="button secondary light">
+                Explore Warehouse
+              </a>
+              <Link href="/contact" className="button secondary light">
+                Discuss Your Scope
+              </Link>
+            </div>
+
+            <div className="solutions-hero-stats">
+              {heroHighlights.map((item) => (
+                <div className="solutions-hero-stat" key={item.label}>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside className="solutions-hero-panel" ref={heroPanelRef}>
+            <div className="solutions-hero-card">
+              <span className="card-label">Coverage</span>
+              <h2>From boiler control to digitally managed warehouse flow</h2>
+              <p>
+                The page brings both operating domains into one structured view so
+                teams can move quickly from high-level scope to specific solution
+                areas.
+              </p>
+            </div>
+
+            <div className="solutions-hero-visual">
+              <Image
+                src="/images/engg 1.png"
+                alt="Industrial automation engineering"
+                width={900}
+                height={1040}
+                sizes="(max-width: 1024px) 100vw, 32vw"
+              />
+              <div className="solutions-hero-overlay">
+                <span>Includes</span>
+                <p>Boiler, turbine, ash handling, inventory flow, barcoding, and automation equipment integration.</p>
+              </div>
+            </div>
+          </aside>
         </div>
-      </PageHero>
+
+        <div className="shell">
+          <div className="tag-row left solutions-hero-tags">
+            {[...powerPlantSections, ...warehouseSections].map((section) => (
+              <a className="industry-tag" href={`#${section.id}`} key={section.id}>
+                {section.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="shell section-center gs-reveal" style={{ marginBottom: "40px" }}>

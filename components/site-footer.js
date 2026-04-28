@@ -6,12 +6,15 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <Image
-            src="/images/Logo/LOGO.png"
-            alt="Orvion IntelliAct Automation"
-            width={200}
-            height={64}
-          />
+          <Link href="/" className="brand-mark">
+            <Image
+              src="/images/Logo/LOGO.png"
+              alt="Orvion IntelliAct Automation"
+              width={170}
+              height={56}
+              className="logo-img"
+            />
+          </Link>
           <p>
             Precision automation solutions engineered for modern industrial operations.
           </p>
@@ -55,8 +58,6 @@ export function SiteFooter() {
 
       <div className="shell footer-bottom">
         <p>&copy; 2026 Orvion IntelliAct Automation Pvt. Ltd. All rights reserved.</p>
-        <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>
-        <p>intelliactind.com</p>
       </div>
     </footer>
   );
