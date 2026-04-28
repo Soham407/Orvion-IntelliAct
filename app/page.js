@@ -289,7 +289,7 @@ export default function HomePage() {
 
       <SolutionsCarousel />
 
-      <section className="section section-white">
+      <section id="products" className="section section-white">
         <div className="shell">
           <div className="section-center gs-reveal" style={{ marginBottom: '64px' }}>
             <p className="eyebrow">Comprehensive Portfolio</p>

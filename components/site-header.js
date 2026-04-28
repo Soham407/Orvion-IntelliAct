@@ -7,41 +7,8 @@ import { useState, useEffect } from "react";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { 
-    href: "/solutions", 
-    label: "Solutions",
-    dropdown: [
-      { href: "/solutions/refinery-terminals", label: "Refinery & Terminals" },
-      { href: "/solutions/power-warehouse", label: "Power & Energy" },
-      { href: "/solutions/chemical-pharma", label: "Chemical & Pharma" },
-      { href: "/solutions/water-scada", label: "Water SCADA" },
-      { href: "/solutions/compressor-control-system", label: "Compressor Control" },
-    ]
-  },
-  { 
-    href: "/#products", 
-    label: "Products",
-    dropdown: [
-      { href: "/products/control-safety-system", label: "Control Systems" },
-      { href: "/products/field-instruments", label: "Field Instruments" },
-      { href: "/products/flow-level-instruments", label: "Flow & Level" },
-      { href: "/products/analyser", label: "Analysers" },
-      { href: "/products/electrical", label: "Electrical" },
-    ]
-  },
-  { 
-    href: "/company/about-us", 
-    label: "Company",
-    dropdown: [
-      { href: "/company/about-us", label: "About Us" },
-      { href: "/company/leadership", label: "Leadership" },
-      { href: "/company/why-intelliact", label: "Why IntelliAct" },
-      { href: "/company/quality-policy", label: "Quality Policy" },
-      { href: "/company/hse-policy", label: "HSE Policy" },
-      { href: "/company/careers", label: "Careers" },
-    ]
-  },
-  { href: "/projects", label: "Projects" },
+  { href: "/solutions", label: "Solutions" },
+  { href: "/products", label: "Products" },
 ];
 
 export function SiteHeader() {
