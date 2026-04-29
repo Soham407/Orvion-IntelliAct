@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/solutions", label: "Solutions" },
-  { href: "/products", label: "Products" },
+  { href: "/", label: "Home", variant: "home" },
+  { href: "/solutions", label: "Solutions", variant: "solutions" },
+  { href: "/products", label: "Products", variant: "products" },
 ];
 
 export function SiteHeader() {
@@ -62,7 +62,7 @@ export function SiteHeader() {
             <div key={item.label} className="nav-item">
               <Link
                 href={item.href}
-                className={`nav-link ${pathname === item.href ? "active" : ""}`}
+                className={`nav-link nav-link-${item.variant} ${pathname === item.href ? "active" : ""}`}
               >
                 {item.label}
                 {item.dropdown && (
@@ -110,7 +110,7 @@ export function SiteHeader() {
               <div className="mobile-nav-header">
                 <Link
                   href={item.href}
-                  className={`mobile-nav-link ${pathname === item.href ? "active" : ""}`}
+                  className={`mobile-nav-link mobile-nav-link-${item.variant} ${pathname === item.href ? "active" : ""}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
