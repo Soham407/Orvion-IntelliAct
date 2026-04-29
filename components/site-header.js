@@ -177,7 +177,7 @@ export function SiteHeader() {
           aria-pressed={navMode === "original"}
           onClick={toggleNavMode}
         >
-          {navMode === "original" ? "Show Current Navbar" : "Show Original Navbar"}
+          {navMode === "original" ? "Option 1" : "Option 2"}
         </button>,
         document.body
       ) : null}
