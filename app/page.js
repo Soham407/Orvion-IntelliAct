@@ -106,7 +106,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div ref={mainRef}>
+    <div ref={mainRef} className="home-page">
       <section className="hero-home">
         <div className="hero-grid" />
         <div className="shell hero-home-inner">
@@ -501,7 +501,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section industries-section">
         <div className="shell section-center gs-reveal">
           <p className="eyebrow">Sectors We Serve</p>
           <h2>Industries</h2>
