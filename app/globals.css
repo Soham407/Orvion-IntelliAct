@@ -185,6 +185,93 @@ img {
   outline-offset: 3px;
 }
 
+.nav-preview-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  z-index: 80;
+  border: 1px solid rgba(26, 26, 46, 0.12);
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 32px rgba(20, 36, 52, 0.14);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-preview-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(20, 36, 52, 0.18);
+}
+
+.nav-preview-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.legacy-nav.site-header {
+  background: rgba(26, 26, 46, 0.96);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.legacy-nav.site-header.scrolled {
+  background: rgba(26, 26, 46, 0.98);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legacy-nav .brand-mark {
+  background: #fff;
+}
+
+.legacy-nav .nav-link {
+  color: #fff;
+}
+
+.legacy-nav .nav-link:hover,
+.legacy-nav .nav-link.active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.legacy-nav.scrolled .nav-link:hover,
+.legacy-nav.scrolled .nav-link.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.legacy-nav .nav-cta {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.legacy-nav .menu-toggle {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.legacy-nav .menu-toggle span,
+.legacy-nav.scrolled .menu-toggle span {
+  background: #fff;
+}
+
+.nav-preview-toggle.legacy {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
+.nav-preview-toggle.legacy:focus-visible {
+  outline-color: #fff;
+}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1697,6 +1784,13 @@ h2 {
 @media (max-width: 768px) {
   .shell {
     width: min(100% - 32px, 1180px);
+  }
+
+  .nav-preview-toggle {
+    right: 16px;
+    bottom: 84px;
+    padding: 11px 16px;
+    font-size: 0.68rem;
   }
 
   .desktop-nav {

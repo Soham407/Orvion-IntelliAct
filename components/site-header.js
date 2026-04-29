@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const navItems = [
   { href: "/", label: "Home", variant: "home" },
@@ -16,6 +17,8 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [navMode, setNavMode] = useState("current");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +36,19 @@ export function SiteHeader() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setMounted(true);
+    const savedNavMode = window.localStorage.getItem("nav-preview-mode");
+
+    if (savedNavMode === "original") {
+      setNavMode("original");
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("nav-preview-mode", navMode);
+  }, [navMode]);
+
   const toggleDropdown = (label) => {
     if (activeDropdown === label) {
       setActiveDropdown(null);
@@ -41,9 +57,13 @@ export function SiteHeader() {
     }
   };
 
+  const toggleNavMode = () => {
+    setNavMode((currentMode) => (currentMode === "current" ? "original" : "current"));
+  };
+
   return (
     <header 
-      className={`site-header ${scrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""}`}
+      className={`site-header ${scrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""} ${navMode === "original" ? "legacy-nav" : ""}`}
     >
       <div className="shell header-inner">
         <Link href="/" className="brand-mark" onClick={() => setIsOpen(false)}>
@@ -149,6 +169,18 @@ export function SiteHeader() {
           </Link>
         </nav>
       </div>
+
+      {mounted ? createPortal(
+        <button
+          type="button"
+          className={`nav-preview-toggle ${navMode === "original" ? "legacy" : ""}`}
+          aria-pressed={navMode === "original"}
+          onClick={toggleNavMode}
+        >
+          {navMode === "original" ? "Show Current Navbar" : "Show Original Navbar"}
+        </button>,
+        document.body
+      ) : null}
     </header>
   );
 }
