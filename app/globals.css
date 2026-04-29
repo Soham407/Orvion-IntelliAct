@@ -1,7 +1,7 @@
 :root {
   --accent: #00a9e3;
   --brand-green: #243b30;
-  --product-accent: #ffb000;
+  --product-accent: #827272;
   --ink: #1a1a2e;
   --muted: #5e5e5e;
   --soft: #f8fbfd;
@@ -125,7 +125,7 @@ img {
 .nav-link-products,
 .mobile-nav-link-products {
   --nav-link-accent: var(--product-accent);
-  --nav-link-bg: rgba(255, 176, 0, 0.14);
+  --nav-link-bg: rgba(130, 114, 114, 0.12);
 }
 
 .chevron {
