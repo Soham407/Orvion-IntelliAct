@@ -3,9 +3,6 @@
 import { useState, useEffect } from "react";
 import { PageHero } from "../../components/page-hero";
 
-const PORTAL_USERNAME = "employee";
-const PORTAL_PASSWORD = "1234";
-
 function CategoryIcon({ category }) {
   switch (category) {
     case "policy":
@@ -61,8 +58,18 @@ function LoginScreen({ onLogin }) {
 
     // Simulate authentication delay
     setTimeout(() => {
-      if (username === PORTAL_USERNAME && password === PORTAL_PASSWORD) {
-        onLogin(true);
+      const storedUsers = localStorage.getItem("oiapl-portal-users");
+      const users = storedUsers ? JSON.parse(storedUsers) : [
+        { username: "employee", password: "1234", role: "employee" },
+        { username: "admin", password: "5678", role: "admin" }
+      ];
+
+      const foundUser = users.find(
+        (u) => u.username.toLowerCase() === username.trim().toLowerCase() && u.password === password
+      );
+
+      if (foundUser) {
+        onLogin(foundUser);
       } else {
         setError("Invalid username or password. Please contact HR if you need assistance.");
         setLoading(false);
@@ -153,8 +160,8 @@ function LoginScreen({ onLogin }) {
   );
 }
 
-function Dashboard({ onLogout }) {
-  const [activeTab, setActiveTab] = useState("view"); // "view" | "manage"
+function Dashboard({ onLogout, userRole, currentUsername }) {
+  const [activeTab, setActiveTab] = useState("view"); // "view" | "manage" | "accounts"
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -172,6 +179,16 @@ function Dashboard({ onLogout }) {
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
+  // Accounts management state (Admin only)
+  const [accounts, setAccounts] = useState([]);
+  const [accUsername, setAccUsername] = useState("");
+  const [accPassword, setAccPassword] = useState("");
+  const [accRole, setAccRole] = useState("employee");
+  const [editingUser, setEditingUser] = useState(null); // null or username of editing user
+  const [accError, setAccError] = useState("");
+  const [accSuccess, setAccSuccess] = useState("");
+  const [showPasswords, setShowPasswords] = useState({}); // mapping: username -> boolean
+
   // Fetch documents list from API
   const fetchDocs = async () => {
     try {
@@ -188,9 +205,20 @@ function Dashboard({ onLogout }) {
     }
   };
 
+  // Load and refresh accounts list from localStorage (Admin only)
+  const fetchAccounts = () => {
+    const stored = localStorage.getItem("oiapl-portal-users");
+    if (stored) {
+      setAccounts(JSON.parse(stored));
+    }
+  };
+
   useEffect(() => {
     fetchDocs();
-  }, []);
+    if (userRole === "admin") {
+      fetchAccounts();
+    }
+  }, [userRole]);
 
   // Handle document deletion
   const handleDelete = async (id, title) => {
@@ -245,11 +273,9 @@ function Dashboard({ onLogout }) {
       setFormCategory("policy");
       setSelectedFile(null);
       
-      // Reset file input element manually
       const fileInput = document.getElementById("portal-file-input");
       if (fileInput) fileInput.value = "";
 
-      // Refresh documents
       fetchDocs();
     } catch (err) {
       setUploadError(err.message || "Failed to upload document. Please try again.");
@@ -261,6 +287,112 @@ function Dashboard({ onLogout }) {
   // Trigger file download using API route
   const handleDownload = (id, fileName) => {
     window.location.href = `/api/documents/${id}/download`;
+  };
+
+  // Handle adding/editing user accounts
+  const handleAccountSubmit = (e) => {
+    e.preventDefault();
+    setAccError("");
+    setAccSuccess("");
+
+    if (!accUsername.trim() || !accPassword.trim()) {
+      setAccError("Username and password are required.");
+      return;
+    }
+
+    const cleanUsername = accUsername.trim();
+    const stored = localStorage.getItem("oiapl-portal-users");
+    let usersList = stored ? JSON.parse(stored) : [];
+
+    if (editingUser) {
+      // Editing Mode
+      const otherUserExists = usersList.some(
+        (u) => u.username.toLowerCase() === cleanUsername.toLowerCase() && u.username.toLowerCase() !== editingUser.toLowerCase()
+      );
+      if (otherUserExists) {
+        setAccError(`Username "${cleanUsername}" is already taken by another account.`);
+        return;
+      }
+
+      usersList = usersList.map((u) => {
+        if (u.username.toLowerCase() === editingUser.toLowerCase()) {
+          return { username: cleanUsername, password: accPassword, role: accRole };
+        }
+        return u;
+      });
+
+      setAccSuccess(`Account "${cleanUsername}" updated successfully!`);
+      
+      // If updating currently logged in administrator, notify them? They can keep active session
+      setEditingUser(null);
+    } else {
+      // Adding Mode
+      const userExists = usersList.some(
+        (u) => u.username.toLowerCase() === cleanUsername.toLowerCase()
+      );
+      if (userExists) {
+        setAccError(`Account with username "${cleanUsername}" already exists.`);
+        return;
+      }
+
+      usersList.push({ username: cleanUsername, password: accPassword, role: accRole });
+      setAccSuccess(`Account "${cleanUsername}" created successfully!`);
+    }
+
+    localStorage.setItem("oiapl-portal-users", JSON.stringify(usersList));
+    setAccUsername("");
+    setAccPassword("");
+    setAccRole("employee");
+    fetchAccounts();
+  };
+
+  const handleEditClick = (user) => {
+    setEditingUser(user.username);
+    setAccUsername(user.username);
+    setAccPassword(user.password);
+    setAccRole(user.role);
+    setAccError("");
+    setAccSuccess("");
+  };
+
+  const handleCancelEdit = () => {
+    setEditingUser(null);
+    setAccUsername("");
+    setAccPassword("");
+    setAccRole("employee");
+    setAccError("");
+    setAccSuccess("");
+  };
+
+  const handleAccountDelete = (usernameToDelete) => {
+    if (usernameToDelete.toLowerCase() === currentUsername.toLowerCase()) {
+      alert("You cannot delete your own admin account while logged in.");
+      return;
+    }
+
+    if (!confirm(`Are you sure you want to delete the account "${usernameToDelete}"?`)) {
+      return;
+    }
+
+    const stored = localStorage.getItem("oiapl-portal-users");
+    let usersList = stored ? JSON.parse(stored) : [];
+    usersList = usersList.filter((u) => u.username.toLowerCase() !== usernameToDelete.toLowerCase());
+    
+    localStorage.setItem("oiapl-portal-users", JSON.stringify(usersList));
+    setAccSuccess(`Account "${usernameToDelete}" deleted successfully.`);
+    
+    if (editingUser && editingUser.toLowerCase() === usernameToDelete.toLowerCase()) {
+      handleCancelEdit();
+    }
+    
+    fetchAccounts();
+  };
+
+  const togglePasswordVisibility = (username) => {
+    setShowPasswords((prev) => ({
+      ...prev,
+      [username]: !prev[username],
+    }));
   };
 
   // Filter documents based on search and category
@@ -281,7 +413,12 @@ function Dashboard({ onLogout }) {
       <div className="shell" style={{ padding: "40px 0 80px" }}>
         {/* Header Block */}
         <div className="portal-header">
-          <h1>Employee Portal</h1>
+          <div>
+            <h1>Employee Portal</h1>
+            <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginTop: 4 }}>
+              Logged in as <strong style={{ color: "var(--accent)" }}>{currentUsername}</strong> ({userRole === "admin" ? "Administrator" : "Employee"})
+            </p>
+          </div>
           <button className="portal-logout" onClick={onLogout}>
             <svg
               viewBox="0 0 24 24"
@@ -309,26 +446,36 @@ function Dashboard({ onLogout }) {
           <div>
             <h2>Welcome to the Orvion IntelliAct Employee Portal</h2>
             <p>
-              Access company policies, safety documents, HR resources, and quality standards, or upload and manage files.
+              {userRole === "admin"
+                ? "Access company policies, safety documents, HR resources, quality standards, or manage portal documents and employee login credentials."
+                : "Access company policies, safety documents, HR resources, and quality standards."}
             </p>
           </div>
         </div>
 
-        {/* Tabs Bar */}
-        <div className="portal-tabs">
-          <button
-            className={`portal-tab-btn ${activeTab === "view" ? "active" : ""}`}
-            onClick={() => setActiveTab("view")}
-          >
-            Documents Board
-          </button>
-          <button
-            className={`portal-tab-btn ${activeTab === "manage" ? "active" : ""}`}
-            onClick={() => setActiveTab("manage")}
-          >
-            Upload & Control Panel
-          </button>
-        </div>
+        {/* Tabs Bar (Only visible to Admins) */}
+        {userRole === "admin" && (
+          <div className="portal-tabs">
+            <button
+              className={`portal-tab-btn ${activeTab === "view" ? "active" : ""}`}
+              onClick={() => setActiveTab("view")}
+            >
+              Documents Board
+            </button>
+            <button
+              className={`portal-tab-btn ${activeTab === "manage" ? "active" : ""}`}
+              onClick={() => setActiveTab("manage")}
+            >
+              Upload & Control Panel
+            </button>
+            <button
+              className={`portal-tab-btn ${activeTab === "accounts" ? "active" : ""}`}
+              onClick={() => setActiveTab("accounts")}
+            >
+              Employee Accounts
+            </button>
+          </div>
+        )}
 
         {/* Tab 1: View Documents */}
         {activeTab === "view" && (
@@ -432,8 +579,8 @@ function Dashboard({ onLogout }) {
           </>
         )}
 
-        {/* Tab 2: Upload & Control Panel */}
-        {activeTab === "manage" && (
+        {/* Tab 2: Upload & Control Panel (Admin Only) */}
+        {activeTab === "manage" && userRole === "admin" && (
           <div>
             <div className="portal-section-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -615,6 +762,235 @@ function Dashboard({ onLogout }) {
             </div>
           </div>
         )}
+
+        {/* Tab 3: Employee Accounts (Admin Only) */}
+        {activeTab === "accounts" && userRole === "admin" && (
+          <div>
+            <div className="portal-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <h2>{editingUser ? "Edit Employee Account" : "Create Employee Account"}</h2>
+            </div>
+
+            {/* Account Creator / Editor Card */}
+            <div className="upload-card">
+              {accSuccess && (
+                <div className="upload-success-toast" style={{ marginBottom: 20 }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {accSuccess}
+                </div>
+              )}
+
+              {accError && (
+                <div className="portal-error" style={{ marginBottom: 20 }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  {accError}
+                </div>
+              )}
+
+              <form onSubmit={handleAccountSubmit}>
+                <div className="portal-form-row">
+                  <div className="portal-form-group">
+                    <label htmlFor="acc-username">Username *</label>
+                    <input
+                      id="acc-username"
+                      type="text"
+                      placeholder="e.g. sachin.samant"
+                      value={accUsername}
+                      onChange={(e) => setAccUsername(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="portal-form-group">
+                    <label htmlFor="acc-password">Password *</label>
+                    <input
+                      id="acc-password"
+                      type="text"
+                      placeholder="Enter account password"
+                      value={accPassword}
+                      onChange={(e) => setAccPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="portal-form-row" style={{ marginTop: 8 }}>
+                  <div className="portal-form-group">
+                    <label htmlFor="acc-role">Access Role *</label>
+                    <select
+                      id="acc-role"
+                      value={accRole}
+                      onChange={(e) => setAccRole(e.target.value)}
+                      required
+                    >
+                      <option value="employee">Employee (Read-Only Portal)</option>
+                      <option value="admin">Admin (Full Dashboard Access)</option>
+                    </select>
+                  </div>
+                  <div className="portal-form-group" style={{ justifyContent: "flex-end", marginBottom: 20 }}>
+                    <div style={{ display: "flex", gap: 12 }}>
+                      {editingUser && (
+                        <button
+                          type="button"
+                          className="button secondary"
+                          onClick={handleCancelEdit}
+                          style={{ flex: 1, padding: "12px" }}
+                        >
+                          Cancel Edit
+                        </button>
+                      )}
+                      <button
+                        type="submit"
+                        className="button primary"
+                        style={{ flex: 2, padding: "12px" }}
+                      >
+                        {editingUser ? "Save Changes" : "Create Account"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            {/* Registered Accounts List Table */}
+            <div className="portal-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 22v-1a4 4 0 0 0-3-3.87" />
+                <circle cx="16" cy="3.13" r="3" />
+              </svg>
+              <h2>Manage Employee Accounts ({accounts.length})</h2>
+            </div>
+
+            <div className="manage-table-container">
+              <table className="manage-table">
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Access Role</th>
+                    <th>Password</th>
+                    <th style={{ textAlign: "right" }}>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {accounts.map((user) => (
+                    <tr key={user.username}>
+                      <td>
+                        <div style={{ fontWeight: 600, color: "var(--ink)" }}>{user.username}</div>
+                      </td>
+                      <td>
+                        <span
+                          className={`badge-${user.role}`}
+                          style={{
+                            display: "inline-block",
+                            padding: "4px 8px",
+                            borderRadius: "12px",
+                            fontSize: "0.75rem",
+                            fontWeight: 600,
+                            textTransform: "capitalize",
+                            backgroundColor: user.role === "admin" ? "rgba(0, 169, 227, 0.1)" : "rgba(102, 117, 128, 0.1)",
+                            color: user.role === "admin" ? "var(--accent)" : "var(--muted)",
+                          }}
+                        >
+                          {user.role}
+                        </span>
+                      </td>
+                      <td>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <span style={{ fontFamily: "monospace", fontSize: "0.95rem" }}>
+                            {showPasswords[user.username] ? user.password : "••••••••"}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => togglePasswordVisibility(user.username)}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              color: "var(--muted)",
+                              cursor: "pointer",
+                              padding: 4,
+                              display: "inline-flex",
+                              alignItems: "center",
+                            }}
+                            title={showPasswords[user.username] ? "Hide password" : "Show password"}
+                          >
+                            {showPasswords[user.username] ? (
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 15, height: 15 }}>
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                              </svg>
+                            ) : (
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 15, height: 15 }}>
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                              </svg>
+                            )}
+                          </button>
+                        </div>
+                      </td>
+                      <td style={{ textAlign: "right" }}>
+                        <div style={{ display: "inline-flex", gap: 8 }}>
+                          <button
+                            type="button"
+                            className="btn-edit"
+                            onClick={() => handleEditClick(user)}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 6,
+                              padding: "6px 12px",
+                              backgroundColor: "rgba(0, 169, 227, 0.05)",
+                              border: "1px solid rgba(0, 169, 227, 0.15)",
+                              borderRadius: 6,
+                              color: "var(--accent)",
+                              fontSize: "0.78rem",
+                              fontWeight: 500,
+                              cursor: "pointer",
+                              transition: "all 0.3s ease",
+                            }}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 12, height: 12 }}>
+                              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            className="btn-delete"
+                            disabled={user.username.toLowerCase() === currentUsername.toLowerCase()}
+                            onClick={() => handleAccountDelete(user.username)}
+                            style={{
+                              opacity: user.username.toLowerCase() === currentUsername.toLowerCase() ? 0.4 : 1,
+                              cursor: user.username.toLowerCase() === currentUsername.toLowerCase() ? "not-allowed" : "pointer"
+                            }}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -622,30 +998,56 @@ function Dashboard({ onLogout }) {
 
 export default function EmployeePortalPage() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState("employee");
+  const [currentUsername, setCurrentUsername] = useState("");
 
-  // Check session storage for auth state
+  // Check session storage for auth state and initialize default users
   useEffect(() => {
+    // Check and initialize localStorage users if not present
+    const storedUsers = localStorage.getItem("oiapl-portal-users");
+    if (!storedUsers) {
+      const defaultUsers = [
+        { username: "employee", password: "1234", role: "employee" },
+        { username: "admin", password: "5678", role: "admin" }
+      ];
+      localStorage.setItem("oiapl-portal-users", JSON.stringify(defaultUsers));
+    }
+
     const isAuth = sessionStorage.getItem("oiapl-portal-auth");
     if (isAuth === "true") {
       setAuthenticated(true);
+      setUserRole(sessionStorage.getItem("oiapl-portal-role") || "employee");
+      setCurrentUsername(sessionStorage.getItem("oiapl-portal-username") || "");
     }
   }, []);
 
-  const handleLogin = (success) => {
-    if (success) {
-      setAuthenticated(true);
-      sessionStorage.setItem("oiapl-portal-auth", "true");
-    }
+  const handleLogin = (user) => {
+    setAuthenticated(true);
+    setUserRole(user.role);
+    setCurrentUsername(user.username);
+    sessionStorage.setItem("oiapl-portal-auth", "true");
+    sessionStorage.setItem("oiapl-portal-role", user.role);
+    sessionStorage.setItem("oiapl-portal-username", user.username);
   };
 
   const handleLogout = () => {
     setAuthenticated(false);
+    setUserRole("employee");
+    setCurrentUsername("");
     sessionStorage.removeItem("oiapl-portal-auth");
+    sessionStorage.removeItem("oiapl-portal-role");
+    sessionStorage.removeItem("oiapl-portal-username");
   };
 
   if (!authenticated) {
     return <LoginScreen onLogin={handleLogin} />;
   }
 
-  return <Dashboard onLogout={handleLogout} />;
+  return (
+    <Dashboard 
+      onLogout={handleLogout} 
+      userRole={userRole} 
+      currentUsername={currentUsername} 
+    />
+  );
 }
