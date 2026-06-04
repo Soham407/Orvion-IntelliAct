@@ -355,6 +355,59 @@ img {
   background: #0098cc;
 }
 
+.nav-login {
+  margin-left: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff !important;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-login svg {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.nav-login:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.nav-login:hover svg {
+  opacity: 1;
+}
+
+.mobile-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.mobile-login:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .menu-toggle {
   display: none;
   width: 44px;
