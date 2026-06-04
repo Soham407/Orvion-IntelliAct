@@ -3,100 +3,6 @@
 import { useState, useEffect } from "react";
 import { PageHero } from "../../components/page-hero";
 
-// Sample company documents (in production, these would come from a database/CMS)
-const companyDocuments = [
-  {
-    id: 1,
-    title: "Company Policy Manual",
-    description: "Comprehensive guidelines covering company policies, code of conduct, and employee expectations.",
-    category: "policy",
-    type: "PDF",
-    size: "2.4 MB",
-    updated: "Jan 2026",
-  },
-  {
-    id: 2,
-    title: "HSE Policy",
-    description: "Health, Safety, and Environment policy document outlining safety standards and procedures.",
-    category: "safety",
-    type: "PDF",
-    size: "1.8 MB",
-    updated: "Mar 2026",
-  },
-  {
-    id: 3,
-    title: "Quality Policy",
-    description: "Quality management standards, ISO compliance requirements, and quality assurance procedures.",
-    category: "quality",
-    type: "PDF",
-    size: "1.2 MB",
-    updated: "Feb 2026",
-  },
-  {
-    id: 4,
-    title: "Employee Handbook",
-    description: "Complete handbook covering leave policies, benefits, grievance procedures, and workplace guidelines.",
-    category: "hr",
-    type: "PDF",
-    size: "3.1 MB",
-    updated: "Apr 2026",
-  },
-  {
-    id: 5,
-    title: "IT & Data Security Policy",
-    description: "Information security guidelines, acceptable use policy, and data protection standards.",
-    category: "policy",
-    type: "PDF",
-    size: "980 KB",
-    updated: "May 2026",
-  },
-  {
-    id: 6,
-    title: "Travel & Expense Policy",
-    description: "Guidelines for business travel, expense claims, and reimbursement procedures.",
-    category: "hr",
-    type: "PDF",
-    size: "650 KB",
-    updated: "Jan 2026",
-  },
-  {
-    id: 7,
-    title: "Emergency Response Plan",
-    description: "Emergency procedures, evacuation plans, and crisis management protocols.",
-    category: "safety",
-    type: "PDF",
-    size: "1.5 MB",
-    updated: "Mar 2026",
-  },
-  {
-    id: 8,
-    title: "Anti-Bribery & Ethics Policy",
-    description: "Code of ethics, anti-corruption guidelines, and compliance requirements.",
-    category: "policy",
-    type: "PDF",
-    size: "720 KB",
-    updated: "Feb 2026",
-  },
-  {
-    id: 9,
-    title: "Project Execution Standards",
-    description: "Standard operating procedures for project execution, documentation, and handover.",
-    category: "quality",
-    type: "PDF",
-    size: "2.8 MB",
-    updated: "Apr 2026",
-  },
-  {
-    id: 10,
-    title: "Company Organizational Chart",
-    description: "Current organizational structure, reporting hierarchy, and department contacts.",
-    category: "general",
-    type: "PDF",
-    size: "450 KB",
-    updated: "May 2026",
-  },
-];
-
 const PORTAL_PASSWORD = "OIAPL2026";
 
 function CategoryIcon({ category }) {
@@ -231,9 +137,132 @@ function LoginScreen({ onLogin }) {
 }
 
 function Dashboard({ onLogout }) {
+  const [activeTab, setActiveTab] = useState("view"); // "view" | "manage"
+  const [documents, setDocuments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // Search & Filter state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Form state
+  const [formTitle, setFormTitle] = useState("");
+  const [formDescription, setFormDescription] = useState("");
+  const [formCategory, setFormCategory] = useState("policy");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
+  // Fetch documents list from API
+  const fetchDocs = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/documents");
+      if (!res.ok) throw new Error("Failed to fetch documents from database");
+      const data = await res.json();
+      setDocuments(data);
+      setError("");
+    } catch (err) {
+      setError(err.message || "Something went wrong while loading files.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDocs();
+  }, []);
+
+  // Handle document deletion
+  const handleDelete = async (id, title) => {
+    if (!confirm(`Are you sure you want to delete "${title}"? This cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/documents/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete document");
+      // Refresh list
+      fetchDocs();
+    } catch (err) {
+      alert(err.message || "Failed to delete file.");
+    }
+  };
+
+  // Handle form submission
+  const handleUploadSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedFile) {
+      setUploadError("Please select a file to upload.");
+      return;
+    }
+
+    setUploading(true);
+    setUploadError("");
+    setUploadSuccess(false);
+
+    try {
+      const formData = new FormData();
+      formData.append("title", formTitle);
+      formData.append("description", formDescription);
+      formData.append("category", formCategory);
+      formData.append("file", selectedFile);
+
+      const res = await fetch("/api/documents", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to upload document");
+      }
+
+      setUploadSuccess(true);
+      setFormTitle("");
+      setFormDescription("");
+      setFormCategory("policy");
+      setSelectedFile(null);
+      
+      // Reset file input element manually
+      const fileInput = document.getElementById("portal-file-input");
+      if (fileInput) fileInput.value = "";
+
+      // Refresh documents
+      fetchDocs();
+    } catch (err) {
+      setUploadError(err.message || "Failed to upload document. Please try again.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  // Trigger file download using API route
+  const handleDownload = (id, fileName) => {
+    window.location.href = `/api/documents/${id}/download`;
+  };
+
+  // Filter documents based on search and category
+  const filteredDocs = documents.filter((doc) => {
+    const matchesSearch =
+      doc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      doc.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      doc.file_name.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "all" || doc.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="portal-dashboard">
       <div className="shell" style={{ padding: "40px 0 80px" }}>
+        {/* Header Block */}
         <div className="portal-header">
           <h1>Employee Portal</h1>
           <button className="portal-logout" onClick={onLogout}>
@@ -252,6 +281,7 @@ function Dashboard({ onLogout }) {
           </button>
         </div>
 
+        {/* Welcome Section */}
         <div className="portal-welcome">
           <div className="portal-welcome-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -262,81 +292,312 @@ function Dashboard({ onLogout }) {
           <div>
             <h2>Welcome to the Orvion IntelliAct Employee Portal</h2>
             <p>
-              Access company policies, safety documents, HR resources, and
-              quality standards below.
+              Access company policies, safety documents, HR resources, and quality standards, or upload and manage files.
             </p>
           </div>
         </div>
 
-        <div className="portal-section-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-          </svg>
-          <h2>Company Documents &amp; Policies</h2>
+        {/* Tabs Bar */}
+        <div className="portal-tabs">
+          <button
+            className={`portal-tab-btn ${activeTab === "view" ? "active" : ""}`}
+            onClick={() => setActiveTab("view")}
+          >
+            Documents Board
+          </button>
+          <button
+            className={`portal-tab-btn ${activeTab === "manage" ? "active" : ""}`}
+            onClick={() => setActiveTab("manage")}
+          >
+            Upload & Control Panel
+          </button>
         </div>
 
-        <div className="documents-grid">
-          {companyDocuments.map((doc) => (
-            <article className="document-card" key={doc.id}>
-              <div className={`document-icon ${doc.category}`}>
-                <CategoryIcon category={doc.category} />
+        {/* Tab 1: View Documents */}
+        {activeTab === "view" && (
+          <>
+            {/* Search and Category Filters */}
+            <div className="portal-search-bar">
+              <div className="portal-search-input-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search files by title, description..."
+                  className="portal-search-input"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
               </div>
-              <div className="document-info">
-                <h3>{doc.title}</h3>
-                <p>{doc.description}</p>
-                <div className="document-meta">
-                  <span>{doc.type}</span>
-                  <span>{doc.size}</span>
-                  <span>Updated {doc.updated}</span>
-                </div>
-                <button
-                  className="document-download"
-                  onClick={() =>
-                    alert(
-                      `In production, "${doc.title}" would be downloaded from a secure file server. Please contact IT to set up the document storage backend.`
-                    )
-                  }
-                >
+
+              <div className="portal-category-filters">
+                {[
+                  { id: "all", name: "All Documents" },
+                  { id: "policy", name: "Policies" },
+                  { id: "hr", name: "HR" },
+                  { id: "safety", name: "Safety" },
+                  { id: "quality", name: "Quality" },
+                  { id: "general", name: "General" },
+                ].map((cat) => (
+                  <button
+                    key={cat.id}
+                    className={`portal-filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
+                    onClick={() => setSelectedCategory(cat.id)}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="portal-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+              </svg>
+              <h2>
+                Company Documents ({filteredDocs.length} {filteredDocs.length === 1 ? "document" : "documents"})
+              </h2>
+            </div>
+
+            {loading ? (
+              <div style={{ textAlign: "center", padding: "60px 0", color: "var(--muted)" }}>
+                <div className="spinner" style={{ marginBottom: 12 }}></div>
+                Loading documents from database...
+              </div>
+            ) : error ? (
+              <div className="portal-error" style={{ margin: "20px 0" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                {error}
+              </div>
+            ) : filteredDocs.length === 0 ? (
+              <div style={{ textAlign: "center", padding: "80px 0", background: "var(--soft)", borderRadius: 14, border: "1px solid var(--line)" }}>
+                <p style={{ color: "var(--muted)", marginBottom: 0 }}>No documents found matching your filter/search criteria.</p>
+              </div>
+            ) : (
+              <div className="documents-grid">
+                {filteredDocs.map((doc) => (
+                  <article className="document-card" key={doc.id}>
+                    <div className={`document-icon ${doc.category}`}>
+                      <CategoryIcon category={doc.category} />
+                    </div>
+                    <div className="document-info">
+                      <h3>{doc.title}</h3>
+                      <p>{doc.description}</p>
+                      <div className="document-meta">
+                        <span>{doc.file_type}</span>
+                        <span>{doc.file_size}</span>
+                        <span>
+                          Updated {doc.uploaded_at ? new Date(doc.uploaded_at).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "Recent"}
+                        </span>
+                      </div>
+                      <button
+                        className="document-download"
+                        onClick={() => handleDownload(doc.id, doc.file_name)}
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download {doc.file_type}
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Tab 2: Upload & Control Panel */}
+        {activeTab === "manage" && (
+          <div>
+            <div className="portal-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              <h2>Upload New Document</h2>
+            </div>
+
+            {/* Upload form card */}
+            <div className="upload-card">
+              {uploadSuccess && (
+                <div className="upload-success-toast">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  Download
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
+                  Document uploaded and stored in the database successfully!
+                </div>
+              )}
 
-        <div style={{ 
-          background: "var(--soft)", 
-          border: "1px solid var(--line)", 
-          borderRadius: 14, 
-          padding: "28px 32px",
-          marginTop: 16 
-        }}>
-          <div className="portal-section-title" style={{ marginBottom: 12 }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="16" x2="12" y2="12" />
-              <line x1="12" y1="8" x2="12.01" y2="8" />
-            </svg>
-            <h2 style={{ fontSize: "1.1rem" }}>Need a Document Uploaded?</h2>
+              {uploadError && (
+                <div className="portal-error" style={{ marginBottom: 20 }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  {uploadError}
+                </div>
+              )}
+
+              <form onSubmit={handleUploadSubmit}>
+                <div className="portal-form-row">
+                  <div className="portal-form-group">
+                    <label htmlFor="doc-title">Document Title *</label>
+                    <input
+                      id="doc-title"
+                      type="text"
+                      placeholder="e.g. Employee Code of Conduct"
+                      value={formTitle}
+                      onChange={(e) => setFormTitle(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="portal-form-group">
+                    <label htmlFor="doc-category">Category *</label>
+                    <select
+                      id="doc-category"
+                      value={formCategory}
+                      onChange={(e) => setFormCategory(e.target.value)}
+                      required
+                    >
+                      <option value="policy">Policy / Guideline</option>
+                      <option value="hr">Human Resources (HR)</option>
+                      <option value="safety">Health &amp; Safety (HSE)</option>
+                      <option value="quality">Quality Standard</option>
+                      <option value="general">General / Admin</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="portal-form-group">
+                  <label htmlFor="doc-desc">Brief Description</label>
+                  <textarea
+                    id="doc-desc"
+                    rows="3"
+                    placeholder="Provide a brief summary of what this document contains."
+                    value={formDescription}
+                    onChange={(e) => setFormDescription(e.target.value)}
+                  />
+                </div>
+
+                <div className="portal-form-group" style={{ marginBottom: 32 }}>
+                  <label>Select Document File (PDF, PNG, JPG, DOCX, XLSX, etc.) *</label>
+                  <div className="portal-file-dropzone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="12" y1="18" x2="12" y2="12" />
+                      <polyline points="9 15 12 12 15 15" />
+                    </svg>
+                    <span>Drag and drop your file here, or click to browse</span>
+                    <input
+                      id="portal-file-input"
+                      type="file"
+                      onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
+                      required
+                    />
+                    {selectedFile && (
+                      <div className="selected-file-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14, margin: 0 }}>
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="button primary"
+                  disabled={uploading}
+                  style={{ width: "100%", padding: "14px" }}
+                >
+                  {uploading ? "Uploading Document..." : "Add to Portal Database"}
+                </button>
+              </form>
+            </div>
+
+            {/* Document list manager table */}
+            <div className="portal-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                <path d="M12 8v4" />
+                <path d="M12 16h.01" />
+              </svg>
+              <h2>Manage Documents Table</h2>
+            </div>
+
+            <div className="manage-table-container">
+              {loading ? (
+                <div style={{ textAlign: "center", padding: "40px 0", color: "var(--muted)" }}>
+                  Loading list...
+                </div>
+              ) : documents.length === 0 ? (
+                <div style={{ textAlign: "center", padding: "40px 0", color: "var(--muted)" }}>
+                  No files stored in database. Use the form above to add a document.
+                </div>
+              ) : (
+                <table className="manage-table">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Category</th>
+                      <th>Filename</th>
+                      <th>File size</th>
+                      <th>Uploaded At</th>
+                      <th style={{ textAlign: "right" }}>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {documents.map((doc) => (
+                      <tr key={doc.id}>
+                        <td>
+                          <div style={{ fontWeight: 600, color: "var(--ink)" }}>{doc.title}</div>
+                          <div style={{ fontSize: "0.78rem", color: "var(--muted)", marginTop: 4 }}>{doc.description || "No description"}</div>
+                        </td>
+                        <td>
+                          <span style={{ textTransform: "capitalize", fontSize: "0.8rem", color: "var(--muted)" }}>{doc.category}</span>
+                        </td>
+                        <td>
+                          <span style={{ color: "var(--accent)", fontStyle: "italic" }}>{doc.file_name}</span>
+                        </td>
+                        <td>{doc.file_size}</td>
+                        <td>
+                          {doc.uploaded_at ? new Date(doc.uploaded_at).toLocaleDateString() : "Recent"}
+                        </td>
+                        <td style={{ textAlign: "right" }}>
+                          <button
+                            className="btn-delete"
+                            onClick={() => handleDelete(doc.id, doc.title)}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                              <line x1="10" y1="11" x2="10" y2="17" />
+                              <line x1="14" y1="11" x2="14" y2="17" />
+                            </svg>
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
           </div>
-          <p style={{ fontSize: "0.9rem", color: "var(--muted)", lineHeight: 1.7 }}>
-            To request a new document to be added to the portal, or to update an
-            existing policy, please email{" "}
-            <a
-              href="mailto:info@intelliactind.com"
-              style={{ color: "var(--accent)" }}
-            >
-              info@intelliactind.com
-            </a>{" "}
-            with the document and approval details. Only authorized
-            administrators can upload or modify documents in this portal.
-          </p>
-        </div>
+        )}
       </div>
     </div>
   );
