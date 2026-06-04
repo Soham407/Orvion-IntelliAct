@@ -7,8 +7,37 @@ import { useState, useEffect } from "react";
 
 const navItems = [
   { href: "/", label: "Home", variant: "home" },
-  { href: "/solutions", label: "Solutions", variant: "solutions" },
-  { href: "/products", label: "Products", variant: "products" },
+  { 
+    href: "/solutions", 
+    label: "Solutions", 
+    variant: "solutions",
+    dropdown: [
+      { href: "/solutions/refinery-terminals", label: "Refinery & Terminals" },
+      { href: "/solutions/power-warehouse", label: "Power & Energy" },
+      { href: "/solutions/chemical-pharma", label: "Chemical & Pharma" },
+      { href: "/solutions/water-scada", label: "Water SCADA" },
+      { href: "/solutions/compressor-control-system", label: "Compressor Control" },
+      { href: "/solutions/machine-monitoring", label: "Machine Monitoring" },
+      { href: "/solutions/optimization-solutions", label: "Process Optimization" },
+    ]
+  },
+  { 
+    href: "/products", 
+    label: "Products", 
+    variant: "products",
+    dropdown: [
+      { href: "/products/control-safety-system", label: "Control Systems" },
+      { href: "/products/field-instruments", label: "Field Instruments" },
+      { href: "/products/flow-level-instruments", label: "Flow & Level" },
+      { href: "/products/fire-alarm-system", label: "Fire Alarm & Safety" },
+      { href: "/products/advanced-layer", label: "Advanced Layer (APL)" },
+      { href: "/products/analyser", label: "Industrial Analysers" },
+      { href: "/products/gas-detector", label: "Gas Detection" },
+      { href: "/products/electrical", label: "Electrical & Switchgear" },
+      { href: "/products/software", label: "Software & IIoT" },
+      { href: "/products/cloud-solutions", label: "Cloud AI & Autonomy" },
+    ]
+  },
 ];
 
 export function SiteHeader() {

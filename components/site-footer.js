@@ -53,6 +53,8 @@ export function SiteFooter() {
             <Link href="/solutions/chemical-pharma">Chemical & Pharma</Link>
             <Link href="/solutions/water-scada">Water SCADA</Link>
             <Link href="/solutions/compressor-control-system">Compressor Control</Link>
+            <Link href="/solutions/machine-monitoring">Machine Monitoring</Link>
+            <Link href="/solutions/optimization-solutions">Process Optimization</Link>
           </div>
         </div>
 
@@ -62,8 +64,13 @@ export function SiteFooter() {
             <Link href="/products/control-safety-system">Control Systems</Link>
             <Link href="/products/field-instruments">Field Instruments</Link>
             <Link href="/products/flow-level-instruments">Flow & Level</Link>
+            <Link href="/products/fire-alarm-system">Fire Alarm & Safety</Link>
+            <Link href="/products/advanced-layer">Advanced Layer (APL)</Link>
+            <Link href="/products/analyser">Industrial Analysers</Link>
             <Link href="/products/gas-detector">Gas Detection</Link>
-            <Link href="/products/electrical">Electrical</Link>
+            <Link href="/products/electrical">Electrical & Switchgear</Link>
+            <Link href="/products/software">Software & IIoT</Link>
+            <Link href="/products/cloud-solutions">Cloud AI & Autonomy</Link>
           </div>
         </div>
 
