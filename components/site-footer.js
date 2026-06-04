@@ -18,6 +18,31 @@ export function SiteFooter() {
           <p>
             Precision automation solutions engineered for modern industrial operations.
           </p>
+          <div className="footer-contact">
+            <div className="footer-contact-list">
+              <a href="mailto:info@intelliactind.com" className="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 4L12 13 2 4" />
+                </svg>
+                info@intelliactind.com
+              </a>
+              <a href="mailto:sales@intelliactind.com" className="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 4L12 13 2 4" />
+                </svg>
+                sales@intelliactind.com
+              </a>
+              <a href="mailto:Careers@intelliactind.com" className="footer-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 4L12 13 2 4" />
+                </svg>
+                Careers@intelliactind.com
+              </a>
+            </div>
+          </div>
         </div>
 
         <div>
@@ -52,6 +77,17 @@ export function SiteFooter() {
             <Link href="/company/quality-policy">Quality Policy</Link>
             <Link href="/company/hse-policy">HSE Policy</Link>
             <Link href="/company/careers">Careers</Link>
+            <Link href="/employee-portal">Employee Portal</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="footer-heading">Contact</p>
+          <div className="footer-links">
+            <a href="mailto:info@intelliactind.com">info@intelliactind.com</a>
+            <a href="mailto:sales@intelliactind.com">sales@intelliactind.com</a>
+            <a href="mailto:Careers@intelliactind.com">Careers@intelliactind.com</a>
+            <a href="tel:+919890200799">+91 98902 00799</a>
           </div>
         </div>
       </div>

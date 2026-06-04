@@ -8,16 +8,22 @@ import { PageHero } from "../../components/page-hero";
 
 const contactChannels = [
   {
-    label: "Primary Email",
+    label: "General Inquiries",
     title: "info@intelliactind.com",
     detail: "General inquiries, project discussions, and technical coordination.",
     href: "mailto:info@intelliactind.com",
   },
   {
-    label: "Sales Email",
+    label: "Sales",
     title: "sales@intelliactind.com",
     detail: "Commercial discussions, proposals, and partner coordination.",
     href: "mailto:sales@intelliactind.com",
+  },
+  {
+    label: "Careers & Job Applications",
+    title: "Careers@intelliactind.com",
+    detail: "Job applications, internship inquiries, and career opportunities.",
+    href: "mailto:Careers@intelliactind.com",
   },
   {
     label: "Call Us",

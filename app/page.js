@@ -168,6 +168,29 @@ export default function HomePage() {
         logos={clientLogos} 
       />
 
+      <section className="client-logo-grid-section">
+        <div className="shell">
+          <div className="section-center gs-reveal" style={{ marginBottom: '40px' }}>
+            <p className="eyebrow">Our Valued Clients</p>
+            <h2>Trusted By Industry Leaders</h2>
+          </div>
+          <div className="client-logo-grid">
+            {clientLogos.map((logo) => (
+              <div className="client-logo-cell gs-reveal" key={logo.alt}>
+                <div>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    loading="lazy"
+                  />
+                  <span className="client-logo-name">{logo.alt}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="shell two-column">
           <div className="image-frame gs-reveal">
@@ -544,8 +567,16 @@ export default function HomePage() {
           </div>
           <div className="contact-grid">
             <div className="gs-reveal">
-              <p className="mini-label">Email</p>
+              <p className="mini-label">General Inquiries</p>
               <a href="mailto:info@intelliactind.com">info@intelliactind.com</a>
+            </div>
+            <div className="gs-reveal">
+              <p className="mini-label">Sales</p>
+              <a href="mailto:sales@intelliactind.com">sales@intelliactind.com</a>
+            </div>
+            <div className="gs-reveal">
+              <p className="mini-label">Careers</p>
+              <a href="mailto:Careers@intelliactind.com">Careers@intelliactind.com</a>
             </div>
             <div className="gs-reveal">
               <p className="mini-label">Website</p>
@@ -553,7 +584,7 @@ export default function HomePage() {
             </div>
             <div className="gs-reveal">
               <p className="mini-label">Office</p>
-              <p>India</p>
+              <p>Pune, India</p>
             </div>
           </div>
         </div>
