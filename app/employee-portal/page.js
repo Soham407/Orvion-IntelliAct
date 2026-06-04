@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { PageHero } from "../../components/page-hero";
 
+const PORTAL_USERNAME = "employee";
 const PORTAL_PASSWORD = "1234";
 
 function CategoryIcon({ category }) {
@@ -48,6 +49,7 @@ function CategoryIcon({ category }) {
 }
 
 function LoginScreen({ onLogin }) {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -59,10 +61,10 @@ function LoginScreen({ onLogin }) {
 
     // Simulate authentication delay
     setTimeout(() => {
-      if (password === PORTAL_PASSWORD) {
+      if (username === PORTAL_USERNAME && password === PORTAL_PASSWORD) {
         onLogin(true);
       } else {
-        setError("Invalid access code. Please contact HR if you need assistance.");
+        setError("Invalid username or password. Please contact HR if you need assistance.");
         setLoading(false);
       }
     }, 800);
@@ -85,24 +87,39 @@ function LoginScreen({ onLogin }) {
           </p>
 
           <form className="portal-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label className="mini-label" htmlFor="portal-password">
-                Access Code
+            <div className="input-group" style={{ marginBottom: "20px" }}>
+              <label className="mini-label" htmlFor="portal-username">
+                Username
               </label>
               <input
-                id="portal-password"
-                type="password"
-                placeholder="Enter your employee access code"
+                id="portal-username"
+                type="text"
+                placeholder="Enter your employee username"
                 className="portal-input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 autoFocus
                 required
               />
             </div>
 
+            <div className="input-group" style={{ marginBottom: "24px" }}>
+              <label className="mini-label" htmlFor="portal-password">
+                Password
+              </label>
+              <input
+                id="portal-password"
+                type="password"
+                placeholder="Enter your password"
+                className="portal-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
             {error && (
-              <div className="portal-error">
+              <div className="portal-error" style={{ marginBottom: "20px" }}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
@@ -123,7 +140,7 @@ function LoginScreen({ onLogin }) {
 
           <div className="portal-login-footer">
             <p>
-              If you are an employee and don&apos;t have an access code, please
+              If you are an employee and don&apos;t have login credentials, please
               contact HR at{" "}
               <a href="mailto:info@intelliactind.com" style={{ color: "var(--accent)" }}>
                 info@intelliactind.com
