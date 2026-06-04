@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { PageHero } from "../../components/page-hero";
 
-const PORTAL_PASSWORD = "OIAPL2026";
+const PORTAL_PASSWORD = "1234";
 
 function CategoryIcon({ category }) {
   switch (category) {
