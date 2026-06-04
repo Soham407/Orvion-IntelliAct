@@ -38,6 +38,20 @@ const navItems = [
       { href: "/products/cloud-solutions", label: "Cloud AI & Autonomy" },
     ]
   },
+  {
+    href: "/company/about-us",
+    label: "Company",
+    variant: "company",
+    dropdown: [
+      { href: "/company/about-us", label: "About Us" },
+      { href: "/company/leadership", label: "Leadership" },
+      { href: "/company/why-intelliact", label: "Why Choose Us" },
+      { href: "/company/certification", label: "Certifications" },
+      { href: "/company/quality-policy", label: "Quality Policy" },
+      { href: "/company/hse-policy", label: "HSE Policy" },
+      { href: "/company/careers", label: "Careers" },
+    ]
+  }
 ];
 
 export function SiteHeader() {
@@ -94,7 +108,7 @@ export function SiteHeader() {
             <div key={item.label} className="nav-item">
               <Link
                 href={item.href}
-                className={`nav-link nav-link-${item.variant} ${pathname === item.href ? "active" : ""}`}
+                className={`nav-link nav-link-${item.variant} ${pathname === item.href || (item.dropdown && item.dropdown.some(sub => pathname === sub.href)) ? "active" : ""}`}
               >
                 {item.label}
                 {item.dropdown && (
@@ -149,7 +163,7 @@ export function SiteHeader() {
               <div className="mobile-nav-header">
                 <Link
                   href={item.href}
-                  className={`mobile-nav-link mobile-nav-link-${item.variant} ${pathname === item.href ? "active" : ""}`}
+                  className={`mobile-nav-link mobile-nav-link-${item.variant} ${pathname === item.href || (item.dropdown && item.dropdown.some(sub => pathname === sub.href)) ? "active" : ""}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
