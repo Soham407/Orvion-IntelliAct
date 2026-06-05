@@ -122,24 +122,28 @@ export function DetailBrowser({
           </aside>
 
           <article className="catalog-detail-panel" ref={detailPanelRef}>
-            {activeSection.image && (
-              <div className="catalog-detail-image">
-                <Image
-                  src={activeSection.image}
-                  alt={activeSection.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                  className="catalog-media-image"
-                />
+            <div className="catalog-detail-panel-header-row">
+              {activeSection.image && (
+                <div className="catalog-detail-image">
+                  <Image
+                    src={activeSection.image}
+                    alt={activeSection.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                    className="catalog-media-image"
+                  />
+                </div>
+              )}
+              <div className="catalog-detail-panel-header-text">
+                <div className="catalog-detail-panel-top">
+                  <span>{panelLabel}</span>
+                  <strong>{itemLabel} {String(filteredSections.indexOf(activeSection) + 1).padStart(2, "0")}</strong>
+                </div>
+                <h2>{activeSection.title}</h2>
               </div>
-            )}
+            </div>
 
             <div className="catalog-detail-panel-copy">
-              <div className="catalog-detail-panel-top">
-                <span>{panelLabel}</span>
-                <strong>{itemLabel} {String(filteredSections.indexOf(activeSection) + 1).padStart(2, "0")}</strong>
-              </div>
-              <h2>{activeSection.title}</h2>
               {activeSection.text ? <p style={{ whiteSpace: "pre-line" }}>{activeSection.text}</p> : null}
 
               {activeSection.items?.length ? (
