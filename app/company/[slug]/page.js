@@ -280,16 +280,54 @@ export default function CompanyDetailPage() {
           key={idx} 
           className={idx % 2 === 0 ? "section section-white" : "section section-soft"}
         >
-          <div className="shell two-column">
+          <div className="shell two-column" style={{ alignItems: 'flex-start' }}>
             <div className={`gs-reveal ${idx % 2 === 1 ? "order-2" : ""}`}>
               <span className="accent-bar" />
-              <p className="eyebrow">Details 0{idx + 1}</p>
               <h2 className="mb-6">{section.title}</h2>
-              {section.text && section.text.split("\n\n").map((para, paraIdx) => (
-                <p key={paraIdx} className="section-copy mb-6" style={{ whiteSpace: "pre-line" }}>
-                  {para}
-                </p>
-              ))}
+              {section.text && section.text.split("\n\n").map((para, paraIdx) => {
+                // Check if paragraph is a heading (starts and ends with **)
+                if (para.startsWith("**") && para.endsWith("**")) {
+                  const headingText = para.replace(/\*\*/g, "");
+                  return <h4 key={paraIdx} className="section-subtitle-heading mt-6 mb-3">{headingText}</h4>;
+                }
+                
+                // Parse bullet points
+                if (para.includes("•")) {
+                  const lines = para.split("\n");
+                  return (
+                    <ul key={paraIdx} className="bullet-list mb-6">
+                      {lines.map((line, lineIdx) => {
+                        const cleanLine = line.replace(/^[•\s\-\*]+/, "").trim();
+                        // Parse inline bolding inside list item
+                        const parts = cleanLine.split(/(\*\*.*?\*\*)/g);
+                        return (
+                          <li key={lineIdx}>
+                            {parts.map((part, partIdx) => {
+                              if (part.startsWith("**") && part.endsWith("**")) {
+                                return <strong key={partIdx}>{part.replace(/\*\*/g, "")}</strong>;
+                              }
+                              return part;
+                            })}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  );
+                }
+
+                // Default paragraph with inline bolding parsed
+                const parts = para.split(/(\*\*.*?\*\*)/g);
+                return (
+                  <p key={paraIdx} className="section-copy mb-6">
+                    {parts.map((part, partIdx) => {
+                      if (part.startsWith("**") && part.endsWith("**")) {
+                        return <strong key={partIdx}>{part.replace(/\*\*/g, "")}</strong>;
+                      }
+                      return part;
+                    })}
+                  </p>
+                );
+              })}
               {section.items && section.items.length > 0 && (
                 <ul className="detail-list">
                   {section.items.map((item) => (
@@ -298,21 +336,22 @@ export default function CompanyDetailPage() {
                 </ul>
               )}
             </div>
+            <div className={`company-sticky-side ${idx % 2 === 1 ? "order-1" : ""}`}>
               <div
-                className={`image-frame company-image-frame company-image-${getCompanyImageVariant(page.slug, section.image)} gs-reveal ${idx % 2 === 1 ? "order-1" : ""}`}
+                className={`image-frame company-image-frame company-image-${getCompanyImageVariant(page.slug, section.image)} gs-reveal`}
               >
                 <Image
                   src={section.image || page.image}
-                alt={section.title}
-                width={900}
-                height={700}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.srcset = "";
-                  e.target.src = page.image; // Fallback to main page image if specific one missing
-                }}
-              />
-              <div className="image-number">0{idx + 1}</div>
+                  alt={section.title}
+                  width={900}
+                  height={700}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.srcset = "";
+                    e.target.src = page.image; // Fallback to main page image if specific one missing
+                  }}
+                />
+              </div>
             </div>
           </div>
         </section>
