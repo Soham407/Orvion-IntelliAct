@@ -138,6 +138,16 @@ export function DetailContentBrowser({
               </aside>
 
               <article className="catalog-detail-panel" ref={detailPanelRef}>
+                <div className="catalog-detail-image">
+                  <Image
+                    src={activeSection.image || record.image}
+                    alt={activeSection.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                    className="catalog-media-image"
+                  />
+                </div>
+
                 <div className="catalog-detail-panel-copy">
                   <div className="catalog-detail-panel-top">
                     <span>{panelLabel}</span>
@@ -156,16 +166,6 @@ export function DetailContentBrowser({
                       </ul>
                     </div>
                   ) : null}
-                </div>
-
-                <div className="catalog-detail-image">
-                  <Image
-                    src={activeSection.image || record.image}
-                    alt={activeSection.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 520px"
-                    className="catalog-media-image"
-                  />
                 </div>
               </article>
             </div>
