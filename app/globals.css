@@ -1672,6 +1672,37 @@ h3 {
   margin: 0 0 12px;
 }
 
+.catalog-detail-panel-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.catalog-detail-panel-header-row .catalog-detail-image {
+  width: 220px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 14px;
+}
+
+.catalog-detail-panel-header-text {
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .catalog-detail-panel-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .catalog-detail-panel-header-row .catalog-detail-image {
+    width: 100%;
+    height: 200px;
+  }
+}
+
 .catalog-detail-image {
   position: relative;
   height: 240px;
