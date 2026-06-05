@@ -1183,24 +1183,7 @@ h3 {
   background: #fff;
 }
 
-.section-cta {
-  background: #fff !important;
-  border-top: 1px solid var(--line);
-}
 
-.section-cta h2 {
-  color: var(--ink) !important;
-}
-
-.section-cta .button.secondary {
-  border-color: rgba(26, 26, 46, 0.25) !important;
-  color: var(--ink) !important;
-}
-
-.section-cta .button.secondary:hover {
-  background: rgba(26, 26, 46, 0.05) !important;
-  border-color: var(--ink) !important;
-}
 
 .catalog-hero {
   position: relative;
@@ -1803,8 +1786,28 @@ h3 {
   margin: 0;
 }
 
+.section-cta,
 .catalog-detail-cta {
-  background: #fff !important;
+  background: url("/images/page_01_img_01.jpeg") center bottom / cover no-repeat !important;
+  border-top: none;
+}
+
+.section-cta h2,
+.catalog-detail-cta h2,
+.catalog-detail-cta .cta-copy {
+  color: var(--ink) !important;
+}
+
+.section-cta .button.secondary,
+.catalog-detail-cta .button.secondary {
+  border-color: rgba(26, 26, 46, 0.25) !important;
+  color: var(--ink) !important;
+}
+
+.section-cta .button.secondary:hover,
+.catalog-detail-cta .button.secondary:hover {
+  background: rgba(26, 26, 46, 0.05) !important;
+  border-color: var(--ink) !important;
 }
 
 .industries-section {
