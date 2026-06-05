@@ -1183,6 +1183,25 @@ h3 {
   background: #fff;
 }
 
+.section-cta {
+  background: #fff !important;
+  border-top: 1px solid var(--line);
+}
+
+.section-cta h2 {
+  color: var(--ink) !important;
+}
+
+.section-cta .button.secondary {
+  border-color: rgba(26, 26, 46, 0.25) !important;
+  color: var(--ink) !important;
+}
+
+.section-cta .button.secondary:hover {
+  background: rgba(26, 26, 46, 0.05) !important;
+  border-color: var(--ink) !important;
+}
+
 .catalog-hero {
   position: relative;
   min-height: 76vh;

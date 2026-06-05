@@ -359,7 +359,7 @@ export default function CompanyDetailPage() {
 
       {page.slug === "careers" ? <CareersApplicationForm /> : null}
 
-      <section className="section">
+      <section className="section section-cta">
         <div className="shell section-center gs-reveal">
           <span className="accent-bar center" />
           <h2 className="mb-8">Want to learn more about our commitment?</h2>
