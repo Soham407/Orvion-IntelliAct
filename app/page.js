@@ -173,7 +173,7 @@ export default function HomePage() {
 
       <section className="client-logo-grid-section">
         <div className="shell">
-          <div className="section-center gs-reveal" style={{ marginBottom: '40px' }}>
+          <div className="section-center gs-reveal section-header-gap">
             <p className="eyebrow">Our Valued Clients</p>
             <h2>Trusted By Industry Leaders</h2>
           </div>
@@ -317,36 +317,34 @@ export default function HomePage() {
 
       <section id="products" className="section section-white">
         <div className="shell">
-          <div className="section-center gs-reveal" style={{ marginBottom: '64px' }}>
+          <div className="section-center gs-reveal section-header-gap-lg">
             <p className="eyebrow">Comprehensive Portfolio</p>
             <h2>ALL PRODUCTS LIST</h2>
           </div>
           
           <div className="stack-grid">
             {productList.map((product, index) => (
-              <div key={product.title} className="two-column" style={{ padding: '64px 0', borderBottom: index !== productList.length - 1 ? '1px solid var(--line)' : 'none' }}>
+              <div key={product.title} className={`two-column product-list-item${index !== productList.length - 1 ? '' : ' product-list-item-last'}`}>
                 <div 
-                  className="image-frame gs-reveal" 
-                  style={{ order: index % 2 === 1 ? 2 : 1 }}
+                  className={`image-frame gs-reveal${index % 2 === 1 ? ' order-2' : ''}`}
                 >
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={900}
                     height={600}
-                    style={{ height: '480px', objectFit: 'cover' }}
+                    className="product-list-image"
                   />
                 </div>
                 <div 
-                  className="gs-reveal"
-                  style={{ order: index % 2 === 1 ? 1 : 2 }}
+                  className={`gs-reveal${index % 2 === 1 ? ' order-1' : ''}`}
                 >
                   <span className="accent-bar" />
-                  <p className="eyebrow" style={{ fontSize: '0.65rem' }}>Category 0{index + 1}</p>
-                  <h3 style={{ fontSize: '2.4rem', marginBottom: '28px' }}>{product.title}</h3>
-                  <ul className="detail-list" style={{ marginBottom: '32px' }}>
+                  <p className="eyebrow product-list-eyebrow">Category 0{index + 1}</p>
+                  <h3 className="product-list-title">{product.title}</h3>
+                  <ul className="detail-list product-list-details">
                     {product.items.map((item) => (
-                      <li key={item} style={{ fontSize: '0.95rem' }}>{item}</li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                   <Link href={`/products/${product.slug}`} className="button secondary">
@@ -429,7 +427,7 @@ export default function HomePage() {
 
       <section className="section" id="directors">
         <div className="shell">
-          <div className="section-center gs-reveal" style={{ marginBottom: '40px' }}>
+          <div className="section-center gs-reveal section-header-gap-small">
             <h2 className="logo-strip-title">Meet the Directors</h2>
           </div>
           <div className="director-grid">
@@ -505,7 +503,7 @@ export default function HomePage() {
 
       <section className="section section-muted">
         <div className="shell">
-          <div className="section-center gs-reveal" style={{ marginBottom: '64px' }}>
+          <div className="section-center gs-reveal section-header-gap">
             <p className="eyebrow">Infrastructure and Recognition</p>
             <h2>Operational Highlights</h2>
           </div>

@@ -185,16 +185,18 @@ export function SiteHeader() {
               
               {item.dropdown && (
                 <div className={`mobile-dropdown ${activeDropdown === item.label ? "open" : ""}`}>
-                  {item.dropdown.map((subItem) => (
-                    <Link 
-                      key={subItem.href} 
-                      href={subItem.href} 
-                      className="mobile-dropdown-link"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {subItem.label}
-                    </Link>
-                  ))}
+                  <div>
+                    {item.dropdown.map((subItem) => (
+                      <Link 
+                        key={subItem.href} 
+                        href={subItem.href} 
+                        className="mobile-dropdown-link"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
