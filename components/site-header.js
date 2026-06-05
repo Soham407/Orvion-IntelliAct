@@ -44,6 +44,8 @@ const navItems = [
     variant: "company",
     dropdown: [
       { href: "/company/about-us", label: "About Us" },
+      { href: "/company/company-profile", label: "Company Profile" },
+      { href: "/company/vision-mission", label: "Vision & Mission" },
       { href: "/company/leadership", label: "Leadership" },
       { href: "/company/why-intelliact", label: "Why Choose Us" },
       { href: "/company/certification", label: "Certifications" },

@@ -285,8 +285,12 @@ export default function CompanyDetailPage() {
               <span className="accent-bar" />
               <p className="eyebrow">Details 0{idx + 1}</p>
               <h2 className="mb-6">{section.title}</h2>
-              <p className="section-copy mb-8">{section.text}</p>
-              {section.items && (
+              {section.text && section.text.split("\n\n").map((para, paraIdx) => (
+                <p key={paraIdx} className="section-copy mb-6" style={{ whiteSpace: "pre-line" }}>
+                  {para}
+                </p>
+              ))}
+              {section.items && section.items.length > 0 && (
                 <ul className="detail-list">
                   {section.items.map((item) => (
                     <li key={item}>{item}</li>

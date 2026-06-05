@@ -1637,9 +1637,9 @@ h3 {
   background: #f8fbfd;
 }
 
-.company-image-portrait img,
-.company-image-document img {
-  object-fit: contain;
+.company-image-frame.company-image-portrait img,
+.company-image-frame.company-image-document img {
+  object-fit: contain !important;
   padding: 18px;
 }
 
@@ -2415,7 +2415,7 @@ h2 {
 }
 
 .footer-grid {
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 0.9fr 0.9fr 0.9fr 1.2fr;
   margin-bottom: 28px;
 }
 
@@ -2536,6 +2536,10 @@ h2 {
   margin-top: 12px;
 }
 
+.order-1 {
+  order: 1;
+}
+
 .order-2 {
   order: 2;
 }
@@ -2557,8 +2561,20 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .order-1 {
+    order: 2 !important;
+  }
+
   .order-2 {
-    order: 0 !important;
+    order: 1 !important;
+  }
+
+  .catalog-hero-copy {
+    order: 1 !important;
+  }
+
+  .catalog-hero-media {
+    order: 2 !important;
   }
 
   .feature-grid {

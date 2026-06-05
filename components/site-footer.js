@@ -14,10 +14,11 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
+        {/* Column 1: Brand */}
         <div className="footer-brand">
           <Link href="/" className="brand-mark">
             <Image
-              src="/OIAPL Logo - MASTER CTC.svg"
+              src="/images/Logo/LOGO.png"
               alt="Orvion IntelliAct Automation"
               width={170}
               height={56}
@@ -27,33 +28,9 @@ export function SiteFooter() {
           <p>
             Precision automation solutions engineered for modern industrial operations.
           </p>
-          <div className="footer-contact">
-            <div className="footer-contact-list">
-              <a href="mailto:info@intelliactind.com" className="footer-contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M22 4L12 13 2 4" />
-                </svg>
-                info@intelliactind.com
-              </a>
-              <a href="mailto:sales@intelliactind.com" className="footer-contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M22 4L12 13 2 4" />
-                </svg>
-                sales@intelliactind.com
-              </a>
-              <a href="mailto:Careers@intelliactind.com" className="footer-contact-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M22 4L12 13 2 4" />
-                </svg>
-                Careers@intelliactind.com
-              </a>
-            </div>
-          </div>
         </div>
 
+        {/* Column 2: Solutions */}
         <div>
           <p className="footer-heading">Solutions</p>
           <div className="footer-links">
@@ -68,6 +45,7 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Column 3: Products */}
         <div>
           <p className="footer-heading">Products</p>
           <div className="footer-links">
@@ -83,10 +61,13 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Column 4: Company */}
         <div>
           <p className="footer-heading">Company</p>
           <div className="footer-links">
             <Link href="/company/about-us">About Us</Link>
+            <Link href="/company/company-profile">Company Profile</Link>
+            <Link href="/company/vision-mission">Vision & Mission</Link>
             <Link href="/company/leadership">Leadership</Link>
             <Link href="/company/certification">Certifications</Link>
             <Link href="/company/why-intelliact">Why IntelliAct</Link>
@@ -97,19 +78,47 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Column 5: Contact */}
         <div>
           <p className="footer-heading">Contact</p>
           <div className="footer-links">
-            <a href="mailto:info@intelliactind.com">info@intelliactind.com</a>
-            <a href="mailto:sales@intelliactind.com">sales@intelliactind.com</a>
-            <a href="mailto:Careers@intelliactind.com">Careers@intelliactind.com</a>
-            <a href="tel:+919890200799">+91 98902 00799</a>
-            <div className="footer-address">
+            <a href="mailto:info@intelliactind.com" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4L12 13 2 4" />
+              </svg>
+              info@intelliactind.com
+            </a>
+            <a href="mailto:sales@intelliactind.com" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4L12 13 2 4" />
+              </svg>
+              sales@intelliactind.com
+            </a>
+            <a href="mailto:Careers@intelliactind.com" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4L12 13 2 4" />
+              </svg>
+              Careers@intelliactind.com
+            </a>
+            <a href="tel:+919890200799" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              +91 98902 00799
+            </a>
+            <div style={{ marginTop: "8px", borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: "12px" }}>
               {officeAddress.map((line) => (
-                <span key={line}>{line}</span>
+                <span key={line} style={{ display: "block", color: "rgba(255, 255, 255, 0.65)", fontSize: "0.8rem", marginBottom: "4px" }}>{line}</span>
               ))}
             </div>
-            <a href={mapUrl} target="_blank" rel="noreferrer">
+            <a href={mapUrl} target="_blank" rel="noreferrer" style={{ color: "var(--accent)", fontWeight: 600, display: "flex", alignItems: "center", gap: "6px", fontSize: "0.85rem", marginTop: "4px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
               Open in Google Maps
             </a>
           </div>
