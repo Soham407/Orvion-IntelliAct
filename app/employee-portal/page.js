@@ -35,6 +35,15 @@ function CategoryIcon({ category }) {
           <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
         </svg>
       );
+    case "certificate":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 4h16v16H4z" />
+          <path d="M8 8h8" />
+          <path d="M8 12h5" />
+          <path d="M15 15l1 2 2-4" />
+        </svg>
+      );
     default:
       return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -152,6 +161,8 @@ function LoginScreen({ onLogin }) {
               <a href="mailto:info@intelliactind.com" style={{ color: "var(--accent)" }}>
                 info@intelliactind.com
               </a>
+              . Portal login controls document access only; it is not linked to
+              an email inbox.
             </p>
           </div>
         </div>
@@ -448,7 +459,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
             <p>
               {userRole === "admin"
                 ? "Access company policies, safety documents, HR resources, quality standards, or manage portal documents and employee login credentials."
-                : "Access company policies, safety documents, HR resources, and quality standards."}
+                : "Access company certificates, HR policies, safety documents, quality standards, and company resources."}
             </p>
           </div>
         </div>
@@ -501,6 +512,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   { id: "all", name: "All Documents" },
                   { id: "policy", name: "Policies" },
                   { id: "hr", name: "HR" },
+                  { id: "certificate", name: "Certificates" },
                   { id: "safety", name: "Safety" },
                   { id: "quality", name: "Quality" },
                   { id: "general", name: "General" },
@@ -588,7 +600,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                 <polyline points="17 8 12 3 7 8" />
                 <line x1="12" y1="3" x2="12" y2="15" />
               </svg>
-              <h2>Upload New Document</h2>
+              <h2>Upload Company Document</h2>
             </div>
 
             {/* Upload form card */}
@@ -598,7 +610,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  Document uploaded and stored in the database successfully!
+                  Company document uploaded and stored in the database successfully!
                 </div>
               )}
 
@@ -627,13 +639,14 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                     />
                   </div>
                   <div className="portal-form-group">
-                    <label htmlFor="doc-category">Category *</label>
+                    <label htmlFor="doc-category">Document Category *</label>
                     <select
                       id="doc-category"
                       value={formCategory}
                       onChange={(e) => setFormCategory(e.target.value)}
                       required
                     >
+                      <option value="certificate">Company Certificate</option>
                       <option value="policy">Policy / Guideline</option>
                       <option value="hr">Human Resources (HR)</option>
                       <option value="safety">Health &amp; Safety (HSE)</option>

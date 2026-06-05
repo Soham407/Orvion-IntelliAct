@@ -18,6 +18,9 @@ import {
   epcLogos,
 } from "../lib/site-data";
 
+const officeMapUrl =
+  "https://www.google.com/maps/search/?api=1&query=804%20The%20Cosmopolis%20Building%20Opp%20Seasons%20Mall%20Hadapsar%20Magarpatta%20Pune%20411028%20India";
+
 export default function HomePage() {
   const heroHeadlineRef = useRef(null);
   const heroLabelRef = useRef(null);
@@ -584,7 +587,10 @@ export default function HomePage() {
             </div>
             <div className="gs-reveal">
               <p className="mini-label">Office</p>
-              <p>Pune, India</p>
+              <p>804, The Cosmopolis Building, Opp. Seasons Mall, Hadapsar, Magarpatta, Pune, 411028, India</p>
+              <a href={officeMapUrl} target="_blank" rel="noreferrer">
+                Open in Google Maps
+              </a>
             </div>
           </div>
         </div>

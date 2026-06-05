@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { PageHero } from "../../components/page-hero";
+import { CatalogDirectory } from "../../components/catalog-directory";
+import { CatalogHero } from "../../components/catalog-hero";
 import { solutions } from "../../lib/solutions-data";
 
 export default function SolutionsPage() {
@@ -14,7 +13,7 @@ export default function SolutionsPage() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const reveals = mainRef.current.querySelectorAll(".gs-reveal");
+    const reveals = mainRef.current?.querySelectorAll(".gs-reveal") ?? [];
     reveals.forEach((el) => {
       gsap.fromTo(
         el,
@@ -34,159 +33,29 @@ export default function SolutionsPage() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
     <div ref={mainRef} className="solutions-directory-page">
-      <PageHero
+      <CatalogHero
         eyebrow="Industrial Expertise"
-        title="Our Engineered Solutions"
-        description="Comprehensive automation architectures, process optimization, safety controls, and inventory logistics built for complex industrial operations."
+        title="Engineered Automation Solutions"
+        description="Automation architectures, process optimization, safety controls, warehouse logistics, and monitoring systems built for complex industrial operations."
+        image="/images/Hero.jpg"
+        imageAlt="Industrial automation solution environment"
+        stats={["7 solution areas", "PLC, SCADA, safety and optimization", "Built for critical operations"]}
       />
 
-      <section className="section section-soft" style={{ padding: "80px 0" }}>
-        <div className="shell">
-          <div className="grid-three" style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-            gap: "32px",
-            alignItems: "stretch"
-          }}>
-            {solutions.map((solution, idx) => (
-              <article
-                key={solution.slug}
-                className="gs-reveal solution-directory-card"
-                style={{
-                  background: "var(--background, #fff)",
-                  border: "1px solid var(--line)",
-                  borderRadius: "16px",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  boxShadow: "0 10px 30px rgba(20, 36, 52, 0.03)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  position: "relative"
-                }}
-              >
-                {/* Visual Image Header */}
-                <div style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "200px",
-                  overflow: "hidden"
-                }}>
-                  <Image
-                    src={solution.image || "/images/oil+refinery+in+Atlanta-+GA.jpeg"}
-                    alt={solution.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 30vw"
-                  />
-                  <div style={{
-                    position: "absolute",
-                    top: "16px",
-                    left: "16px",
-                    background: "rgba(8, 15, 31, 0.75)",
-                    backdropFilter: "blur(8px)",
-                    color: "#fff",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    padding: "4px 12px",
-                    borderRadius: "12px",
-                    letterSpacing: "1px",
-                    textTransform: "uppercase"
-                  }}>
-                    Scope {String(idx + 1).padStart(2, "0")}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div style={{
-                  padding: "32px",
-                  display: "flex",
-                  flexDirection: "column",
-                  flexGrow: 1,
-                  justifyContent: "space-between"
-                }}>
-                  <div>
-                    <h3 style={{
-                      fontSize: "1.4rem",
-                      color: "var(--ink)",
-                      marginBottom: "12px",
-                      fontWeight: 700
-                    }}>
-                      {solution.title}
-                    </h3>
-                    <p style={{
-                      fontSize: "0.92rem",
-                      lineHeight: "1.6",
-                      color: "var(--muted)",
-                      marginBottom: "24px"
-                    }}>
-                      {solution.description}
-                    </p>
-
-                    {solution.content && solution.content.sections && (
-                      <div style={{ marginBottom: "24px" }}>
-                        <span style={{
-                          fontSize: "0.75rem",
-                          fontWeight: 700,
-                          color: "var(--accent)",
-                          textTransform: "uppercase",
-                          letterSpacing: "1px",
-                          display: "block",
-                          marginBottom: "12px"
-                        }}>
-                          Core Focus Areas
-                        </span>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                          {solution.content.sections.slice(0, 3).map((sec) => (
-                            <span key={sec.title} style={{
-                              fontSize: "0.8rem",
-                              background: "var(--soft, #f8fbfd)",
-                              border: "1px solid var(--line)",
-                              color: "var(--ink)",
-                              padding: "4px 10px",
-                              borderRadius: "6px"
-                            }}>
-                              {sec.title}
-                            </span>
-                          ))}
-                          {solution.content.sections.length > 3 && (
-                            <span style={{
-                              fontSize: "0.8rem",
-                              color: "var(--muted)",
-                              padding: "4px 4px"
-                            }}>
-                              +{solution.content.sections.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <Link
-                    href={`/solutions/${solution.slug}`}
-                    className="button secondary"
-                    style={{
-                      width: "100%",
-                      textAlign: "center",
-                      display: "block",
-                      marginTop: "auto",
-                      border: "1px solid var(--line)"
-                    }}
-                  >
-                    Explore Solution Details →
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CatalogDirectory
+        items={solutions}
+        type="solutions"
+        eyebrow="Solution Portfolio"
+        title="Purpose-built scopes for critical operations"
+        description="Each solution area is organized around implementation scope, control architecture, operator visibility, field execution, and lifecycle support."
+        ctaLabel="Explore solution details"
+      />
     </div>
   );
 }

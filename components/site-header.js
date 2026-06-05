@@ -19,6 +19,7 @@ const navItems = [
       { href: "/solutions/compressor-control-system", label: "Compressor Control" },
       { href: "/solutions/machine-monitoring", label: "Machine Monitoring" },
       { href: "/solutions/optimization-solutions", label: "Process Optimization" },
+      { href: "/solutions/cloud-solutions", label: "Cloud Solutions" },
     ]
   },
   { 
@@ -35,7 +36,6 @@ const navItems = [
       { href: "/products/gas-detector", label: "Gas Detection" },
       { href: "/products/electrical", label: "Electrical & Switchgear" },
       { href: "/products/software", label: "Software & IIoT" },
-      { href: "/products/cloud-solutions", label: "Cloud AI & Autonomy" },
     ]
   },
   {
@@ -94,7 +94,7 @@ export function SiteHeader() {
       <div className="shell header-inner">
         <Link href="/" className="brand-mark" onClick={() => setIsOpen(false)}>
           <Image
-            src="/images/Logo/LOGO.png"
+            src="/OIAPL Logo - MASTER CTC.svg"
             alt="Orvion IntelliAct Automation"
             width={scrolled ? 180 : 220}
             height={scrolled ? 58 : 72}

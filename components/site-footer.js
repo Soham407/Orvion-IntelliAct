@@ -1,6 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const officeAddress = [
+  "804, The Cosmopolis Building",
+  "Opp. Seasons Mall, Hadapsar, Magarpatta",
+  "Pune, 411028, India",
+];
+
+const mapUrl =
+  "https://www.google.com/maps/search/?api=1&query=804%20The%20Cosmopolis%20Building%20Opp%20Seasons%20Mall%20Hadapsar%20Magarpatta%20Pune%20411028%20India";
+
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -8,7 +17,7 @@ export function SiteFooter() {
         <div className="footer-brand">
           <Link href="/" className="brand-mark">
             <Image
-              src="/images/Logo/LOGO.png"
+              src="/OIAPL Logo - MASTER CTC.svg"
               alt="Orvion IntelliAct Automation"
               width={170}
               height={56}
@@ -55,6 +64,7 @@ export function SiteFooter() {
             <Link href="/solutions/compressor-control-system">Compressor Control</Link>
             <Link href="/solutions/machine-monitoring">Machine Monitoring</Link>
             <Link href="/solutions/optimization-solutions">Process Optimization</Link>
+            <Link href="/solutions/cloud-solutions">Cloud Solutions</Link>
           </div>
         </div>
 
@@ -70,7 +80,6 @@ export function SiteFooter() {
             <Link href="/products/gas-detector">Gas Detection</Link>
             <Link href="/products/electrical">Electrical & Switchgear</Link>
             <Link href="/products/software">Software & IIoT</Link>
-            <Link href="/products/cloud-solutions">Cloud AI & Autonomy</Link>
           </div>
         </div>
 
@@ -95,6 +104,14 @@ export function SiteFooter() {
             <a href="mailto:sales@intelliactind.com">sales@intelliactind.com</a>
             <a href="mailto:Careers@intelliactind.com">Careers@intelliactind.com</a>
             <a href="tel:+919890200799">+91 98902 00799</a>
+            <div className="footer-address">
+              {officeAddress.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </div>
+            <a href={mapUrl} target="_blank" rel="noreferrer">
+              Open in Google Maps
+            </a>
           </div>
         </div>
       </div>

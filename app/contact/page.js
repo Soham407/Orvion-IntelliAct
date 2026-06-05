@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { PageHero } from "../../components/page-hero";
+
+const officeMapUrl =
+  "https://www.google.com/maps/search/?api=1&query=804%20The%20Cosmopolis%20Building%20Opp%20Seasons%20Mall%20Hadapsar%20Magarpatta%20Pune%20411028%20India";
 
 const contactChannels = [
   {
@@ -42,6 +45,7 @@ const officeLocations = [
       "Opp. Seasons Mall, Hadapsar, Magarpatta",
       "Pune, 411028, India",
     ],
+    mapUrl: officeMapUrl,
   },
   {
     label: "Regional Presence",
@@ -68,6 +72,7 @@ const responsePoints = [
 
 export default function ContactPage() {
   const mainRef = useRef(null);
+  const [formNotice, setFormNotice] = useState("");
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -95,6 +100,34 @@ export default function ContactPage() {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name")?.toString().trim() || "Website visitor";
+    const company = formData.get("company")?.toString().trim() || "Not provided";
+    const email = formData.get("email")?.toString().trim() || "Not provided";
+    const phone = formData.get("phone")?.toString().trim() || "Not provided";
+    const inquiryType = formData.get("inquiryType")?.toString().trim() || "General inquiry";
+    const message = formData.get("message")?.toString().trim() || "No project scope provided.";
+
+    const subject = encodeURIComponent(`Website inquiry - ${inquiryType}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${name}`,
+        `Company: ${company}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Inquiry Type: ${inquiryType}`,
+        "",
+        "Project Scope:",
+        message,
+      ].join("\n")
+    );
+
+    setFormNotice("Opening your email app with the inquiry details. You can also email info@intelliactind.com directly.");
+    window.location.href = `mailto:info@intelliactind.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <div ref={mainRef} className="contact-page">
@@ -158,6 +191,11 @@ export default function ContactPage() {
                       <p key={line}>{line}</p>
                     ))}
                   </div>
+                  {office.mapUrl ? (
+                    <a href={office.mapUrl} target="_blank" rel="noreferrer" className="button secondary contact-alt-action">
+                      Open in Google Maps
+                    </a>
+                  ) : null}
                 </article>
               ))}
             </div>
@@ -180,27 +218,29 @@ export default function ContactPage() {
               will respond with the right next step.
             </p>
 
-            <form className="contact-form">
+            {formNotice ? <div className="upload-success-toast contact-form-notice">{formNotice}</div> : null}
+
+            <form className="contact-form" onSubmit={handleContactSubmit}>
               <div className="contact-form-grid">
                 <div className="input-group">
                   <label className="mini-label" htmlFor="full-name">Full Name</label>
-                  <input id="full-name" type="text" placeholder="Your name" className="contact-input" />
+                  <input id="full-name" name="name" type="text" placeholder="Your name" className="contact-input" required />
                 </div>
                 <div className="input-group">
                   <label className="mini-label" htmlFor="company-name">Company</label>
-                  <input id="company-name" type="text" placeholder="Organization name" className="contact-input" />
+                  <input id="company-name" name="company" type="text" placeholder="Organization name" className="contact-input" />
                 </div>
                 <div className="input-group">
                   <label className="mini-label" htmlFor="email-address">Email Address</label>
-                  <input id="email-address" type="email" placeholder="email@example.com" className="contact-input" />
+                  <input id="email-address" name="email" type="email" placeholder="email@example.com" className="contact-input" required />
                 </div>
                 <div className="input-group">
                   <label className="mini-label" htmlFor="phone-number">Phone Number</label>
-                  <input id="phone-number" type="tel" placeholder="+91" className="contact-input" />
+                  <input id="phone-number" name="phone" type="tel" placeholder="+91" className="contact-input" />
                 </div>
                 <div className="input-group input-group-full">
                   <label className="mini-label" htmlFor="inquiry-type">Inquiry Type</label>
-                  <select id="inquiry-type" className="contact-input contact-select" defaultValue="">
+                  <select id="inquiry-type" name="inquiryType" className="contact-input contact-select" defaultValue="" required>
                     <option value="" disabled>Select an inquiry type</option>
                     <option>Industrial automation project</option>
                     <option>Warehouse logistics solution</option>
@@ -213,6 +253,7 @@ export default function ContactPage() {
                   <label className="mini-label" htmlFor="message">Project Scope</label>
                   <textarea
                     id="message"
+                    name="message"
                     rows="6"
                     placeholder="Tell us about the plant, system scope, timelines, or challenges you want to address."
                     className="contact-input contact-textarea"
