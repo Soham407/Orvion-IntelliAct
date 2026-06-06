@@ -3671,13 +3671,16 @@ h2 {
 }
 
 .client-logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
   margin-top: 40px;
 }
 
 .client-logo-cell {
+  flex: 0 1 calc(12.5% - 21px); /* Matches roughly 8 items max per row at wide viewport */
+  min-width: 140px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -4215,10 +4218,8 @@ h2 {
     max-height: 60px;
   }
 
-  /* Client logo grid: 3 columns */
-  .client-logo-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  .client-logo-cell {
+    flex: 0 1 calc(33.333% - 11px);
   }
 
   .client-logo-grid-section {
@@ -4660,10 +4661,8 @@ h2 {
     margin-bottom: 10px;
   }
 
-  /* Client logo grid: 2 columns on phones */
-  .client-logo-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px;
+  .client-logo-cell {
+    flex: 0 1 calc(50% - 6px);
   }
 
   .client-logo-cell {
@@ -5207,8 +5206,8 @@ h2 {
     letter-spacing: 0.12em;
   }
 
-  .client-logo-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .client-logo-cell {
+    flex: 0 1 calc(50% - 6px);
   }
 
   .solution-card {
