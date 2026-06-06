@@ -3210,6 +3210,10 @@ h2 {
 /* ── Employee Portal ── */
 .portal-page {
   padding-top: 120px;
+  background: radial-gradient(circle at 10% 20%, rgba(78, 184, 82, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(0, 169, 227, 0.05) 0%, transparent 40%),
+              linear-gradient(180deg, #ffffff 0%, #f4f8f5 100%);
+  min-height: 100vh;
 }
 
 .portal-login-section {
@@ -3217,96 +3221,114 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 0;
+  padding: 60px 20px;
 }
 
 .portal-login-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
   padding: 56px 48px;
   max-width: 480px;
   width: 100%;
-  box-shadow: var(--shadow);
+  box-shadow: 0 20px 50px rgba(26, 26, 46, 0.05),
+              0 1px 3px rgba(0, 0, 0, 0.02),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.portal-login-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(78, 184, 82, 0.1),
+              0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .portal-login-card .portal-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 24px;
-  background: var(--soft);
-  border-radius: 16px;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px;
+  background: linear-gradient(135deg, rgba(78, 184, 82, 0.1) 0%, rgba(0, 169, 227, 0.1) 100%);
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8),
+              0 4px 12px rgba(78, 184, 82, 0.05);
 }
 
 .portal-login-card .portal-icon svg {
   width: 32px;
   height: 32px;
-  color: var(--accent);
+  color: #4EB852;
 }
 
 .portal-login-card h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--ink);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--ink) 30%, #4EB852 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .portal-login-card .portal-subtitle {
   color: var(--muted);
   font-size: 0.95rem;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   line-height: 1.6;
 }
 
 .portal-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   text-align: left;
 }
 
 .portal-form .input-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .portal-form .portal-input {
   width: 100%;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(26, 26, 46, 0.08);
+  border-radius: 12px;
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--ink);
-  background: var(--soft);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
 }
 
 .portal-form .portal-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 169, 227, 0.12);
+  border-color: #4EB852;
+  box-shadow: 0 0 0 4px rgba(78, 184, 82, 0.12);
   background: #fff;
 }
 
 .portal-form .portal-input::placeholder {
-  color: rgba(94, 94, 94, 0.5);
+  color: rgba(94, 94, 94, 0.4);
 }
 
 .portal-error {
-  background: #fff0f0;
-  border: 1px solid #ffd4d4;
-  border-radius: 10px;
-  padding: 12px 16px;
+  background: rgba(231, 76, 60, 0.08);
+  border: 1px solid rgba(231, 76, 60, 0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
   color: #c0392b;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-weight: 500;
 }
 
 .portal-error svg {
@@ -3318,12 +3340,33 @@ h2 {
 .portal-submit {
   width: 100%;
   margin-top: 8px;
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4EB852 0%, #3a963e 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(78, 184, 82, 0.25);
+  transition: all 0.25s ease;
+}
+
+.portal-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(78, 184, 82, 0.35);
+  background: linear-gradient(135deg, #5ec562 0%, #4EB852 100%);
+}
+
+.portal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .portal-login-footer {
-  margin-top: 24px;
+  margin-top: 28px;
   padding-top: 24px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(26, 26, 46, 0.06);
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.6;
@@ -3333,59 +3376,74 @@ h2 {
 .portal-dashboard {
   padding-top: 120px;
   min-height: 100vh;
+  background: radial-gradient(circle at 5% 5%, rgba(78, 184, 82, 0.04) 0%, transparent 35%),
+              radial-gradient(circle at 95% 95%, rgba(0, 169, 227, 0.04) 0%, transparent 35%),
+              #fcfdfd;
 }
 
 .portal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
   gap: 16px;
 }
 
 .portal-header h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  font-weight: 700;
   color: var(--ink);
+  background: linear-gradient(135deg, var(--ink) 30%, #4EB852 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .portal-logout {
-  background: none;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(192, 57, 43, 0.2);
   padding: 10px 24px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: inherit;
   font-size: 0.85rem;
-  color: var(--muted);
+  font-weight: 600;
+  color: #c0392b;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
 }
 
 .portal-logout:hover {
+  background: #c0392b;
   border-color: #c0392b;
-  color: #c0392b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
 }
 
 .portal-welcome {
-  background: linear-gradient(135deg, var(--soft) 0%, #e8f6fc 100%);
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
   padding: 32px 36px;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 }
 
 .portal-welcome-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--accent);
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #4EB852 0%, #3a963e 100%);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(78, 184, 82, 0.2);
 }
 
 .portal-welcome-icon svg {
@@ -3395,9 +3453,10 @@ h2 {
 }
 
 .portal-welcome h2 {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--ink);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .portal-welcome p {
@@ -3415,47 +3474,53 @@ h2 {
 .portal-section-title svg {
   width: 24px;
   height: 24px;
-  color: var(--accent);
+  color: #4EB852;
 }
 
 .portal-section-title h2 {
   font-size: 1.4rem;
+  font-weight: 700;
   color: var(--ink);
 }
 
 .documents-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  gap: 24px;
   margin-bottom: 64px;
 }
 
 .document-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(26, 26, 46, 0.06);
+  border-radius: 18px;
   padding: 28px;
   display: flex;
   align-items: flex-start;
-  gap: 18px;
-  transition: all 0.35s ease;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
   cursor: default;
 }
 
 .document-card:hover {
-  border-color: rgba(0, 169, 227, 0.3);
-  box-shadow: 0 8px 28px rgba(0, 169, 227, 0.08);
-  transform: translateY(-2px);
+  border-color: rgba(78, 184, 82, 0.25);
+  box-shadow: 0 12px 30px rgba(78, 184, 82, 0.08);
+  transform: translateY(-4px);
+  background: #ffffff;
 }
 
 .document-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .document-icon svg {
@@ -3464,33 +3529,39 @@ h2 {
 }
 
 .document-icon.policy {
-  background: #eef8f2;
+  background: rgba(39, 174, 96, 0.08);
   color: #27ae60;
+  border: 1px solid rgba(39, 174, 96, 0.15);
 }
 
 .document-icon.hr {
-  background: #fef5e7;
+  background: rgba(243, 156, 18, 0.08);
   color: #f39c12;
+  border: 1px solid rgba(243, 156, 18, 0.15);
 }
 
 .document-icon.safety {
-  background: #fdedec;
+  background: rgba(231, 76, 60, 0.08);
   color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.15);
 }
 
 .document-icon.quality {
-  background: #eaf2f8;
+  background: rgba(41, 128, 185, 0.08);
   color: #2980b9;
+  border: 1px solid rgba(41, 128, 185, 0.15);
 }
 
 .document-icon.certificate {
-  background: rgba(237, 50, 55, 0.1);
+  background: rgba(197, 43, 49, 0.08);
   color: #c52b31;
+  border: 1px solid rgba(197, 43, 49, 0.15);
 }
 
 .document-icon.general {
-  background: var(--soft);
+  background: rgba(0, 169, 227, 0.08);
   color: var(--accent);
+  border: 1px solid rgba(0, 169, 227, 0.15);
 }
 
 .document-info {
@@ -3499,13 +3570,14 @@ h2 {
 }
 
 .document-info h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--ink);
   margin-bottom: 4px;
 }
 
 .document-info p {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--muted);
   margin-bottom: 12px;
   line-height: 1.5;
@@ -3519,30 +3591,33 @@ h2 {
   color: rgba(94, 94, 94, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .document-download {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  background: var(--soft);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(78, 184, 82, 0.08);
+  border: 1px solid rgba(78, 184, 82, 0.15);
+  border-radius: 10px;
   font-family: inherit;
-  font-size: 0.78rem;
-  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4EB852;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   text-decoration: none;
   white-space: nowrap;
   margin-top: 12px;
 }
 
 .document-download:hover {
-  background: var(--accent);
+  background: #4EB852;
   color: #fff;
-  border-color: var(--accent);
+  border-color: #4EB852;
+  box-shadow: 0 4px 12px rgba(78, 184, 82, 0.2);
 }
 
 .document-download svg {
@@ -3552,10 +3627,10 @@ h2 {
 
 @media (max-width: 768px) {
   .portal-login-card {
-    padding: 40px 28px;
+    padding: 40px 24px;
     margin: 0 16px;
   }
-  
+
   .portal-header {
     flex-direction: column;
     align-items: flex-start;
@@ -3635,32 +3710,33 @@ h2 {
 /* ── Employee Portal Tab & Management Styles ── */
 .portal-tabs {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 32px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 1px;
+  border-bottom: 1.5px solid rgba(26, 26, 46, 0.06);
+  padding-bottom: 8px;
 }
 
 .portal-tab-btn {
   padding: 12px 24px;
   background: none;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-radius: 8px;
   color: var(--muted);
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .portal-tab-btn:hover {
   color: var(--ink);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .portal-tab-btn.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: #4EB852;
+  background: rgba(78, 184, 82, 0.08);
 }
 
 .portal-search-bar {
@@ -3692,18 +3768,19 @@ h2 {
 
 .portal-search-input {
   width: 100%;
-  padding: 11px 16px 11px 40px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  padding: 12px 16px 12px 42px;
+  border: 1.5px solid rgba(26, 26, 46, 0.08);
+  border-radius: 12px;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   background: #fff;
-  transition: border-color 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .portal-search-input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: #4EB852;
+  box-shadow: 0 0 0 4px rgba(78, 184, 82, 0.1);
 }
 
 .portal-category-filters {
@@ -3713,36 +3790,41 @@ h2 {
 }
 
 .portal-filter-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--line);
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(26, 26, 46, 0.08);
   background: #fff;
   color: var(--muted);
   font-family: inherit;
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .portal-filter-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #4EB852;
+  color: #4EB852;
+  background: rgba(78, 184, 82, 0.02);
 }
 
 .portal-filter-btn.active {
-  background: var(--accent);
+  background: #4EB852;
   color: #fff;
-  border-color: var(--accent);
+  border-color: #4EB852;
+  box-shadow: 0 4px 12px rgba(78, 184, 82, 0.2);
 }
 
 /* Form Styles */
 .upload-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 32px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 40px;
   margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 }
 
 .portal-form-row {
@@ -3766,7 +3848,7 @@ h2 {
 }
 
 .portal-form-group label {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
 }
@@ -3774,20 +3856,22 @@ h2 {
 .portal-form-group input,
 .portal-form-group select,
 .portal-form-group textarea {
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(26, 26, 46, 0.08);
+  border-radius: 10px;
   font-family: inherit;
-  font-size: 0.9rem;
-  background: #fff;
-  transition: border-color 0.3s ease;
+  font-size: 0.92rem;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
 }
 
 .portal-form-group input:focus,
 .portal-form-group select:focus,
 .portal-form-group textarea:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: #4EB852;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(78, 184, 82, 0.1);
 }
 
 .portal-file-dropzone {
@@ -3796,24 +3880,24 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px 20px;
-  border: 2px dashed var(--line);
-  border-radius: 10px;
-  background: var(--soft);
+  padding: 40px 24px;
+  border: 2px dashed rgba(78, 184, 82, 0.25);
+  border-radius: 14px;
+  background: rgba(78, 184, 82, 0.02);
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .portal-file-dropzone:hover {
-  border-color: var(--accent);
-  background: rgba(0, 169, 227, 0.02);
+  border-color: #4EB852;
+  background: rgba(78, 184, 82, 0.06);
 }
 
 .portal-file-dropzone svg {
-  width: 36px;
-  height: 36px;
-  color: var(--muted);
+  width: 44px;
+  height: 44px;
+  color: #4EB852;
   margin-bottom: 12px;
 }
 
@@ -3833,8 +3917,8 @@ h2 {
   gap: 8px;
   margin-top: 8px;
   padding: 6px 14px;
-  background: rgba(0, 169, 227, 0.1);
-  color: var(--accent);
+  background: rgba(78, 184, 82, 0.1);
+  color: #4EB852;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -3843,36 +3927,55 @@ h2 {
 /* Management Table Styles */
 .manage-table-container {
   overflow-x: auto;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 }
 
 .manage-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .manage-table th,
 .manage-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--line);
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(26, 26, 46, 0.04);
 }
 
 .manage-table th {
   font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  background: var(--soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+}
+
+.manage-table tr {
+  transition: background-color 0.2s ease;
+}
+
+.manage-table tr:hover {
+  background-color: rgba(78, 184, 82, 0.02);
 }
 
 .manage-table tr:last-child td {
   border-bottom: none;
+}
+
+.btn-edit:hover {
+  background-color: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 12px rgba(0, 169, 227, 0.2);
 }
 
 .btn-delete {
@@ -3880,22 +3983,23 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 6px 12px;
-  background: #fdedec;
-  border: 1px solid #fadbd8;
-  border-radius: 6px;
+  padding: 8px 16px;
+  background: rgba(231, 76, 60, 0.08);
+  border: 1px solid rgba(231, 76, 60, 0.15);
+  border-radius: 8px;
   color: #e74c3c;
   font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
-.btn-delete:hover {
+.btn-delete:hover:not(:disabled) {
   background: #e74c3c;
   border-color: #e74c3c;
   color: #fff;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
 }
 
 .btn-delete svg {
@@ -3904,16 +4008,17 @@ h2 {
 }
 
 .upload-success-toast {
-  padding: 12px 16px;
-  background: #eef8f2;
-  border: 1px solid #d4efdf;
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px solid rgba(39, 174, 96, 0.15);
+  border-radius: 12px;
+  padding: 14px 20px;
   color: #27ae60;
-  border-radius: 8px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .upload-success-toast svg {

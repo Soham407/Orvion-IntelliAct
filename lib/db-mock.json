@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Company Policy Manual",
+    "description": "Comprehensive guidelines covering company policies, code of conduct, and employee expectations.",
+    "category": "policy",
+    "file_name": "company_policy_manual.pdf",
+    "file_type": "PDF",
+    "file_size": "2.4 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIENvbXBhbnkgUG9saWN5IE1hbnVhbCBjb250ZW50XQ==",
+    "uploaded_at": "2026-01-15T10:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "HSE Policy",
+    "description": "Health, Safety, and Environment policy document outlining safety standards and procedures.",
+    "category": "safety",
+    "file_name": "hse_policy.pdf",
+    "file_type": "PDF",
+    "file_size": "1.8 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIEhTRSBQb2xpY3kgY29udGVudF0=",
+    "uploaded_at": "2026-03-10T14:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Quality Policy",
+    "description": "Quality management standards, ISO compliance requirements, and quality assurance procedures.",
+    "category": "quality",
+    "file_name": "quality_policy.pdf",
+    "file_type": "PDF",
+    "file_size": "1.2 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIFF1YWxpdHkgUG9saWN5IGNvbnRlbnRd",
+    "uploaded_at": "2026-02-22T09:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Employee Handbook",
+    "description": "Complete handbook covering leave policies, benefits, grievance procedures, and workplace guidelines.",
+    "category": "hr",
+    "file_name": "employee_handbook.pdf",
+    "file_type": "PDF",
+    "file_size": "3.1 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIEVtcGxveWVlIEhhbmRib29rIGNvbnRlbnRd",
+    "uploaded_at": "2026-04-05T11:45:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "IT & Data Security Policy",
+    "description": "Information security guidelines, acceptable use policy, and data protection standards.",
+    "category": "policy",
+    "file_name": "it_data_security_policy.pdf",
+    "file_type": "PDF",
+    "file_size": "980 KB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIElUICYgRGF0YSBTZWN1cml0eSBQb2xpY3kgY29udGVudF0=",
+    "uploaded_at": "2026-05-18T16:20:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "Travel & Expense Policy",
+    "description": "Guidelines for business travel, expense claims, and reimbursement procedures.",
+    "category": "hr",
+    "file_name": "travel_expense_policy.pdf",
+    "file_type": "PDF",
+    "file_size": "650 KB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIFRyYXZlbCAmIEV4cGVuc2UgUG9saWN5IGNvbnRlbnRd",
+    "uploaded_at": "2026-01-20T08:15:00.000Z"
+  },
+  {
+    "id": 7,
+    "title": "Emergency Response Plan",
+    "description": "Emergency procedures, evacuation plans, and crisis management protocols.",
+    "category": "safety",
+    "file_name": "emergency_response_plan.pdf",
+    "file_type": "PDF",
+    "file_size": "1.5 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIEVtZXJnZW5jeSBSZXNwb25zZSBQbGFuIGNvbnRlbnRd",
+    "uploaded_at": "2026-03-28T13:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "title": "Anti-Bribery & Ethics Policy",
+    "description": "Code of ethics, anti-corruption guidelines, and compliance requirements.",
+    "category": "policy",
+    "file_name": "anti_bribery_ethics_policy.pdf",
+    "file_type": "PDF",
+    "file_size": "720 KB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIEFudGktQnJpYmVyeSAmIEV0aGljcyBQb2xpY3kgY29udGVudF0=",
+    "uploaded_at": "2026-02-04T10:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "title": "Project Execution Standards",
+    "description": "Standard operating procedures for project execution, documentation, and handover.",
+    "category": "quality",
+    "file_name": "project_execution_standards.pdf",
+    "file_type": "PDF",
+    "file_size": "2.8 MB",
+    "file_data": "JVBERi0xLjQgLi4uIFtNb2NrIFByb2plY3QgRXhlY3V0aW9uIFN0YW5kYXJkcyBjb250ZW50XQ==",
+    "uploaded_at": "2026-04-12T15:30:00.000Z"
+  },
+  {
+    "id": 10,
+    "title": "Company Organizational Chart",
+    "description": "Current organizational structure, reporting hierarchy, and department contacts.",
+    "category": "general",
+    "file_name": "organizational_chart.png",
+    "file_type": "PNG",
+    "file_size": "450 KB",
+    "file_data": "aVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUFFQUFBQUJDQVlBQUFBZkZjU0pBQUFBRFVsRVFWUjQybU5rK005UUR3QURoZ0dBV2pSOWF3QUFBQUJKUlU1RXJrSmdnZz09IFtNb2NrIFBORyBEYXRhXQ==",
+    "uploaded_at": "2026-05-02T11:00:00.000Z"
+  }
+]
