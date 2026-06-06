@@ -38,6 +38,9 @@ export async function GET(request, context) {
       return NextResponse.json({ error: "Missing document ID" }, { status: 400 });
     }
 
+    const { searchParams } = new URL(request.url);
+    const isInline = searchParams.get("inline") === "true";
+
     const doc = await getDocumentById(id);
     if (!doc || !doc.file_data) {
       return NextResponse.json({ error: "Document or file data not found" }, { status: 404 });
@@ -50,14 +53,16 @@ export async function GET(request, context) {
       status: 200,
       headers: {
         "Content-Type": mimeType,
-        "Content-Disposition": `attachment; filename="${encodeURIComponent(doc.file_name)}"`,
+        "Content-Disposition": isInline
+          ? `inline; filename="${encodeURIComponent(doc.file_name)}"`
+          : `attachment; filename="${encodeURIComponent(doc.file_name)}"`,
         "Content-Length": fileBuffer.length.toString(),
       },
     });
   } catch (error) {
     console.error("GET /api/documents/[id]/download error:", error);
     return NextResponse.json(
-      { error: "Failed to download document" },
+      { error: "Failed to download/view document" },
       { status: 500 }
     );
   }

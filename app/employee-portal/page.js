@@ -176,6 +176,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [previewDoc, setPreviewDoc] = useState(null);
 
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState("");
@@ -572,17 +573,30 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                           Updated {doc.uploaded_at ? new Date(doc.uploaded_at).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "Recent"}
                         </span>
                       </div>
-                      <button
-                        className="document-download"
-                        onClick={() => handleDownload(doc.id, doc.file_name)}
-                      >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                        Download {doc.file_type}
-                      </button>
+                      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 12 }}>
+                        <button
+                          className="document-download"
+                          onClick={() => handleDownload(doc.id, doc.file_name)}
+                          style={{ marginTop: 0 }}
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          Download {doc.file_type}
+                        </button>
+                        <button
+                          className="document-view-btn"
+                          onClick={() => setPreviewDoc(doc)}
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                          </svg>
+                          Preview
+                        </button>
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -754,18 +768,45 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                           {doc.uploaded_at ? new Date(doc.uploaded_at).toLocaleDateString() : "Recent"}
                         </td>
                         <td style={{ textAlign: "right" }}>
-                          <button
-                            className="btn-delete"
-                            onClick={() => handleDelete(doc.id, doc.title)}
-                          >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <polyline points="3 6 5 6 21 6" />
-                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                              <line x1="10" y1="11" x2="10" y2="17" />
-                              <line x1="14" y1="11" x2="14" y2="17" />
-                            </svg>
-                            Delete
-                          </button>
+                          <div style={{ display: "inline-flex", gap: 8 }}>
+                            <button
+                              type="button"
+                              className="btn-preview"
+                              onClick={() => setPreviewDoc(doc)}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 6,
+                                padding: "8px 14px",
+                                backgroundColor: "rgba(78, 184, 82, 0.08)",
+                                border: "1px solid rgba(78, 184, 82, 0.15)",
+                                borderRadius: 8,
+                                color: "#4EB852",
+                                fontSize: "0.8rem",
+                                fontWeight: 600,
+                                cursor: "pointer",
+                                transition: "all 0.25s ease",
+                              }}
+                            >
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                              </svg>
+                              Preview
+                            </button>
+                            <button
+                              className="btn-delete"
+                              onClick={() => handleDelete(doc.id, doc.title)}
+                            >
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="3 6 5 6 21 6" />
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                <line x1="10" y1="11" x2="10" y2="17" />
+                                <line x1="14" y1="11" x2="14" y2="17" />
+                              </svg>
+                              Delete
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -1001,6 +1042,125 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {previewDoc && (
+          <div className="portal-preview-modal-overlay" onClick={() => setPreviewDoc(null)}>
+            <div className="portal-preview-modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="portal-preview-modal-header">
+                <div>
+                  <h2 style={{ margin: 0, fontSize: "1.25rem", fontWeight: 700, color: "var(--ink)" }}>{previewDoc.title}</h2>
+                  <p style={{ margin: "4px 0 0", fontSize: "0.82rem", color: "var(--muted)" }}>{previewDoc.file_name} ({previewDoc.file_size})</p>
+                </div>
+                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                  <a
+                    href={`/api/documents/${previewDoc.id}/download?inline=true`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button secondary"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "8px 16px",
+                      fontSize: "0.82rem",
+                      borderRadius: 8,
+                      border: "1.5px solid var(--line)"
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                    Full Screen
+                  </a>
+                  <button
+                    className="button primary"
+                    onClick={() => handleDownload(previewDoc.id, previewDoc.file_name)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "8px 16px",
+                      fontSize: "0.82rem",
+                      borderRadius: 8,
+                      backgroundColor: "#4EB852",
+                      borderColor: "#4EB852"
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download
+                  </button>
+                  <button
+                    className="portal-preview-close"
+                    onClick={() => setPreviewDoc(null)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "var(--muted)",
+                      cursor: "pointer",
+                      padding: 4,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 20, height: 20 }}>
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="portal-preview-modal-body" style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
+                {["pdf", "png", "jpg", "jpeg", "txt", "svg"].includes(previewDoc.file_type?.toLowerCase() || previewDoc.file_name.split(".").pop()?.toLowerCase()) ? (
+                  <iframe
+                    src={`/api/documents/${previewDoc.id}/download?inline=true`}
+                    title={previewDoc.title}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      borderRadius: 8,
+                      flex: 1
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "60px 20px",
+                    textAlign: "center",
+                    color: "var(--muted)",
+                    flex: 1
+                  }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 64, height: 64, color: "var(--muted)", marginBottom: 16 }}>
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    <h3 style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--ink)", margin: "0 0 8px" }}>Preview Not Available</h3>
+                    <p style={{ fontSize: "0.88rem", maxWidth: 360, margin: "0 0 24px", lineHeight: 1.6 }}>
+                      This file format (<strong>.{previewDoc.file_type || previewDoc.file_name.split(".").pop()}</strong>) cannot be previewed directly in the browser.
+                    </p>
+                    <button
+                      className="button primary"
+                      onClick={() => handleDownload(previewDoc.id, previewDoc.file_name)}
+                      style={{ backgroundColor: "#4EB852", borderColor: "#4EB852", borderRadius: 8, padding: "10px 24px" }}
+                    >
+                      Download to View
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
