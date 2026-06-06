@@ -427,55 +427,31 @@ export default function HomePage() {
 
       <section className="section" id="directors">
         <div className="shell">
-          <div className="section-center gs-reveal section-header-gap-small">
+          <div className="section-center gs-reveal" style={{ marginBottom: '40px' }}>
             <h2 className="logo-strip-title">Meet the Directors</h2>
           </div>
           <div className="director-grid">
-            {directors.map((director, index) => (
+            {directors.map((director) => (
               <article className="director-card gs-reveal" key={director.name}>
-                <div className="director-visual">
-                  <span className="director-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="director-photo-frame">
-                    <Image
-                      src={director.image}
-                      alt={director.name}
-                      width={900}
-                      height={1400}
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="director-photo"
-                      style={director.photoStyle}
-                    />
-                  </div>
-                  <div className="director-identity">
-                    <span className="mini-label director-role">{director.role}</span>
-                    <h3>{director.name}</h3>
-                    <p className="director-subtitle">
-                      {director.subtitleLines ? (
-                        director.subtitleLines.map((line, index) => (
-                          <span
-                            key={line}
-                            style={{ display: "block", marginTop: index > 0 ? "2px" : 0 }}
-                          >
-                            {line}
-                          </span>
-                        ))
-                      ) : (
-                        director.subtitle
-                      )}
-                    </p>
-                  </div>
+                <div className="director-photo-frame">
+                  <Image
+                    src={director.image}
+                    alt={director.name}
+                    width={900}
+                    height={1400}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="director-photo"
+                  />
                 </div>
                 <div className="director-copy">
+                  <div className="director-header">
+                    <span className="mini-label">{director.role}</span>
+                    <h3>{director.name}</h3>
+                    <p className="director-subtitle">{director.subtitle}</p>
+                  </div>
                   <div className="director-bio">
                     {director.paragraphs.map((paragraph) => (
-                      <p
-                        key={paragraph}
-                        className={paragraph.trim() === "." ? "director-bio-placeholder" : undefined}
-                      >
-                        {paragraph}
-                      </p>
+                      <p key={paragraph} style={{ marginBottom: '12px' }}>{paragraph}</p>
                     ))}
                   </div>
                   <div className="director-expertise">
