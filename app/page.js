@@ -450,8 +450,8 @@ export default function HomePage() {
                     <p className="director-subtitle">{director.subtitle}</p>
                   </div>
                   <div className="director-bio">
-                    {director.paragraphs.map((paragraph) => (
-                      <p key={paragraph} style={{ marginBottom: '12px' }}>{paragraph}</p>
+                    {director.paragraphs.map((paragraph, pIdx) => (
+                      <p key={pIdx} style={{ marginBottom: '12px', minHeight: paragraph === "" ? "24px" : "auto" }}>{paragraph}</p>
                     ))}
                   </div>
                   <div className="director-expertise">
