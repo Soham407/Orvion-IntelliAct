@@ -2558,7 +2558,8 @@ h2 {
 
 .footer-heading {
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin: 0 0 18px;
@@ -2567,6 +2568,17 @@ h2 {
 .footer-links {
   display: grid;
   gap: 12px;
+}
+
+.footer-links a,
+.footer-links span {
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.footer-links a:hover {
+  opacity: 1;
 }
 
 .footer-address {
