@@ -8,6 +8,7 @@
   --soft-green: #eef8f2;
   --line: rgba(26, 26, 46, 0.08);
   --shadow: 0 18px 46px rgba(20, 36, 52, 0.08);
+  --radius: 0px;
 }
 
 * {
@@ -21,8 +22,12 @@ html {
 body {
   margin: 0;
   color: var(--muted);
-  font-family: 'Lusitana', Georgia, serif;
+  font-family: Times New Roman, Times, serif;
   background: #fff;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lusitana), Georgia, serif;
 }
 
 a {
@@ -77,7 +82,7 @@ img {
 .brand-mark {
   display: block;
   padding: 8px 12px;
-  border-radius: 14px;
+  border-radius: var(--radius);
   transition: transform 0.3s ease;
 }
 
@@ -112,7 +117,7 @@ img {
   display: flex;
   align-items: center;
   gap: 6px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   transition: all 0.3s ease;
 }
 
@@ -154,7 +159,7 @@ img {
   width: 52px;
   height: 52px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
+  border-radius: var(--radius);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -192,7 +197,7 @@ img {
   transform: translateX(-50%);
   z-index: 80;
   border: 1px solid rgba(26, 26, 46, 0.12);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 12px 18px;
   background: rgba(255, 255, 255, 0.96);
   color: var(--ink);
@@ -281,7 +286,7 @@ img {
   background: #fff;
   min-width: 260px;
   padding: 12px;
-  border-radius: 20px;
+  border-radius: var(--radius);
   box-shadow: 0 20px 50px rgba(0,0,0,0.12);
   opacity: 0;
   visibility: hidden;
@@ -314,7 +319,7 @@ img {
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   transition: all 0.2s ease;
 }
 
@@ -340,7 +345,7 @@ img {
   padding: 12px 24px;
   background: var(--accent);
   color: #fff !important;
-  border-radius: 999px;
+  border-radius: var(--radius);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -360,7 +365,7 @@ img {
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff !important;
-  border-radius: 999px;
+  border-radius: var(--radius);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -393,7 +398,7 @@ img {
   gap: 10px;
   padding: 16px 32px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -412,7 +417,7 @@ img {
   display: none;
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   border: none;
   background: rgba(26, 26, 46, 0.06);
   position: relative;
@@ -529,7 +534,7 @@ img {
   background: var(--accent);
   color: #fff;
   text-align: center;
-  border-radius: 16px;
+  border-radius: var(--radius);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -588,6 +593,7 @@ img {
 
 .eyebrow,
 .mini-label {
+  display: block;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.22em;
@@ -595,7 +601,7 @@ img {
 
 .eyebrow {
   font-size: 1rem;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 .mini-label {
@@ -620,7 +626,7 @@ h3 {
 }
 
 .page-hero h1 {
-  font-size: clamp(2.7rem, 5vw, 4.4rem);
+  font-size: clamp(24px, 5vw, 36px);
 }
 
 .solutions-hero {
@@ -666,7 +672,7 @@ h3 {
 
 .solutions-hero-stat {
   padding: 18px 18px 16px;
-  border-radius: 24px;
+  border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
@@ -698,7 +704,7 @@ h3 {
 .solutions-hero-card,
 .solutions-hero-visual,
 .solutions-hero-overlay {
-  border-radius: 28px;
+  border-radius: var(--radius);
 }
 
 .solutions-hero-card {
@@ -823,7 +829,7 @@ h3 {
 
 .products-hero-stat {
   padding: 18px 18px 16px;
-  border-radius: 24px;
+  border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
@@ -855,7 +861,7 @@ h3 {
 .products-hero-card,
 .products-hero-visual,
 .products-hero-overlay {
-  border-radius: 28px;
+  border-radius: var(--radius);
 }
 
 .products-hero-card {
@@ -968,7 +974,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 15px 24px;
   font-size: 0.74rem;
   text-transform: uppercase;
@@ -1013,7 +1019,7 @@ h3 {
 
 .hero-note,
 .floating-card {
-  border-radius: 28px;
+  border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
@@ -1033,7 +1039,7 @@ h3 {
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: var(--radius);
   margin-bottom: 16px;
 }
 
@@ -1117,7 +1123,7 @@ h3 {
   justify-content: center;
   width: 200px;
   height: 100px;
-  border-radius: 16px;
+  border-radius: var(--radius);
   background: white;
   border: 1px solid var(--line);
   padding: 12px;
@@ -1310,7 +1316,7 @@ h3 {
   min-height: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 16px 42px rgba(20, 36, 52, 0.06);
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
@@ -1445,7 +1451,7 @@ h3 {
   max-width: 680px;
   margin: 0 auto 34px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 10px 18px;
   background: #fff;
   color: var(--accent);
@@ -1465,7 +1471,7 @@ h3 {
 
 .catalog-search button {
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 7px 12px;
   background: rgba(0, 169, 227, 0.1);
   color: var(--accent);
@@ -1709,7 +1715,7 @@ h3 {
   flex-shrink: 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: #eef3f6;
 }
 
@@ -1749,7 +1755,7 @@ h3 {
 }
 
 .company-image-document {
-  border-radius: 18px;
+  border-radius: var(--radius);
 }
 
 .resume-upload-control {
@@ -1758,7 +1764,7 @@ h3 {
   gap: 12px;
   min-height: 58px;
   border: 1px dashed rgba(0, 169, 227, 0.38);
-  border-radius: 14px;
+  border-radius: var(--radius);
   padding: 14px 16px;
   background: rgba(0, 169, 227, 0.05);
   color: var(--ink);
@@ -1802,7 +1808,7 @@ h3 {
 
 .catalog-empty-state {
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius);
   padding: 48px;
   background: #fff;
   text-align: center;
@@ -1860,7 +1866,7 @@ h3 {
 
 .image-frame {
   position: relative;
-  border-radius: 30px;
+  border-radius: var(--radius);
   overflow: hidden;
   background: #dde1e7;
   box-shadow: var(--shadow);
@@ -1883,7 +1889,7 @@ h3 {
   top: 20px;
   left: 20px;
   padding: 14px 18px;
-  border-radius: 18px;
+  border-radius: var(--radius);
   display: grid;
   gap: 6px;
 }
@@ -2093,7 +2099,7 @@ h2 {
   color: rgba(26, 26, 46, 0.5);
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(26, 26, 46, 0.08);
-  border-radius: 999px;
+  border-radius: var(--radius);
   padding: 10px 12px 9px;
   backdrop-filter: blur(10px);
 }
@@ -2101,7 +2107,7 @@ h2 {
 .director-photo-frame {
   width: 100%;
   height: 480px;
-  border-radius: 34px 34px 0 0;
+  border-radius: var(--radius) var(--radius) 0 0;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
   background:
@@ -2126,7 +2132,7 @@ h2 {
   padding: 22px 22px 20px;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(26, 26, 46, 0.08);
-  border-radius: 24px;
+  border-radius: var(--radius);
   box-shadow: 0 18px 38px rgba(20, 36, 52, 0.1);
   backdrop-filter: blur(16px);
 }
@@ -2148,7 +2154,7 @@ h2 {
   color: var(--accent);
   background: rgba(0, 169, 227, 0.08);
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   display: inline-flex;
   align-items: center;
   border: 1px solid rgba(0, 169, 227, 0.12);
@@ -2162,7 +2168,7 @@ h2 {
   color: var(--muted);
   background: rgba(248, 251, 253, 0.95);
   padding: 12px 14px;
-  border-radius: 14px;
+  border-radius: var(--radius);
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2203,7 +2209,7 @@ h2 {
   padding: 14px 16px 14px 42px;
   font-size: 0.9rem;
   line-height: 1.5;
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(26, 26, 46, 0.06);
   box-shadow: 0 10px 24px rgba(20, 36, 52, 0.05);
@@ -2245,7 +2251,7 @@ h2 {
 .contact-office-grid {
   display: grid;
   gap: 20px;
-  margin-top: 30px;
+  margin-top: 32px;
 }
 
 .contact-method-grid {
@@ -2255,7 +2261,7 @@ h2 {
 .contact-method-card,
 .contact-office-card,
 .contact-response-card {
-  border-radius: 28px;
+  border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
@@ -2268,7 +2274,7 @@ h2 {
 
 .contact-method-card {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -2283,17 +2289,13 @@ h2 {
 .contact-response-card h3,
 .contact-form-card h3,
 .contact-footprint-card h3 {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .contact-method-card h3 {
   font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   line-height: 1.15;
   overflow-wrap: anywhere;
-}
-
-.contact-method-card:nth-child(3) {
-  grid-column: 1 / -1;
 }
 
 .contact-method-card p,
@@ -2315,7 +2317,7 @@ h2 {
 }
 
 .contact-section-soft {
-  background: linear-gradient(180deg, #f4fbf6 0%, #eef8f2 100%);
+  background: #f7f9fb;
 }
 
 .contact-office-stack {
@@ -2328,7 +2330,7 @@ h2 {
 }
 
 .contact-office-copy {
-  gap: 10px;
+  gap: 12px;
 }
 
 .contact-response-card {
@@ -2338,8 +2340,8 @@ h2 {
 
 .contact-response-list {
   display: grid;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .contact-response-list p {
@@ -2351,7 +2353,7 @@ h2 {
   content: "";
   position: absolute;
   left: 0;
-  top: 11px;
+  top: 12px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -2359,7 +2361,7 @@ h2 {
 }
 
 .contact-form-card {
-  padding: 34px;
+  padding: 36px;
 }
 
 .contact-form-copy {
@@ -2367,13 +2369,13 @@ h2 {
 }
 
 .contact-form {
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .contact-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .input-group-full {
@@ -2383,10 +2385,10 @@ h2 {
 .contact-input {
   width: 100%;
   border: 1px solid rgba(26, 26, 46, 0.12);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: rgba(248, 251, 253, 0.96);
   color: var(--ink);
-  padding: 16px 18px;
+  padding: 16px 20px;
   font: inherit;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
@@ -2404,6 +2406,11 @@ h2 {
 
 .contact-select {
   appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231a1a2e%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 16px;
+  padding-right: 48px;
 }
 
 .contact-textarea {
@@ -2415,7 +2422,7 @@ h2 {
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
   margin-top: 24px;
 }
 
@@ -2472,7 +2479,7 @@ h2 {
 }
 
 .project-card {
-  border-radius: 28px;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
@@ -3041,7 +3048,7 @@ h2 {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.4s ease;
   display: flex;
@@ -3240,7 +3247,7 @@ h2 {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 24px;
+  border-radius: var(--radius);
   padding: 56px 48px;
   max-width: 480px;
   width: 100%;
@@ -3310,7 +3317,7 @@ h2 {
   width: 100%;
   padding: 14px 18px;
   border: 1.5px solid rgba(26, 26, 46, 0.08);
-  border-radius: 12px;
+  border-radius: var(--radius);
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--ink);
@@ -3506,7 +3513,7 @@ h2 {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(26, 26, 46, 0.06);
-  border-radius: 18px;
+  border-radius: var(--radius);
   padding: 28px;
   display: flex;
   align-items: flex-start;
@@ -3792,7 +3799,7 @@ h2 {
   width: 100%;
   padding: 12px 16px 12px 42px;
   border: 1.5px solid rgba(26, 26, 46, 0.08);
-  border-radius: 12px;
+  border-radius: var(--radius);
   font-family: inherit;
   font-size: 0.9rem;
   background: #fff;
@@ -3843,7 +3850,7 @@ h2 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 40px;
   margin-bottom: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);

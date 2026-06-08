@@ -1,7 +1,14 @@
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { ScrollToTop } from "../components/scroll-to-top";
+import { Lusitana } from "next/font/google";
 import "./globals.css";
+
+const lusitana = Lusitana({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-lusitana",
+});
 
 export const metadata = {
   metadataBase: new URL("https://intelliactind.com"),
@@ -61,7 +68,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={lusitana.variable}>
       <body>
         <SiteHeader />
         <main>{children}</main>

@@ -101,9 +101,10 @@ export default function ContactPage() {
     };
   }, []);
 
-  const handleContactSubmit = (event) => {
+  const handleContactSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
     const name = formData.get("name")?.toString().trim() || "Website visitor";
     const company = formData.get("company")?.toString().trim() || "Not provided";
     const email = formData.get("email")?.toString().trim() || "Not provided";
@@ -111,22 +112,35 @@ export default function ContactPage() {
     const inquiryType = formData.get("inquiryType")?.toString().trim() || "General inquiry";
     const message = formData.get("message")?.toString().trim() || "No project scope provided.";
 
-    const subject = encodeURIComponent(`Website inquiry - ${inquiryType}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Company: ${company}`,
-        `Email: ${email}`,
-        `Phone: ${phone}`,
-        `Inquiry Type: ${inquiryType}`,
-        "",
-        "Project Scope:",
-        message,
-      ].join("\n")
-    );
+    setFormNotice("Sending your inquiry...");
 
-    setFormNotice("Opening your email app with the inquiry details. You can also email info@intelliactind.com directly.");
-    window.location.href = `mailto:info@intelliactind.com?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          phone,
+          inquiryType,
+          message,
+        }),
+      });
+
+      if (response.ok) {
+        setFormNotice("Thank you for your inquiry. Our team will get back to you shortly.");
+        formEl.reset();
+      } else {
+        const data = await response.json();
+        setFormNotice(data.error || "Failed to submit inquiry. Please email info@intelliactind.com directly.");
+      }
+    } catch (error) {
+      console.error("Contact form submit error:", error);
+      setFormNotice("Failed to submit inquiry. Please email info@intelliactind.com directly.");
+    }
   };
 
   return (
