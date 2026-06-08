@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { PageHero } from "../../components/page-hero";
+import { CatalogHero } from "../../components/catalog-hero";
 
 const officeMapUrl =
   "https://www.google.com/maps/search/?api=1&query=804%20The%20Cosmopolis%20Building%20Opp%20Seasons%20Mall%20Hadapsar%20Magarpatta%20Pune%20411028%20India";
@@ -145,46 +145,14 @@ export default function ContactPage() {
 
   return (
     <div ref={mainRef} className="contact-page">
-      <PageHero
+      <CatalogHero
         eyebrow="Get In Touch"
         title="Talk To Our Automation Team"
         description="Connect with Orvion IntelliAct for industrial automation programs, control-system modernization, warehouse logistics workflows, and execution support across critical facilities."
+        image="/images/why_intelliact.png"
+        imageAlt="Talk to our automation team"
+        stats={["Typical response < 24h", "Engineering-led screening", "Pune & Chennai offices"]}
       />
-
-      <section className="section contact-section">
-        <div className="shell contact-intro-grid">
-          <div className="gs-reveal">
-            <span className="accent-bar" />
-            <p className="eyebrow">Direct Access</p>
-            <h2>Start with the right channel.</h2>
-            <p className="section-copy contact-intro-copy">
-              Whether you are defining scope, reviewing a brownfield upgrade, or
-              planning a new automation package, our team can route your inquiry
-              to the right technical and commercial leads.
-            </p>
-
-            <div className="contact-method-grid">
-              {contactChannels.map((item) => (
-                <a key={item.title} href={item.href} className="contact-method-card">
-                  <span className="card-label">{item.label}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.detail}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="gs-reveal panel-card contact-highlights-card">
-            <span className="card-label">Best For</span>
-            <h3>What to include in your inquiry</h3>
-            <ul className="detail-list contact-detail-list">
-              {engagementNotes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
       <section className="section section-soft contact-section-soft">
         <div className="shell contact-main-grid">
@@ -282,6 +250,41 @@ export default function ContactPage() {
                 </Link>
               </div>
             </form>
+          </div>
+        </div>
+      </section>
+
+      <section className="section contact-section">
+        <div className="shell contact-intro-grid">
+          <div className="gs-reveal">
+            <span className="accent-bar" />
+            <p className="eyebrow">Direct Access</p>
+            <h2>Start with the right channel.</h2>
+            <p className="section-copy contact-intro-copy">
+              Whether you are defining scope, reviewing a brownfield upgrade, or
+              planning a new automation package, our team can route your inquiry
+              to the right technical and commercial leads.
+            </p>
+
+            <div className="contact-method-grid">
+              {contactChannels.map((item) => (
+                <a key={item.title} href={item.href} className="contact-method-card">
+                  <span className="card-label">{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="gs-reveal panel-card contact-highlights-card">
+            <span className="card-label">Best For</span>
+            <h3>What to include in your inquiry</h3>
+            <ul className="detail-list contact-detail-list">
+              {engagementNotes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
