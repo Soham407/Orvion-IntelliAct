@@ -16,6 +16,7 @@ import {
   productList,
   partnerLogos,
   epcLogos,
+  esteemedClienteleLogos,
 } from "../lib/site-data";
 
 const officeMapUrl =
@@ -164,6 +165,19 @@ export default function HomePage() {
           <div className="scroll-line-bar" />
         </div>
       </section>
+
+      <LogoMarquee 
+        eyebrow="Global Technology" 
+        title="Our Trusted Partners" 
+        logos={partnerLogos} 
+        className="large-logos"
+      />
+
+      <LogoMarquee 
+        eyebrow="Market Footprint" 
+        title="Our Esteemed Clientele" 
+        logos={esteemedClienteleLogos} 
+      />
 
       <LogoMarquee 
         eyebrow="Market Presence" 
@@ -418,12 +432,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LogoMarquee 
-        eyebrow="Global Technology" 
-        title="Our Trusted Partners" 
-        logos={partnerLogos} 
-        className="large-logos"
-      />
+
 
       <section className="section" id="directors">
         <div className="shell">
