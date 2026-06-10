@@ -5496,7 +5496,7 @@ h2 {
 }
 
 .partners-logo-cell {
-  flex: 0 1 calc(30% - 16px) !important;
+  flex: 0 1 calc(33.33% - 22px) !important;
   min-width: 260px !important;
   padding: 40px 30px !important;
   min-height: 160px !important;

@@ -172,16 +172,15 @@ export default function HomePage() {
             <p className="eyebrow">Global Technology</p>
             <h2>Our Trusted Partners</h2>
           </div>
-          <div className="client-logo-grid">
+          <div className="client-logo-grid partners-logo-grid">
             {partnerLogos.map((logo) => (
-              <div className="client-logo-cell gs-reveal" key={logo.alt}>
+              <div className="client-logo-cell partners-logo-cell gs-reveal" key={logo.alt}>
                 <div>
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     loading="lazy"
                   />
-                  <span className="client-logo-name">{logo.alt}</span>
                 </div>
               </div>
             ))}
