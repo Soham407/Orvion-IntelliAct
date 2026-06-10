@@ -5491,22 +5491,39 @@ h2 {
 
 /* ── Partners Custom Grid ── */
 .partners-logo-grid {
-  gap: 32px;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 32px !important;
   margin-top: 40px;
 }
 
 .partners-logo-cell {
-  flex: 1 1 calc(16.66% - 20px) !important;
-  min-width: 140px !important;
-  padding: 16px 12px !important;
-  min-height: 100px !important;
+  flex: 1 1 16.66% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .partners-logo-cell img {
-  max-height: 68px !important;
+  max-height: 80px !important;
   max-width: 100% !important;
   object-fit: contain !important;
   filter: none !important;
   opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .partners-logo-grid {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
+  }
+  .partners-logo-cell {
+    flex: 0 1 calc(33.33% - 12px) !important;
+    min-width: 90px !important;
+  }
 }
 
