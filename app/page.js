@@ -173,23 +173,11 @@ export default function HomePage() {
         className="large-logos"
       />
 
-      <LogoMarquee 
-        eyebrow="Market Footprint" 
-        title="Our Esteemed Clientele" 
-        logos={esteemedClienteleLogos} 
-      />
-
-      <LogoMarquee 
-        eyebrow="Market Presence" 
-        title="Our Top Customer Connects" 
-        logos={clientLogos} 
-      />
-
       <section className="client-logo-grid-section">
         <div className="shell">
           <div className="section-center gs-reveal section-header-gap">
-            <p className="eyebrow">Our Valued Clients</p>
-            <h2>Trusted By Industry Leaders</h2>
+            <p className="eyebrow">Market Presence</p>
+            <h2>Our Top Customer Connects</h2>
           </div>
           <div className="client-logo-grid">
             {clientLogos.map((logo) => (
@@ -370,6 +358,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <LogoMarquee 
+        eyebrow="Market Footprint" 
+        title="Our Esteemed Clientele" 
+        logos={esteemedClienteleLogos} 
+      />
 
       <section className="section section-soft">
         <div className="shell">
