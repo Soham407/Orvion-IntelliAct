@@ -188,29 +188,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="client-logo-grid-section">
-        <div className="shell">
-          <div className="section-center gs-reveal section-header-gap">
-            <p className="eyebrow">Market Presence</p>
-            <h2>Our Top Customer Connects</h2>
-          </div>
-          <div className="client-logo-grid">
-            {clientLogos.map((logo) => (
-              <div className="client-logo-cell gs-reveal" key={logo.alt}>
-                <div>
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    loading="lazy"
-                  />
-                  <span className="client-logo-name">{logo.alt}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section">
         <div className="shell two-column">
           <div className="image-frame gs-reveal">
@@ -326,6 +303,29 @@ export default function HomePage() {
                 </p>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="client-logo-grid-section">
+        <div className="shell">
+          <div className="section-center gs-reveal section-header-gap">
+            <p className="eyebrow">Market Presence</p>
+            <h2>Our Top Customer Connects</h2>
+          </div>
+          <div className="client-logo-grid">
+            {clientLogos.map((logo) => (
+              <div className="client-logo-cell gs-reveal" key={logo.alt}>
+                <div>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    loading="lazy"
+                  />
+                  <span className="client-logo-name">{logo.alt}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
