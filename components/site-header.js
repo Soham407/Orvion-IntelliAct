@@ -89,17 +89,20 @@ export function SiteHeader() {
   };
 
 
+  const isPortal = pathname === "/employee-portal" || pathname?.startsWith("/employee-portal/");
+  const shouldBeScrolled = scrolled || isPortal;
+
   return (
     <header 
-      className={`site-header legacy-nav ${scrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""}`}
+      className={`site-header legacy-nav ${shouldBeScrolled ? "scrolled" : ""} ${isOpen ? "menu-open" : ""}`}
     >
       <div className="shell header-inner">
         <Link href="/" className="brand-mark" onClick={() => setIsOpen(false)}>
           <Image
             src="/OIAPL Logo - MASTER CTC.svg"
             alt="Orvion IntelliAct Automation"
-            width={scrolled ? 180 : 220}
-            height={scrolled ? 58 : 72}
+            width={shouldBeScrolled ? 180 : 220}
+            height={shouldBeScrolled ? 58 : 72}
             className="logo-img"
             priority
           />
