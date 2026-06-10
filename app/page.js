@@ -166,15 +166,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="client-logo-grid-section" style={{ background: '#fff', paddingBottom: '0px' }}>
+      <section className="client-logo-grid-section">
         <div className="shell">
           <div className="section-center gs-reveal section-header-gap">
             <p className="eyebrow">Global Technology</p>
             <h2>Our Trusted Partners</h2>
           </div>
-          <div className="client-logo-grid partners-logo-grid">
+          <div className="client-logo-grid">
             {partnerLogos.map((logo) => (
-              <div className="client-logo-cell partners-logo-cell gs-reveal" key={logo.alt}>
+              <div className="client-logo-cell gs-reveal" key={logo.alt}>
                 <div>
                   <img
                     src={logo.src}
