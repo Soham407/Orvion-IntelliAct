@@ -5496,15 +5496,16 @@ h2 {
 }
 
 .partners-logo-cell {
-  flex: 0 1 calc(33.33% - 22px) !important;
-  min-width: 260px !important;
-  padding: 40px 30px !important;
-  min-height: 160px !important;
+  flex: 1 1 calc(16.66% - 20px) !important;
+  min-width: 140px !important;
+  padding: 16px 12px !important;
+  min-height: 100px !important;
 }
 
 .partners-logo-cell img {
-  max-height: 90px !important;
-  max-width: 220px !important;
+  max-height: 68px !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
   filter: none !important;
   opacity: 1 !important;
 }
