@@ -5488,3 +5488,24 @@ h2 {
     text-shadow: none !important;
   }
 }
+
+/* ── Partners Custom Grid ── */
+.partners-logo-grid {
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.partners-logo-cell {
+  flex: 0 1 calc(30% - 16px) !important;
+  min-width: 260px !important;
+  padding: 40px 30px !important;
+  min-height: 160px !important;
+}
+
+.partners-logo-cell img {
+  max-height: 90px !important;
+  max-width: 220px !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+

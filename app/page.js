@@ -166,12 +166,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LogoMarquee 
-        eyebrow="Global Technology" 
-        title="Our Trusted Partners" 
-        logos={partnerLogos} 
-        className="large-logos"
-      />
+      <section className="client-logo-grid-section" style={{ background: '#fff', paddingBottom: '0px' }}>
+        <div className="shell">
+          <div className="section-center gs-reveal section-header-gap">
+            <p className="eyebrow">Global Technology</p>
+            <h2>Our Trusted Partners</h2>
+          </div>
+          <div className="client-logo-grid partners-logo-grid">
+            {partnerLogos.map((logo) => (
+              <div className="client-logo-cell partners-logo-cell gs-reveal" key={logo.alt}>
+                <div>
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    loading="lazy"
+                  />
+                  <span className="client-logo-name">{logo.alt}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="client-logo-grid-section">
         <div className="shell">
