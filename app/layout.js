@@ -41,7 +41,7 @@ export const metadata = {
     siteName: "Orvion IntelliAct Automation",
     images: [
       {
-        url: "/images/oil+refinery+in+Atlanta-+GA.jpeg",
+        url: "/images/products/oil+refinery+in+Atlanta-+GA.jpeg",
         width: 1200,
         height: 630,
         alt: "Orvion IntelliAct industrial automation",
@@ -53,7 +53,7 @@ export const metadata = {
     title: "Orvion IntelliAct Automation Pvt. Ltd.",
     description:
       "Industrial automation solutions across power, chemicals, steel, refineries, oil and gas, terminal automation, and water SCADA.",
-    images: ["/images/oil+refinery+in+Atlanta-+GA.jpeg"],
+    images: ["/images/products/oil+refinery+in+Atlanta-+GA.jpeg"],
   },
   icons: {
     icon: "/images/Logo/icon.png",

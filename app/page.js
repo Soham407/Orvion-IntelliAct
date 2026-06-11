@@ -32,7 +32,7 @@ export default function HomePage() {
   const mainRef = useRef(null);
 
   const heroImages = [
-    "/images/oil+refinery+in+Atlanta-+GA.jpeg",
+    "/images/products/oil+refinery+in+Atlanta-+GA.jpeg",
     "/2149057713.jpg",
     "/17731.jpg",
     "/119619.jpg",
@@ -169,7 +169,7 @@ export default function HomePage() {
             </div>
             <div className="floating-card" ref={heroCardRef}>
               <Image
-                src="/images/water scada.jpeg"
+                src="/images/products/water scada.jpeg"
                 alt="Water SCADA infrastructure"
                 width={640}
                 height={360}
@@ -218,7 +218,7 @@ export default function HomePage() {
         <div className="shell two-column">
           <div className="image-frame gs-reveal">
             <Image
-              src="/images/engg 1.png"
+              src="/images/company/engg 1.png"
               alt="Automation engineering desk"
               width={900}
               height={1040}
@@ -260,7 +260,7 @@ export default function HomePage() {
           <div className="feature-grid">
             <article className="media-card gs-reveal">
               <Image
-                src="/images/chemical 1.png"
+                src="/images/products/chemical 1.png"
                 alt="Engineering Services"
                 width={900}
                 height={560}
@@ -278,7 +278,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/Software Industry.jpg"
+                src="/images/products/Software Industry.jpg"
                 alt="Software Services"
                 width={900}
                 height={560}
@@ -297,7 +297,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/water scada.jpeg"
+                src="/images/products/water scada.jpeg"
                 alt="Consultancy"
                 width={900}
                 height={560}
@@ -314,7 +314,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/manpower 1.png"
+                src="/images/company/manpower 1.png"
                 alt="Manpower Services"
                 width={900}
                 height={560}
