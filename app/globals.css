@@ -556,10 +556,35 @@ img {
 
 .hero-home {
   min-height: 100vh;
+}
+
+.hero-bg-carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-bg-slide.active {
+  opacity: 1;
+}
+
+.hero-bg-gradients {
+  position: absolute;
+  inset: 0;
   background:
     linear-gradient(90deg, rgba(8, 17, 30, 0.82) 0%, rgba(8, 17, 30, 0.68) 28%, rgba(8, 17, 30, 0.26) 58%, rgba(8, 17, 30, 0.52) 100%),
-    linear-gradient(180deg, rgba(9, 21, 37, 0.18) 0%, rgba(9, 21, 37, 0) 26%, rgba(9, 21, 37, 0.55) 100%),
-    url("/images/oil+refinery+in+Atlanta-+GA.jpeg") center/cover no-repeat;
+    linear-gradient(180deg, rgba(9, 21, 37, 0.18) 0%, rgba(9, 21, 37, 0) 26%, rgba(9, 21, 37, 0.55) 100%);
 }
 
 .page-hero.dark {

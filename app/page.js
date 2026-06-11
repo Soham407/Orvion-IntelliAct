@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { LogoMarquee } from "../components/logo-marquee";
@@ -30,6 +30,22 @@ export default function HomePage() {
   const heroSideRef = useRef(null);
   const heroCardRef = useRef(null);
   const mainRef = useRef(null);
+
+  const heroImages = [
+    "/images/oil+refinery+in+Atlanta-+GA.jpeg",
+    "/2149057713.jpg",
+    "/17731.jpg",
+    "/119619.jpg",
+    "/305.jpg",
+  ];
+  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIdx((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -112,6 +128,16 @@ export default function HomePage() {
   return (
     <div ref={mainRef} className="home-page">
       <section className="hero-home">
+        <div className="hero-bg-carousel">
+          {heroImages.map((img, idx) => (
+            <div
+              key={img}
+              className={`hero-bg-slide ${idx === currentImageIdx ? "active" : ""}`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
+          <div className="hero-bg-gradients" />
+        </div>
         <div className="hero-grid" />
         <div className="shell hero-home-inner">
           <div className="hero-content">
