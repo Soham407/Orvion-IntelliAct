@@ -169,7 +169,7 @@ export default function HomePage() {
             </div>
             <div className="floating-card" ref={heroCardRef}>
               <Image
-                src="/images/products/water scada.jpeg"
+                src="/images/products/water scada.avif"
                 alt="Water SCADA infrastructure"
                 width={640}
                 height={360}
@@ -218,7 +218,7 @@ export default function HomePage() {
         <div className="shell two-column">
           <div className="image-frame gs-reveal">
             <Image
-              src="/images/company/engg 1.png"
+              src="/images/company/engg 1.avif"
               alt="Automation engineering desk"
               width={900}
               height={1040}
@@ -260,7 +260,7 @@ export default function HomePage() {
           <div className="feature-grid">
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/chemical 1.png"
+                src="/images/products/chemical 1.avif"
                 alt="Engineering Services"
                 width={900}
                 height={560}
@@ -297,7 +297,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/water scada.jpeg"
+                src="/images/products/water scada.avif"
                 alt="Consultancy"
                 width={900}
                 height={560}
@@ -314,7 +314,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/company/manpower 1.png"
+                src="/images/company/manpower 1.avif"
                 alt="Manpower Services"
                 width={900}
                 height={560}

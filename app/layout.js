@@ -56,9 +56,9 @@ export const metadata = {
     images: ["/images/products/oil+refinery+in+Atlanta-+GA.jpeg"],
   },
   icons: {
-    icon: "/images/Logo/icon.png",
-    shortcut: "/images/Logo/icon.png",
-    apple: "/images/Logo/icon.png",
+    icon: "/images/Logo/icon.avif",
+    shortcut: "/images/Logo/icon.avif",
+    apple: "/images/Logo/icon.avif",
   },
   robots: {
     index: true,

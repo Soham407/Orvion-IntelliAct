@@ -270,7 +270,7 @@ export default function CompanyDetailPage() {
         eyebrow="Company Information"
         title={page.title}
         description={page.description}
-        image={page.slug === "certification" ? "/images/certificates/2150957727.jpg" : page.image}
+        image={page.slug === "certification" ? "/images/certificates/2150957727.avif" : page.image}
         imageAlt={page.title}
         stats={[`${page.content?.sections?.length || 0} sections`, "Company overview", "Direct contact available"]}
       />

@@ -18,7 +18,7 @@ export function SiteFooter() {
         <div className="footer-brand">
           <Link href="/" className="brand-mark">
             <Image
-              src="/images/Logo/LOGO.png"
+              src="/images/Logo/LOGO.avif"
               alt="Orvion IntelliAct Automation"
               width={170}
               height={56}
