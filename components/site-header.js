@@ -99,7 +99,7 @@ export function SiteHeader() {
       <div className="shell header-inner">
         <Link href="/" className="brand-mark" onClick={() => setIsOpen(false)}>
           <Image
-            src="/OIAPL Logo - MASTER CTC.svg"
+            src="/images/Logo/OIAPL Logo - MASTER CTC.svg"
             alt="Orvion IntelliAct Automation"
             width={shouldBeScrolled ? 180 : 220}
             height={shouldBeScrolled ? 58 : 72}

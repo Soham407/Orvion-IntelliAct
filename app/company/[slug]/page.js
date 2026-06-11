@@ -338,7 +338,7 @@ export default function CompanyDetailPage() {
               {page.slug === "quality-policy" && (
                 <div style={{ marginTop: '24px' }}>
                   <a
-                    href="/Signed Quality Policy.pdf"
+                    href="/documents/Signed Quality Policy.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button primary"
@@ -357,7 +357,7 @@ export default function CompanyDetailPage() {
               {page.slug === "hse-policy" && (
                 <div style={{ marginTop: '24px' }}>
                   <a
-                    href="/Signed HSE Policy.pdf"
+                    href="/documents/Signed HSE Policy.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button primary"
