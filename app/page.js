@@ -33,10 +33,10 @@ export default function HomePage() {
 
   const heroImages = [
     "/images/products/oil+refinery+in+Atlanta-+GA.jpeg",
-    "/2149057713.jpg",
-    "/17731.jpg",
-    "/119619.jpg",
-    "/305.jpg",
+    "/2149057713.avif",
+    "/17731.avif",
+    "/119619.avif",
+    "/305.avif",
   ];
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
