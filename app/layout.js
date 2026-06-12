@@ -70,8 +70,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={lusitana.variable}>
       <body>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <ScrollToTop />
         <SiteFooter />
       </body>

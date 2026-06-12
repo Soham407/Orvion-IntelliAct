@@ -61,6 +61,7 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedNavItem, setExpandedNavItem] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,23 +111,36 @@ export function SiteHeader() {
 
         <nav className="desktop-nav" aria-label="Primary">
           {navItems.map((item) => (
-            <div key={item.label} className="nav-item">
+            <div
+              key={item.label}
+              className="nav-item"
+              onMouseEnter={() => item.dropdown && setExpandedNavItem(item.label)}
+              onMouseLeave={() => setExpandedNavItem(null)}
+              onFocusCapture={() => item.dropdown && setExpandedNavItem(item.label)}
+              onBlurCapture={(e) => {
+                if (item.dropdown && !e.currentTarget.contains(e.relatedTarget)) {
+                  setExpandedNavItem(null);
+                }
+              }}
+            >
               <Link
                 href={item.href}
                 className={`nav-link nav-link-${item.variant} ${pathname === item.href || (item.dropdown && item.dropdown.some(sub => pathname === sub.href)) ? "active" : ""}`}
+                aria-haspopup={item.dropdown ? "true" : undefined}
+                aria-expanded={item.dropdown ? expandedNavItem === item.label : undefined}
               >
                 {item.label}
                 {item.dropdown && (
-                  <svg className="chevron" viewBox="0 0 24 24" width="14" height="14">
+                  <svg className="chevron" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
                     <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 9l6 6 6-6" />
                   </svg>
                 )}
               </Link>
               {item.dropdown && (
-                <div className="dropdown-menu">
+                <div className="dropdown-menu" role="menu" aria-label={`${item.label} submenu`}>
                   <div className="dropdown-grid">
                     {item.dropdown.map((subItem) => (
-                      <Link key={subItem.href} href={subItem.href} className="dropdown-link">
+                      <Link key={subItem.href} href={subItem.href} className="dropdown-link" role="menuitem">
                         <span className="dropdown-label">{subItem.label}</span>
                       </Link>
                     ))}
@@ -174,12 +188,14 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
                 {item.dropdown && (
-                  <button 
+                  <button
                     className={`mobile-dropdown-toggle ${activeDropdown === item.label ? "active" : ""}`}
                     onClick={() => toggleDropdown(item.label)}
                     aria-label={`Toggle ${item.label} dropdown`}
+                    aria-expanded={activeDropdown === item.label}
+                    aria-controls={`mobile-dropdown-${item.label.toLowerCase()}`}
                   >
-                    <svg viewBox="0 0 24 24" width="20" height="20">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                       <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 9l6 6 6-6" />
                     </svg>
                   </button>
@@ -187,7 +203,10 @@ export function SiteHeader() {
               </div>
               
               {item.dropdown && (
-                <div className={`mobile-dropdown ${activeDropdown === item.label ? "open" : ""}`}>
+                <div
+                  id={`mobile-dropdown-${item.label.toLowerCase()}`}
+                  className={`mobile-dropdown ${activeDropdown === item.label ? "open" : ""}`}
+                >
                   <div>
                     {item.dropdown.map((subItem) => (
                       <Link 

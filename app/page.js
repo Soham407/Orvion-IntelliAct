@@ -128,13 +128,22 @@ export default function HomePage() {
   return (
     <div ref={mainRef} className="home-page">
       <section className="hero-home">
-        <div className="hero-bg-carousel">
+        <div className="hero-bg-carousel" aria-hidden="true">
           {heroImages.map((img, idx) => (
             <div
               key={img}
               className={`hero-bg-slide ${idx === currentImageIdx ? "active" : ""}`}
-              style={{ backgroundImage: `url(${img})` }}
-            />
+            >
+              <Image
+                src={img}
+                alt=""
+                fill
+                sizes="100vw"
+                className="hero-slide-img"
+                priority={idx === 0}
+                loading={idx === 0 ? "eager" : "lazy"}
+              />
+            </div>
           ))}
           <div className="hero-bg-gradients" />
         </div>
