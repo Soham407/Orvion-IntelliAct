@@ -9,6 +9,7 @@ export function PageHero({ eyebrow, title, description, children, dark = true })
   const subRef = useRef(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (headlineRef.current) {
       const text = headlineRef.current.innerText;
       const words = text.split(" ");

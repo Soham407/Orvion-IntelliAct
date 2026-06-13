@@ -1,6 +1,7 @@
 :root {
   /* Brand */
   --accent: oklch(65% 0.17 214);
+  --accent-dark: oklch(55% 0.17 214);
   --brand-green: oklch(24% 0.053 155);
   --product-accent: oklch(53% 0.029 16);
   /* Text */
@@ -101,7 +102,10 @@ img {
   box-shadow: 0 10px 30px rgba(20, 36, 52, 0.08);
   border-bottom: 1px solid rgba(26, 26, 46, 0.06);
   backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 10px 0;
 }
 
@@ -137,7 +141,8 @@ img {
 }
 
 .logo-img {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   height: auto;
 }
 
@@ -334,7 +339,9 @@ img {
   box-shadow: 0 20px 50px rgba(0,0,0,0.12);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid var(--line);
   margin-top: 10px;
 }
@@ -371,7 +378,7 @@ img {
   flex-direction: column;
   padding: 12px 16px;
   border-radius: 12px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .dropdown-link:hover {
@@ -394,6 +401,9 @@ img {
 .nav-cta {
   margin-left: 12px;
   padding: 12px 24px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   background: var(--accent);
   color: #fff !important;
   border-radius: 999px;
@@ -401,19 +411,20 @@ img {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 169, 227, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 15px oklch(65% 0.17 214 / 0.3);
 }
 
 .nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 169, 227, 0.4);
-  background: #0098cc;
+  box-shadow: 0 6px 20px oklch(65% 0.17 214 / 0.4);
+  background: var(--accent-dark);
 }
 
 .nav-login {
   margin-left: 8px;
   padding: 10px 20px;
+  min-height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff !important;
   border-radius: 999px;
@@ -421,7 +432,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -455,7 +466,7 @@ img {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, color 0.3s ease;
   margin-top: 8px;
 }
 
@@ -473,7 +484,7 @@ img {
   background: rgba(26, 26, 46, 0.06);
   position: relative;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .site-header.scrolled .menu-toggle {
@@ -487,7 +498,9 @@ img {
   width: 20px;
   background: var(--ink);
   left: 12px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .site-header.scrolled .menu-toggle span {
@@ -521,7 +534,8 @@ img {
   z-index: 90;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
   padding: 100px 24px 40px;
 }
@@ -535,7 +549,8 @@ img {
   border-bottom: 1px solid var(--line);
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-nav-header {
@@ -573,10 +588,11 @@ img {
 .mobile-nav-overlay.visible .mobile-nav-item:nth-child(3) { transition-delay: 0.2s; }
 .mobile-nav-overlay.visible .mobile-nav-item:nth-child(4) { transition-delay: 0.25s; }
 .mobile-nav-overlay.visible .mobile-nav-item:nth-child(5) { transition-delay: 0.3s; }
-.mobile-nav-overlay.visible .mobile-cta { 
-  opacity: 1; 
-  transform: translateY(0); 
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+.mobile-nav-overlay.visible .mobile-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
 }
 
 .mobile-cta {
@@ -1208,7 +1224,10 @@ h3 {
   background: white;
   border: 1px solid var(--line);
   padding: 12px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   filter: grayscale(1) opacity(0.7);
 }
 
@@ -1927,7 +1946,8 @@ h3 {
   background: var(--portal-green) !important;
   border-color: var(--portal-green) !important;
   color: #ffffff !important;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+              transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section-cta .button.secondary:hover,
@@ -2864,7 +2884,7 @@ h2 {
 
 .scroll-line span {
   color: rgba(255, 255, 255, 0.3);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -3132,7 +3152,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 24px;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
 }
@@ -3257,7 +3277,7 @@ h2 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -3398,7 +3418,9 @@ h2 {
   font-size: 0.95rem;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.6);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
 }
 
@@ -3443,7 +3465,7 @@ h2 {
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(78, 184, 82, 0.25);
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .portal-submit:hover:not(:disabled) {
@@ -3500,7 +3522,8 @@ h2 {
   font-weight: 600;
   color: var(--danger-dark);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .portal-logout:hover {
@@ -4308,7 +4331,7 @@ h2 {
   }
 
   .client-logo-cell .client-logo-name {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     margin-top: 6px;
   }
 
@@ -4705,7 +4728,7 @@ h2 {
   }
 
   .image-badge span {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .image-number {

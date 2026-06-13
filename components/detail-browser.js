@@ -65,6 +65,7 @@ export function DetailBrowser({
 
   useEffect(() => {
     if (!detailPanelRef.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.fromTo(
       detailPanelRef.current,
       { opacity: 0, y: 12 },

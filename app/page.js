@@ -48,6 +48,7 @@ export default function HomePage() {
   }, [heroImages.length]);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero entrance animation
@@ -251,7 +252,7 @@ export default function HomePage() {
               </p>
               <p>
                 Our certified engineers specialise in PLC programming, SCADA systems,
-                HMI design, process automation, and industrial IoT — delivering systems
+                HMI design, process automation, and industrial IoT: delivering systems
                 that are reliable, scalable, and precisely tailored to your
                 operational requirements.
               </p>

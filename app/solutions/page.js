@@ -11,6 +11,7 @@ export default function SolutionsPage() {
   const mainRef = useRef(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const reveals = mainRef.current?.querySelectorAll(".gs-reveal") ?? [];

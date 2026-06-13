@@ -238,6 +238,7 @@ export default function CompanyDetailPage() {
   }
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const reveals = mainRef.current.querySelectorAll(".gs-reveal");
