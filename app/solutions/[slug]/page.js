@@ -106,7 +106,7 @@ export default function SolutionDetailPage() {
         description={solution.description}
         image={solution.image}
         imageAlt={solution.title}
-        stats={[`${solution.content?.sections?.length || 0} scope areas`, "Engineering-led delivery", "Consultation available"]}
+        stats={[]}
       />
 
       {isRefineryTerminals ? (

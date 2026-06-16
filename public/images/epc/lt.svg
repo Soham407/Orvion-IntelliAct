@@ -1,4 +1,6 @@
-<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="100" fill="#fff"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#005a9c">LARSEN &amp; TOUBRO</text>
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="80" fill="#ffffff" rx="10"/>
+  <circle cx="50" cy="40" r="30" fill="#004B87" stroke="#FFD100" stroke-width="3"/>
+  <text x="50" y="47" dominant-baseline="middle" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">L&amp;T</text>
+  <text x="135" y="45" dominant-baseline="middle" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="900" fill="#004B87" letter-spacing="1">LARSEN &amp; TOUBRO</text>
 </svg>

@@ -152,7 +152,7 @@ export default function HomePage() {
         <div className="shell hero-home-inner">
           <div className="hero-content">
             <p className="eyebrow" ref={heroLabelRef}>
-              IntelliAct Automation Pvt. Limited
+              Orvion IntelliAct Automation
             </p>
             <h1 ref={heroHeadlineRef}>
               Intelligent Automation For Demanding Industry
@@ -202,27 +202,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="client-logo-grid-section">
-        <div className="shell">
-          <div className="section-center gs-reveal section-header-gap">
-            <p className="eyebrow">Global Technology</p>
-            <h2>Our Trusted Partners</h2>
-          </div>
-          <div className="client-logo-grid partners-logo-grid">
-            {partnerLogos.map((logo) => (
-              <div className="client-logo-cell partners-logo-cell gs-reveal" key={logo.alt}>
-                <div>
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LogoMarquee 
+        eyebrow="Market Footprint" 
+        title="Our Esteemed Clientele" 
+        logos={esteemedClienteleLogos} 
+      />
 
       <section className="section">
         <div className="shell two-column">
@@ -245,7 +229,7 @@ export default function HomePage() {
             <h2>Engineering the Future of Industrial Automation</h2>
             <div className="stack-copy">
               <p>
-                IntelliAct Automation Pvt. Limited is a premier industrial automation
+                Orvion IntelliAct Automation is a premier industrial automation
                 company with decades of proven expertise. We bridge the gap between
                 traditional operations and intelligent, connected manufacturing across
                 some of India&apos;s most demanding industrial environments.
@@ -260,6 +244,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SolutionsCarousel />
+
+      <LogoMarquee 
+        eyebrow="Global Technology" 
+        title="Our Trusted Partners" 
+        logos={partnerLogos} 
+      />
 
       <section className="section section-soft">
         <div className="shell">
@@ -277,13 +269,17 @@ export default function HomePage() {
               />
               <div className="media-card-copy">
                 <h3>Engineering Services</h3>
-                <p>
+                <p style={{ marginBottom: "12px" }}>
                   Expert solution on Engineering (Design, Detailed, Hardware,
                   Software), Project Execution, Site Implementation, AMC (Annual
                   Maintenance Services) and Manpower provision on field like
                   Safety, Security, Reliability and Sustainability side across all
-                  Process & Automation Industries.
+                  Process &amp; Automation Industries.
                 </p>
+                <ul className="detail-list" style={{ paddingLeft: "16px" }}>
+                  <li>Tank Farm System Commissioning Services</li>
+                  <li>Batch controller Commissioning Services</li>
+                </ul>
               </div>
             </article>
             <article className="media-card gs-reveal">
@@ -339,6 +335,20 @@ export default function HomePage() {
                 </p>
               </div>
             </article>
+            <article className="media-card gs-reveal">
+              <Image
+                src="/images/solutions/loop.jpg"
+                alt="Bank Services"
+                width={900}
+                height={560}
+              />
+              <div className="media-card-copy">
+                <h3>Bank Services</h3>
+                <p>
+                  Specialized automation and integration services for electrical bank systems, capacitor banks, and utility infrastructure, ensuring optimal power factor correction, voltage stability, and energy efficiency across industrial networks.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -366,7 +376,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SolutionsCarousel />
+
 
       <section id="products" className="section section-white">
         <div className="shell">
@@ -410,11 +420,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LogoMarquee 
-        eyebrow="Market Footprint" 
-        title="Our Esteemed Clientele" 
-        logos={esteemedClienteleLogos} 
-      />
+
 
       <section className="section section-soft">
         <div className="shell">
@@ -445,7 +451,7 @@ export default function HomePage() {
                 solutions and services.
               </p>
               <p>
-                Orvion IntelliAct aspires to lead the industrial automation sector by
+                Orvion IntelliAct Automation aspires to lead the industrial automation sector by
                 embracing the latest technologies to deliver sustainable and
                 intelligent solutions.
               </p>
@@ -585,7 +591,7 @@ export default function HomePage() {
           <span className="accent-bar center gs-reveal" />
           <h2 className="gs-reveal">Ready to Automate Your Operations?</h2>
           <p className="cta-copy gs-reveal">
-            Let&apos;s discuss how IntelliAct can engineer and deliver the
+            Let&apos;s discuss how Orvion IntelliAct Automation can engineer and deliver the
             automation solution your industry demands.
           </p>
           <div className="hero-actions center gs-reveal">

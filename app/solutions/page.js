@@ -46,7 +46,7 @@ export default function SolutionsPage() {
         description="Automation architectures, process optimization, safety controls, warehouse logistics, and monitoring systems built for complex industrial operations."
         image="/images/hero/Hero.avif"
         imageAlt="Industrial automation solution environment"
-        stats={["7 solution areas", "PLC, SCADA, safety and optimization", "Built for critical operations"]}
+        stats={[]}
       />
 
       <CatalogDirectory

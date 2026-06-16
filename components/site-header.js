@@ -27,15 +27,16 @@ const navItems = [
     label: "Products", 
     variant: "products",
     dropdown: [
-      { href: "/products/control-safety-system", label: "Control Systems" },
+      { href: "/products/control-safety-system", label: "Control System" },
       { href: "/products/field-instruments", label: "Field Instruments" },
-      { href: "/products/flow-level-instruments", label: "Flow & Level" },
-      { href: "/products/fire-alarm-system", label: "Fire Alarm & Safety" },
-      { href: "/products/advanced-layer", label: "Advanced Layer (APL)" },
+      { href: "/products/flow-level-instruments", label: "Flow Meter and Instruments" },
+      { href: "/products/advanced-layer", label: "Advanced Product Layer" },
+      { href: "/products/software", label: "Software's" },
+      { href: "/products/electrical", label: "Electrical" },
+      { href: "/products/gas-detector", label: "Flame and Gas Detector" },
+      { href: "/products/fire-alarm-system", label: "Fire Alarm & Life Safety" },
       { href: "/products/analyser", label: "Industrial Analysers" },
-      { href: "/products/gas-detector", label: "Gas Detection" },
-      { href: "/products/electrical", label: "Electrical & Switchgear" },
-      { href: "/products/software", label: "Software & IIoT" },
+      { href: "/products/cloud-solutions", label: "Cloud AI & Autonomy" },
     ]
   },
   {

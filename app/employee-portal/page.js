@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { PageHero } from "../../components/page-hero";
 
 function CategoryIcon({ category }) {
@@ -42,6 +42,15 @@ function CategoryIcon({ category }) {
           <path d="M8 8h8" />
           <path d="M8 12h5" />
           <path d="M15 15l1 2 2-4" />
+        </svg>
+      );
+    case "iso":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M12 13v4" />
         </svg>
       );
     default:
@@ -181,6 +190,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [currentFolder, setCurrentFolder] = useState("root");
 
   // Form state
   const [formTitle, setFormTitle] = useState("");
@@ -231,6 +241,10 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       fetchAccounts();
     }
   }, [userRole]);
+
+  useEffect(() => {
+    setCurrentFolder("root");
+  }, [selectedCategory]);
 
   // Handle document deletion
   const handleDelete = async (id, title) => {
@@ -407,6 +421,43 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
     }));
   };
 
+  const getSubfolders = () => {
+    const isoDocs = documents.filter(d => d.category === "iso" && d.folder_path);
+    if (currentFolder === "root") {
+      const roots = new Set();
+      isoDocs.forEach(d => {
+        const parts = d.folder_path.split("/");
+        if (parts.length > 0 && parts[0]) {
+          roots.add(parts[0]);
+        }
+      });
+      return Array.from(roots).sort().map(name => ({
+        name,
+        path: name,
+        fileCount: documents.filter(d => d.category === "iso" && (d.folder_path === name || d.folder_path?.startsWith(name + "/"))).length
+      }));
+    } else {
+      const subfolders = new Set();
+      isoDocs.forEach(d => {
+        if (d.folder_path.startsWith(currentFolder + "/")) {
+          const relative = d.folder_path.substring(currentFolder.length + 1);
+          const parts = relative.split("/");
+          if (parts.length > 0 && parts[0]) {
+            subfolders.add(parts[0]);
+          }
+        }
+      });
+      return Array.from(subfolders).sort().map(name => {
+        const subPath = `${currentFolder}/${name}`;
+        return {
+          name,
+          path: subPath,
+          fileCount: documents.filter(d => d.category === "iso" && (d.folder_path === subPath || d.folder_path?.startsWith(subPath + "/"))).length
+        };
+      });
+    }
+  };
+
   // Filter documents based on search and category
   const filteredDocs = documents.filter((doc) => {
     const matchesSearch =
@@ -512,10 +563,8 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                 {[
                   { id: "all", name: "All Documents" },
                   { id: "policy", name: "Policies" },
-                  { id: "hr", name: "HR" },
                   { id: "certificate", name: "Certificates" },
-                  { id: "safety", name: "Safety" },
-                  { id: "quality", name: "Quality" },
+                  { id: "iso", name: "ISO" },
                   { id: "general", name: "General" },
                 ].map((cat) => (
                   <button
@@ -551,6 +600,116 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
                 {error}
+              </div>
+            ) : selectedCategory === "iso" && !searchQuery ? (
+              <div className="folder-explorer">
+                {/* Breadcrumbs */}
+                <div className="folder-explorer-breadcrumb">
+                  <button 
+                    className={`breadcrumb-btn ${currentFolder === "root" ? "active" : ""}`}
+                    onClick={() => setCurrentFolder("root")}
+                  >
+                    ISO Documents
+                  </button>
+                  {currentFolder !== "root" && currentFolder.split("/").map((part, index, arr) => {
+                    const pathSlice = arr.slice(0, index + 1).join("/");
+                    const isLast = index === arr.length - 1;
+                    return (
+                      <Fragment key={pathSlice}>
+                        <span className="breadcrumb-separator">/</span>
+                        {isLast ? (
+                          <span className="breadcrumb-current">{part.replace(/_/g, " ")}</span>
+                        ) : (
+                          <button 
+                            className="breadcrumb-btn"
+                            onClick={() => setCurrentFolder(pathSlice)}
+                          >
+                            {part.replace(/_/g, " ")}
+                          </button>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                </div>
+
+                {/* Folders list */}
+                {getSubfolders().length > 0 && (
+                  <div className="folders-grid" style={{ marginBottom: 30 }}>
+                    {getSubfolders().map((folder) => (
+                      <div 
+                        key={folder.path}
+                        className="folder-card"
+                        onClick={() => setCurrentFolder(folder.path)}
+                      >
+                        <div className="folder-icon">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                          </svg>
+                        </div>
+                        <div className="folder-info">
+                          <h3>{folder.name.replace(/_/g, " ")}</h3>
+                          <p>{folder.fileCount} {folder.fileCount === 1 ? "document" : "documents"}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Files in the current folder */}
+                {filteredDocs.filter(d => d.folder_path === currentFolder).length === 0 ? (
+                  getSubfolders().length === 0 && (
+                    <div style={{ textAlign: "center", padding: "60px 0", background: "var(--soft)", borderRadius: 14, border: "1px solid var(--line)" }}>
+                      <p style={{ color: "var(--muted)", marginBottom: 0 }}>This folder is empty.</p>
+                    </div>
+                  )
+                ) : (
+                  <div className="documents-grid">
+                    {filteredDocs
+                      .filter(d => d.folder_path === currentFolder)
+                      .map((doc) => (
+                        <article className="document-card" key={doc.id}>
+                          <div className={`document-icon ${doc.category}`}>
+                            <CategoryIcon category={doc.category} />
+                          </div>
+                          <div className="document-info">
+                            <h3>{doc.title}</h3>
+                            <p>{doc.description}</p>
+                            <div className="document-meta">
+                              <span>{doc.file_type}</span>
+                              <span>{doc.file_size}</span>
+                              <span>
+                                Updated {doc.uploaded_at ? new Date(doc.uploaded_at).toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "Recent"}
+                              </span>
+                            </div>
+                            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 12 }}>
+                              <button
+                                className="document-download"
+                                onClick={() => handleDownload(doc.id, doc.file_name)}
+                                style={{ marginTop: 0 }}
+                              >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                  <polyline points="7 10 12 15 17 10" />
+                                  <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Download {doc.file_type}
+                              </button>
+                              <button
+                                className="document-view-btn"
+                                onClick={() => setPreviewDoc(doc)}
+                              >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                  <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                Preview
+                              </button>
+                            </div>
+                          </div>
+                        </article>
+                      ))}
+                  </div>
+                )}
               </div>
             ) : filteredDocs.length === 0 ? (
               <div style={{ textAlign: "center", padding: "80px 0", background: "var(--soft)", borderRadius: 14, border: "1px solid var(--line)" }}>
@@ -662,9 +821,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                     >
                       <option value="certificate">Company Certificate</option>
                       <option value="policy">Policy / Guideline</option>
-                      <option value="hr">Human Resources (HR)</option>
-                      <option value="safety">Health &amp; Safety (HSE)</option>
-                      <option value="quality">Quality Standard</option>
+                      <option value="iso">ISO Standard</option>
                       <option value="general">General / Admin</option>
                     </select>
                   </div>
@@ -1164,6 +1321,14 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
             </div>
           </div>
         )}
+        
+        {/* Ticker scrolling message */}
+        <div className="portal-ticker-container">
+          <div className="portal-ticker-track">
+            <span>ISO Documents list attached, One for ISO 9001, 14001, 45001. 1st document should be certificate, then policy, and Manual, thereafter you can load other documents. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>ISO Documents list attached, One for ISO 9001, 14001, 45001. 1st document should be certificate, then policy, and Manual, thereafter you can load other documents. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+        </div>
       </div>
     </div>
   );

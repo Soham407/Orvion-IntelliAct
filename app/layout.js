@@ -13,7 +13,7 @@ const lusitana = Lusitana({
 export const metadata = {
   metadataBase: new URL("https://intelliactind.com"),
   title: {
-    default: "Orvion IntelliAct Automation Pvt. Ltd.",
+    default: "Orvion IntelliAct Automation",
     template: "%s | Orvion IntelliAct Automation",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://intelliactind.com",
-    title: "Orvion IntelliAct Automation Pvt. Ltd.",
+    title: "Orvion IntelliAct Automation",
     description:
       "Industrial automation solutions across power, chemicals, steel, refineries, oil and gas, terminal automation, and water SCADA.",
     siteName: "Orvion IntelliAct Automation",
@@ -50,7 +50,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Orvion IntelliAct Automation Pvt. Ltd.",
+    title: "Orvion IntelliAct Automation",
     description:
       "Industrial automation solutions across power, chemicals, steel, refineries, oil and gas, terminal automation, and water SCADA.",
     images: ["/images/products/oil+refinery+in+Atlanta-+GA.jpeg"],

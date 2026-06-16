@@ -58,10 +58,18 @@ const officeLocations = [
 ];
 
 const engagementNotes = [
-  "Industrial automation project inquiries",
-  "DCS, PLC, SCADA, and instrumentation scope reviews",
-  "Turnkey execution planning and OEM coordination",
-  "Warehouse logistics and digital operations workflows",
+  "Engineering Services",
+  "Software Services",
+  "Consultancy & Manpower Services",
+  "Bank Services",
+  "Refinery &amp; Terminal Automation",
+  "Power Plant &amp; Warehouse Automation",
+  "Chemical &amp; Pharma Automation",
+  "Water SCADA &amp; Utility Automation",
+  "Compressor Control Solutions",
+  "Machine Monitoring &amp; Vibration",
+  "Process Optimization Solutions",
+  "Cloud Solutions",
 ];
 
 const responsePoints = [
@@ -225,6 +233,15 @@ export default function ContactPage() {
                   <label className="mini-label" htmlFor="inquiry-type">Inquiry Type</label>
                   <select id="inquiry-type" name="inquiryType" className="contact-input contact-select" defaultValue="" required>
                     <option value="" disabled>Select an inquiry type</option>
+                    <option>Services</option>
+                    <option>Refinery &amp; Terminal Automation</option>
+                    <option>Power Plant &amp; Warehouse Automation</option>
+                    <option>Chemical &amp; Pharma Automation</option>
+                    <option>Water SCADA &amp; Utility Automation</option>
+                    <option>Compressor Control Solutions</option>
+                    <option>Machine Monitoring &amp; Vibration</option>
+                    <option>Process Optimization Solutions</option>
+                    <option>Cloud Solutions</option>
                     <option>Industrial automation project</option>
                     <option>Warehouse logistics solution</option>
                     <option>Retrofit or modernization</option>

@@ -53,7 +53,7 @@ export default function ProductDetailPage() {
         description={product.description}
         image={product.image}
         imageAlt={product.title}
-        stats={[`${product.content?.sections?.length || 0} technical modules`, "Application-fit product range", "Sales support available"]}
+        stats={[]}
       />
 
       <DetailContentBrowser
