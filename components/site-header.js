@@ -82,6 +82,12 @@ export function SiteHeader() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setIsOpen(false);
+    setActiveDropdown(null);
+    setExpandedNavItem(null);
+  }, [pathname]);
+
   const toggleDropdown = (label) => {
     if (activeDropdown === label) {
       setActiveDropdown(null);
@@ -114,7 +120,7 @@ export function SiteHeader() {
           {navItems.map((item) => (
             <div
               key={item.label}
-              className="nav-item"
+              className={`nav-item ${expandedNavItem === item.label ? "is-expanded" : ""}`}
               onMouseEnter={() => item.dropdown && setExpandedNavItem(item.label)}
               onMouseLeave={() => setExpandedNavItem(null)}
               onFocusCapture={() => item.dropdown && setExpandedNavItem(item.label)}
@@ -129,6 +135,7 @@ export function SiteHeader() {
                 className={`nav-link nav-link-${item.variant} ${pathname === item.href || (item.dropdown && item.dropdown.some(sub => pathname === sub.href)) ? "active" : ""}`}
                 aria-haspopup={item.dropdown ? "true" : undefined}
                 aria-expanded={item.dropdown ? expandedNavItem === item.label : undefined}
+                onClick={() => setExpandedNavItem(null)}
               >
                 {item.label}
                 {item.dropdown && (
@@ -141,7 +148,13 @@ export function SiteHeader() {
                 <div className="dropdown-menu" role="menu" aria-label={`${item.label} submenu`}>
                   <div className="dropdown-grid">
                     {item.dropdown.map((subItem) => (
-                      <Link key={subItem.href} href={subItem.href} className="dropdown-link" role="menuitem">
+                      <Link 
+                        key={subItem.href} 
+                        href={subItem.href} 
+                        className="dropdown-link" 
+                        role="menuitem"
+                        onClick={() => setExpandedNavItem(null)}
+                      >
                         <span className="dropdown-label">{subItem.label}</span>
                       </Link>
                     ))}

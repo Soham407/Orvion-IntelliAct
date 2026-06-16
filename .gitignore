@@ -12,3 +12,10 @@ details.md
 details_images/
 venv/
 
+# Graphify
+graphify-out/.graphify_*
+graphify-out/cache/
+graphify-out/converted/
+graphify-out/2026-*/
+graphify-out/cost.json
+

@@ -189,7 +189,8 @@ img {
   opacity: 0.7;
 }
 
-.nav-item:hover .chevron {
+.nav-item:hover .chevron,
+.nav-item.is-expanded .chevron {
   transform: translateY(2px);
 }
 
@@ -355,8 +356,7 @@ img {
   height: 10px;
 }
 
-.nav-item:hover .dropdown-menu,
-.nav-item:focus-within .dropdown-menu {
+.nav-item.is-expanded .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
