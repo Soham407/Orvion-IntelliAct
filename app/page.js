@@ -269,17 +269,13 @@ export default function HomePage() {
               />
               <div className="media-card-copy">
                 <h3>Engineering Services</h3>
-                <p style={{ marginBottom: "12px" }}>
+                <p>
                   Expert solution on Engineering (Design, Detailed, Hardware,
                   Software), Project Execution, Site Implementation, AMC (Annual
                   Maintenance Services) and Manpower provision on field like
                   Safety, Security, Reliability and Sustainability side across all
                   Process &amp; Automation Industries.
                 </p>
-                <ul className="detail-list" style={{ paddingLeft: "16px" }}>
-                  <li>Tank Farm System Commissioning Services</li>
-                  <li>Batch controller Commissioning Services</li>
-                </ul>
               </div>
             </article>
             <article className="media-card gs-reveal">
@@ -337,15 +333,29 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/solutions/loop.jpg"
-                alt="Bank Services"
+                src="/images/products/terminal.avif"
+                alt="Tank Farm System Commissioning Services"
                 width={900}
                 height={560}
               />
               <div className="media-card-copy">
-                <h3>Bank Services</h3>
+                <h3>Tank Farm System Commissioning Services</h3>
                 <p>
-                  Specialized automation and integration services for electrical bank systems, capacitor banks, and utility infrastructure, ensuring optimal power factor correction, voltage stability, and energy efficiency across industrial networks.
+                  Comprehensive commissioning services for industrial tank farms, including terminal automation, tank gauging systems integration, safety interlock verification, and terminal control systems setup.
+                </p>
+              </div>
+            </article>
+            <article className="media-card gs-reveal">
+              <Image
+                src="/images/products/chemical_pharma.avif"
+                alt="Batch controller Commissioning Services"
+                width={900}
+                height={560}
+              />
+              <div className="media-card-copy">
+                <h3>Batch controller Commissioning Services</h3>
+                <p>
+                  Expert commissioning of industrial batch controllers, covering recipe management integration, precise measurement calibration, flow control tuning, and validation for food, chemical, and pharmaceutical batching processes.
                 </p>
               </div>
             </article>
