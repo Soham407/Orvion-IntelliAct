@@ -32,11 +32,11 @@ export default function HomePage() {
   const mainRef = useRef(null);
 
   const heroImages = [
-    "/images/products/oil+refinery+in+Atlanta-+GA.jpeg",
-    "/2149057713.avif",
-    "/17731.avif",
-    "/119619.avif",
-    "/305.avif",
+    "/images for Orvion/Company Overview.jpg",
+    "/images for Orvion/Power Plant & Warehouse Automation.png",
+    "/images for Orvion/Supcon InPlant SCADA software enhances Control and Safety Systems.png",
+    "/images for Orvion/Terminal Automation.png",
+    "/images for Orvion/Water SCADA & Utility Automation.png",
   ];
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
@@ -179,8 +179,8 @@ export default function HomePage() {
             </div>
             <div className="floating-card" ref={heroCardRef}>
               <Image
-                src="/images/products/water scada.avif"
-                alt="Water SCADA infrastructure"
+                src="/images for Orvion/Supcon InPlant SCADA software enhances Control and Safety Systems.png"
+                alt="SCADA and safety systems visibility"
                 width={640}
                 height={360}
                 sizes="(max-width: 1024px) 100vw, 320px"
@@ -212,8 +212,8 @@ export default function HomePage() {
         <div className="shell two-column">
           <div className="image-frame gs-reveal">
             <Image
-              src="/images/company/engg 1.avif"
-              alt="Automation engineering desk"
+              src="/images for Orvion/home page images/Engineering Services.jpg"
+              alt="Automation engineering services"
               width={900}
               height={1040}
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -262,7 +262,7 @@ export default function HomePage() {
           <div className="feature-grid">
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/chemical 1.avif"
+                src="/images for Orvion/home page images/Engineering Services.jpg"
                 alt="Engineering Services"
                 width={900}
                 height={560}
@@ -280,7 +280,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/Software Industry.jpg"
+                src="/images for Orvion/home page images/Softwares.jpg"
                 alt="Software Services"
                 width={900}
                 height={560}
@@ -299,7 +299,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/water scada.avif"
+                src="/images for Orvion/home page images/Consultancy.jpg"
                 alt="Consultancy"
                 width={900}
                 height={560}
@@ -316,7 +316,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/company/manpower 1.avif"
+                src="/images for Orvion/Company/Career.jpg"
                 alt="Manpower Services"
                 width={900}
                 height={560}
@@ -333,7 +333,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/terminal.avif"
+                src="/images for Orvion/home page images/Terminals.jpg"
                 alt="Tank Farm System Commissioning Services"
                 width={900}
                 height={560}
@@ -347,7 +347,7 @@ export default function HomePage() {
             </article>
             <article className="media-card gs-reveal">
               <Image
-                src="/images/products/chemical_pharma.avif"
+                src="/images for Orvion/Batch Controller.png"
                 alt="Batch controller Commissioning Services"
                 width={900}
                 height={560}

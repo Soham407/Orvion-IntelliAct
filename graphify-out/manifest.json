@@ -25,13 +25,13 @@
     "semantic_hash": "78793ca0a485dd2ac4dd88abd0cf3568"
   },
   "app/company/[slug]/page.js": {
-    "mtime": 1781546952.2777717,
-    "ast_hash": "a58bd2029b932351ff677013b04edae4",
+    "mtime": 1782546800.5602727,
+    "ast_hash": "0cf839a48ab6bb1adbd190d97c96cad7",
     "semantic_hash": ""
   },
   "app/contact/page.js": {
-    "mtime": 1781584138.2653358,
-    "ast_hash": "3f1386acec30b978dccd7e798d61b359",
+    "mtime": 1782546813.7939367,
+    "ast_hash": "e3bbfc214d9dcc0e2b7d24956d02f4b0",
     "semantic_hash": ""
   },
   "app/employee-portal/layout.js": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "app/page.js": {
-    "mtime": 1781584134.3764782,
-    "ast_hash": "31ee54d10b4c027e40044a6d5b9c5c0c",
+    "mtime": 1782546807.1940126,
+    "ast_hash": "e06b1fdb0a869fc194090075dd3dbd99",
     "semantic_hash": ""
   },
   "app/products/[slug]/page.js": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "app/products/page.js": {
-    "mtime": 1781548194.3270216,
-    "ast_hash": "934b56f07346952d012c33466e3b6d98",
+    "mtime": 1782546811.5351079,
+    "ast_hash": "748e906e84d5fc693755752fcb06a6af",
     "semantic_hash": ""
   },
   "app/projects/page.js": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "app/solutions/page.js": {
-    "mtime": 1781548191.0214953,
-    "ast_hash": "5658e83c93611d8c1423326c983a1318",
+    "mtime": 1782546809.1693733,
+    "ast_hash": "978274c508dac5d5ea7df971d31d6988",
     "semantic_hash": ""
   },
   "components/catalog-directory.js": {
@@ -150,9 +150,9 @@
     "semantic_hash": "8e82573d7e63f206943f58e0bdd8b5e9"
   },
   "lib/company-data.js": {
-    "mtime": 1781172291.7399087,
-    "ast_hash": "fe3028997fcd9812144935556bcd6260",
-    "semantic_hash": "fe3028997fcd9812144935556bcd6260"
+    "mtime": 1782546819.1993344,
+    "ast_hash": "d6d0e7b08ad78588c7523a6127c20a57",
+    "semantic_hash": ""
   },
   "lib/db-mock.json": {
     "mtime": 1781550051.8642206,
@@ -165,19 +165,19 @@
     "semantic_hash": ""
   },
   "lib/products-data.js": {
-    "mtime": 1781548358.3297691,
-    "ast_hash": "35afbf08884c5ec3480dd4daba13df20",
+    "mtime": 1782546844.223053,
+    "ast_hash": "2070504ee4ab9caf281270d6ca266b48",
     "semantic_hash": ""
   },
   "lib/site-data.js": {
-    "mtime": 1781546940.4772902,
-    "ast_hash": "844304035814e41dabfddc383d31e9d9",
+    "mtime": 1782546829.7898562,
+    "ast_hash": "b027731f31e1910dd84bf378bd1116f0",
     "semantic_hash": ""
   },
   "lib/solutions-data.js": {
-    "mtime": 1781172291.7524831,
-    "ast_hash": "8e2e13268ada7f62e1d214ff463fbb33",
-    "semantic_hash": "8e2e13268ada7f62e1d214ff463fbb33"
+    "mtime": 1782546844.2268176,
+    "ast_hash": "196b0cba7c450c96f50d741ee2259c79",
+    "semantic_hash": ""
   },
   "next.config.mjs": {
     "mtime": 1777382013.0738928,
@@ -572,6 +572,221 @@
   "Clients assets/Web site/ISO_9001_docs/ISO 9001-2015.PDF": {
     "mtime": 1744980936.0,
     "ast_hash": "79d56cd0d3f9921517b4f97cf744740c",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/1782356749_0.jpg": {
+    "mtime": 1782357097.0,
+    "ast_hash": "321bc14e73bfc1e85a398336fe34232b",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company Overview.jpg": {
+    "mtime": 1782543892.0,
+    "ast_hash": "0ee104d6c34c513912686c2832a13b11",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Career.jpg": {
+    "mtime": 1782544406.0,
+    "ast_hash": "9acadf964c8ad81cd3eb5f966e3f3b5d",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Company profile.jpg": {
+    "mtime": 1782544038.0,
+    "ast_hash": "9ca1b5ddbfcc4fe6b5caf5b85428f639",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Contact us.jpg": {
+    "mtime": 1782544460.0,
+    "ast_hash": "cff7bea9067fc055edc6e6df7c28cf2c",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Mission vision.jpg": {
+    "mtime": 1782544128.0,
+    "ast_hash": "08e967751dc6c7ccee2530224c92dddc",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Quality Policy.jpg": {
+    "mtime": 1782544316.0,
+    "ast_hash": "d16eddf11ae064fe9dc0609678b4e31e",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/Why Choose IntelliAct.jpg": {
+    "mtime": 1782544193.0,
+    "ast_hash": "c4f7feabd080b65787f9ce77488c3e89",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Company/certification.jpg": {
+    "mtime": 1782544254.0,
+    "ast_hash": "dad2c2c4cef4b48634a3abb8e6c033af",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Differential Pressure Flowmeter.jpg": {
+    "mtime": 1782442960.0,
+    "ast_hash": "60b07afb8727485d740c0afa02e46eec",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Electric Pneumatic Positioner.webp": {
+    "mtime": 1782441742.0,
+    "ast_hash": "2f5c210b7d27e28a4fa35666bc706d88",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Electrical Cabinets.webp": {
+    "mtime": 1782441827.0,
+    "ast_hash": "fcf9d7c306465c593397db18683af204",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Electromagnetic Flowmeter.webp": {
+    "mtime": 1782443371.0,
+    "ast_hash": "7da81578cefbe59f940acd613aa786f6",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Flow & Level Measurement.webp": {
+    "mtime": 1782441954.0,
+    "ast_hash": "ccfd64111277f6883a4ff413b92cc3bc",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Gas detector with LED display.webp": {
+    "mtime": 1782322562.0,
+    "ast_hash": "6421fa83d3f8986d573f1f144d52727b",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Guided Wave Radar.jpg": {
+    "mtime": 1782442461.0,
+    "ast_hash": "70c677871a6d0d67ff7975bae7f21c5e",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Level Guage and Switch.webp": {
+    "mtime": 1782442537.0,
+    "ast_hash": "d0023335ddef911cfd1047a5c6ef5ee5",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/PLC - GCS-G3.jpeg": {
+    "mtime": 1782320368.0,
+    "ast_hash": "3269e05a71aeb439de9e325cfe67c80d",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Paperless Recorder.jpg": {
+    "mtime": 1782441100.0,
+    "ast_hash": "4b3bdf62cc19840acef1c68a23b39799",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Pressure Guage.jpg": {
+    "mtime": 1782322729.0,
+    "ast_hash": "bc37bc9c41efb60d457565448b0aa8d1",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Process Controller.webp": {
+    "mtime": 1782441155.0,
+    "ast_hash": "1d26d52c7ffd61e79498be43970fb8f6",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Radar Level Transmitter.jpg": {
+    "mtime": 1782442407.0,
+    "ast_hash": "9715652d807476299ff5c5929d354dd0",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/SAFETY PLC TCS-900 (SIL-3).jpg": {
+    "mtime": 1782321758.0,
+    "ast_hash": "4ef80318bb71d9456d5252c9ec32c58d",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/SMART REMOTE IO : EIO.jpg": {
+    "mtime": 1782322415.0,
+    "ast_hash": "d523b43920729a44a3cbfb4dc59ab2c3",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/SURGE PROTECTION DEVICE.webp": {
+    "mtime": 1782322145.0,
+    "ast_hash": "44458bd8066bde8f132f02d6b8d5d159",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Smart Valve Positioner.webp": {
+    "mtime": 1782361530.0,
+    "ast_hash": "dbc2e5b49c7ade0ae4e51087d60997b6",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Temperature Transmitter.webp": {
+    "mtime": 1782322632.0,
+    "ast_hash": "451a56ae41bc16ded60733bee5dbaa31",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Vibrating Fork type Level Switch.jpg": {
+    "mtime": 1782442575.0,
+    "ast_hash": "2b2ecdf2b7f294871701cdfe38f95458",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/Vortex flowmeter.jpg": {
+    "mtime": 1782442684.0,
+    "ast_hash": "4e150b84858b1f9ca85cad30d7574892",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Chemicals.jpg": {
+    "mtime": 1782474892.0,
+    "ast_hash": "b5c00f2c1eacee3caa82f772e5814c10",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Cloud AI & Autonomy.jpeg": {
+    "mtime": 1782541354.0,
+    "ast_hash": "7944d6f70ea33d80f46c839af5e69f24",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Consultancy.jpg": {
+    "mtime": 1782476284.0,
+    "ast_hash": "402ea80fd15d908b4b3a39d311b9e807",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Control System.jpg": {
+    "mtime": 1782478562.0,
+    "ast_hash": "9a4208b6424e46a67e1ee24f3f2a213a",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Electrical.jpg": {
+    "mtime": 1782479291.0,
+    "ast_hash": "3c6c716852e1abd0b68abfa65d5d196c",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Engineering Services.jpg": {
+    "mtime": 1782476018.0,
+    "ast_hash": "5cdaba847f9b2f546b420e1021de653c",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Field Instruments.jpg": {
+    "mtime": 1782478973.0,
+    "ast_hash": "6b724a8b26d13472765ef8ca8f295229",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Fire Alarm.jpg": {
+    "mtime": 1782487076.0,
+    "ast_hash": "e01b77ac00b58ba974355834c8d3a68b",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Flame and Gas Detector.jpg": {
+    "mtime": 1782479539.0,
+    "ast_hash": "0d17c7dc8aff7178f05fff203cd6f643",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Metals and Mining Automation.jpg": {
+    "mtime": 1782475065.0,
+    "ast_hash": "c4c7020e96f40801da771fc52756492c",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Pharma.jpg": {
+    "mtime": 1782475003.0,
+    "ast_hash": "125080a1e0c7b51318e9ead36384c6bd",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Softwares.jpg": {
+    "mtime": 1782479158.0,
+    "ast_hash": "9f121d841c9350c76fddb417b274ffd2",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/Terminals.jpg": {
+    "mtime": 1782475454.0,
+    "ast_hash": "89a4e6d85bcbfea7a7e6d1196fedcf59",
+    "semantic_hash": ""
+  },
+  "public/images for Orvion/home page images/power.jpg": {
+    "mtime": 1782475147.0,
+    "ast_hash": "546e0f5a313126b50a010055a7f8c068",
     "semantic_hash": ""
   }
 }

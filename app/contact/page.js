@@ -159,7 +159,7 @@ export default function ContactPage() {
         eyebrow="Get In Touch"
         title="Talk To Our Automation Team"
         description="Connect with Orvion IntelliAct for industrial automation programs, control-system modernization, warehouse logistics workflows, and execution support across critical facilities."
-        image="/images/company/why_intelliact.avif"
+        image="/images for Orvion/Company/Contact us.jpg"
         imageAlt="Talk to our automation team"
         stats={["Typical response < 24h", "Engineering-led screening", "Pune & Chennai offices"]}
       />

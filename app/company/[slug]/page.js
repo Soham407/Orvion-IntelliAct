@@ -271,7 +271,7 @@ export default function CompanyDetailPage() {
         eyebrow="Company Information"
         title={page.title}
         description={page.description}
-        image={page.slug === "certification" ? "/images/certificates/2150957727.avif" : page.image}
+        image={page.image}
         imageAlt={page.title}
         stats={[]}
       />

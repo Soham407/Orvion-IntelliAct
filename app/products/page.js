@@ -44,7 +44,7 @@ export default function ProductsPage() {
         eyebrow="Our Offerings"
         title="Industrial Product Portfolio"
         description="Explore SIL-rated control systems, field instrumentation, switchgear, fire and gas safety, analysers, and industrial software in one organized technical portfolio."
-        image="/images/products/electrical_switchgear.avif"
+        image="/images for Orvion/Electrical Cabinets.webp"
         imageAlt="Industrial control and switchgear product portfolio"
         stats={[]}
       />
