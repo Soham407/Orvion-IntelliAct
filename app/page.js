@@ -32,11 +32,11 @@ export default function HomePage() {
   const mainRef = useRef(null);
 
   const heroImages = [
-    "/images for Orvion/Company Overview.jpg",
-    "/images for Orvion/Power Plant & Warehouse Automation.png",
-    "/images for Orvion/Supcon InPlant SCADA software enhances Control and Safety Systems.png",
-    "/images for Orvion/Terminal Automation.png",
-    "/images for Orvion/Water SCADA & Utility Automation.png",
+    "/images/products/oil+refinery+in+Atlanta-+GA.jpeg",
+    "/2149057713.avif",
+    "/17731.avif",
+    "/119619.avif",
+    "/305.avif",
   ];
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
@@ -179,8 +179,8 @@ export default function HomePage() {
             </div>
             <div className="floating-card" ref={heroCardRef}>
               <Image
-                src="/images for Orvion/Supcon InPlant SCADA software enhances Control and Safety Systems.png"
-                alt="SCADA and safety systems visibility"
+                src="/images/products/water scada.avif"
+                alt="Water SCADA infrastructure"
                 width={640}
                 height={360}
                 sizes="(max-width: 1024px) 100vw, 320px"

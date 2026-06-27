@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "app/page.js": {
-    "mtime": 1782546807.1940126,
-    "ast_hash": "e06b1fdb0a869fc194090075dd3dbd99",
+    "mtime": 1782548871.8396776,
+    "ast_hash": "bb061f634cf1d03a069dd248fe881dac",
     "semantic_hash": ""
   },
   "app/products/[slug]/page.js": {
