@@ -25,8 +25,8 @@
     "semantic_hash": "78793ca0a485dd2ac4dd88abd0cf3568"
   },
   "app/company/[slug]/page.js": {
-    "mtime": 1782546800.5602727,
-    "ast_hash": "0cf839a48ab6bb1adbd190d97c96cad7",
+    "mtime": 1782706322.1050549,
+    "ast_hash": "c881b4b3d6c238aa59317a34365fa3ea",
     "semantic_hash": ""
   },
   "app/contact/page.js": {
@@ -95,9 +95,9 @@
     "semantic_hash": "8e4ed50dff6d58cd7efc566d3acfdfc8"
   },
   "components/catalog-hero.js": {
-    "mtime": 1780641428.4494436,
-    "ast_hash": "6d38e84e9704d0d6a0125527c6c7b019",
-    "semantic_hash": "6d38e84e9704d0d6a0125527c6c7b019"
+    "mtime": 1782706317.9965086,
+    "ast_hash": "3107b9cfe86c2083f8175e3a3e4ad16c",
+    "semantic_hash": ""
   },
   "components/detail-browser.js": {
     "mtime": 1781384864.7118692,

@@ -19,16 +19,18 @@ export function CatalogHero({ eyebrow, title, description, image, imageAlt, stat
             </div>
           ) : null}
         </div>
-        <div className="catalog-hero-media">
-          <Image
-            src={image}
-            alt={imageAlt || title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 44vw"
-            className="object-cover"
-            priority
-          />
-        </div>
+        {image ? (
+          <div className="catalog-hero-media">
+            <Image
+              src={image}
+              alt={imageAlt || title}
+              fill
+              sizes="(max-width: 1024px) 100vw, 44vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        ) : null}
       </div>
     </section>
   );

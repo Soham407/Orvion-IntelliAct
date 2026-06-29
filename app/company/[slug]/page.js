@@ -271,7 +271,7 @@ export default function CompanyDetailPage() {
         eyebrow="Company Information"
         title={page.title}
         description={page.description}
-        image={page.image}
+        image={null}
         imageAlt={page.title}
         stats={[]}
       />
