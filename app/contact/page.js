@@ -30,9 +30,9 @@ const contactChannels = [
   },
   {
     label: "Call Us",
-    title: "+91 98902 00799",
+    title: "+91 80621 82184",
     detail: "Speak directly with our team for active project requirements.",
-    href: "tel:+919890200799",
+    href: "tel:+918062182184",
   },
 ];
 
@@ -329,7 +329,7 @@ export default function ContactPage() {
               can route your inquiry quickly.
             </p>
             <div className="hero-actions contact-actions">
-              <a href="tel:+919890200799" className="button primary">Call Now</a>
+              <a href="tel:+918062182184" className="button primary">Call Now</a>
               <a href="mailto:info@intelliactind.com" className="button secondary contact-alt-action">
                 Email Brief
               </a>
