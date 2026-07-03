@@ -20,8 +20,8 @@ export function SiteFooter() {
             <Image
               src="/images/Logo/OIAPL Logo - MASTER CTC.svg"
               alt="Orvion IntelliAct Automation"
-              width={170}
-              height={56}
+              width={220}
+              height={72}
               className="logo-img"
             />
           </Link>
