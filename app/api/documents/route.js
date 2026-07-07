@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
-import { getDocuments, uploadDocument } from "../../../lib/db";
+import { getDocuments, uploadDocument, isMysqlConfigured } from "../../../lib/db";
 
 // GET /api/documents - Retrieve all documents metadata
 export async function GET() {
   try {
     const list = await getDocuments();
-    return NextResponse.json(list, { status: 200 });
+    return NextResponse.json(list, { 
+      status: 200,
+      headers: { "x-mock-db": isMysqlConfigured() ? "false" : "true" }
+    });
   } catch (error) {
     console.error("GET /api/documents error:", error);
     return NextResponse.json(

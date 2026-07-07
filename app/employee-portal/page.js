@@ -186,6 +186,8 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [previewDoc, setPreviewDoc] = useState(null);
+  const [isMockDB, setIsMockDB] = useState(false);
+  const [previewDocUrl, setPreviewDocUrl] = useState("");
 
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState("");
@@ -217,8 +219,18 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       setLoading(true);
       const res = await fetch("/api/documents");
       if (!res.ok) throw new Error("Failed to fetch documents from database");
+      
+      const isMock = res.headers.get("x-mock-db") === "true";
+      setIsMockDB(isMock);
       const data = await res.json();
-      setDocuments(data);
+      
+      if (isMock) {
+        const { clientGetDocs } = await import("../../lib/client-db");
+        const clientData = await clientGetDocs(data);
+        setDocuments(clientData);
+      } else {
+        setDocuments(data);
+      }
       setError("");
     } catch (err) {
       setError(err.message || "Something went wrong while loading files.");
@@ -253,6 +265,13 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
     }
 
     try {
+      if (isMockDB) {
+        const { clientDeleteDoc } = await import("../../lib/client-db");
+        await clientDeleteDoc(id);
+        fetchDocs();
+        return;
+      }
+
       const res = await fetch(`/api/documents/${id}`, {
         method: "DELETE",
       });
@@ -283,14 +302,18 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       formData.append("category", formCategory);
       formData.append("file", selectedFile);
 
-      const res = await fetch("/api/documents", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to upload document");
+      if (isMockDB) {
+        const { clientUploadDoc } = await import("../../lib/client-db");
+        await clientUploadDoc(formData);
+      } else {
+        const res = await fetch("/api/documents", {
+          method: "POST",
+          body: formData,
+        });
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || "Failed to upload document");
+        }
       }
 
       setUploadSuccess(true);
@@ -311,8 +334,44 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   };
 
   // Trigger file download using API route
-  const handleDownload = (id, fileName) => {
+  const handleDownload = async (id, fileName) => {
+    if (isMockDB) {
+      const { clientGetDocBlob } = await import("../../lib/client-db");
+      const blob = await clientGetDocBlob(id);
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+      }
+    }
     window.location.href = `/api/documents/${id}/download`;
+  };
+
+  const handlePreview = async (doc) => {
+    setPreviewDoc(doc);
+    if (isMockDB) {
+      const { clientGetDocBlob } = await import("../../lib/client-db");
+      const blob = await clientGetDocBlob(doc.id);
+      if (blob) {
+        setPreviewDocUrl(URL.createObjectURL(blob));
+        return;
+      }
+    }
+    setPreviewDocUrl(`/api/documents/${doc.id}/download?inline=true`);
+  };
+
+  const closePreview = () => {
+    setPreviewDoc(null);
+    if (isMockDB && previewDocUrl && previewDocUrl.startsWith('blob:')) {
+      URL.revokeObjectURL(previewDocUrl);
+    }
+    setPreviewDocUrl("");
   };
 
   // Handle adding/editing user accounts
@@ -696,7 +755,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                               </button>
                               <button
                                 className="document-view-btn"
-                                onClick={() => setPreviewDoc(doc)}
+                                onClick={() => handlePreview(doc)}
                               >
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
@@ -747,7 +806,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                         </button>
                         <button
                           className="document-view-btn"
-                          onClick={() => setPreviewDoc(doc)}
+                          onClick={() => handlePreview(doc)}
                         >
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
@@ -929,7 +988,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                             <button
                               type="button"
                               className="btn-preview"
-                              onClick={() => setPreviewDoc(doc)}
+                              onClick={() => handlePreview(doc)}
                               style={{
                                 display: "inline-flex",
                                 alignItems: "center",
@@ -1204,7 +1263,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
         )}
 
         {previewDoc && (
-          <div className="portal-preview-modal-overlay" onClick={() => setPreviewDoc(null)}>
+          <div className="portal-preview-modal-overlay" onClick={closePreview}>
             <div className="portal-preview-modal-content" onClick={(e) => e.stopPropagation()}>
               <div className="portal-preview-modal-header">
                 <div>
@@ -1213,7 +1272,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <a
-                    href={`/api/documents/${previewDoc.id}/download?inline=true`}
+                    href={previewDocUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button secondary"
@@ -1257,7 +1316,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   </button>
                   <button
                     className="portal-preview-close"
-                    onClick={() => setPreviewDoc(null)}
+                    onClick={closePreview}
                     style={{
                       background: "none",
                       border: "none",
@@ -1279,7 +1338,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
               <div className="portal-preview-modal-body" style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
                 {["pdf", "png", "jpg", "jpeg", "txt", "svg"].includes(previewDoc.file_type?.toLowerCase() || previewDoc.file_name.split(".").pop()?.toLowerCase()) ? (
                   <iframe
-                    src={`/api/documents/${previewDoc.id}/download?inline=true`}
+                    src={previewDocUrl}
                     title={previewDoc.title}
                     style={{
                       width: "100%",
