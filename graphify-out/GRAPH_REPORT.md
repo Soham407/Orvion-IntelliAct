@@ -1,16 +1,16 @@
-# Graph Report - Orvion-IntelliAct  (2026-06-16)
+# Graph Report - Orvion-IntelliAct  (2026-07-07)
 
 ## Corpus Check
-- 45 files · ~118,128 words
+- 45 files · ~1,561,774 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 316 nodes · 749 edges · 61 communities (22 shown, 39 thin omitted)
+- 315 nodes · 748 edges · 61 communities (22 shown, 39 thin omitted)
 - Extraction: 41% EXTRACTED · 59% INFERRED · 0% AMBIGUOUS · INFERRED: 441 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `118f0f3b`
+- Built from commit: `3098b5ed`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -122,8 +122,8 @@ Cohesion: 1.00
 Nodes (18): TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS (+10 more)
 
 ### Community 5 - "route.js"
-Cohesion: 0.25
-Nodes (13): GET(), POST(), GET(), getMimeType(), DELETE(), deleteDocument(), getDocumentById(), getDocuments() (+5 more)
+Cohesion: 0.28
+Nodes (12): GET(), POST(), GET(), getMimeType(), DELETE(), deleteDocument(), getDocumentById(), getDocuments() (+4 more)
 
 ### Community 6 - "IAPL Pol 20 Attendance and Working Ho..."
 Cohesion: 0.16
@@ -170,7 +170,7 @@ Cohesion: 0.67
 Nodes (3): IAPL Pol 13 We respect the environment  April 2025 Rev 0, 3. GOALS AND GUIDELINES, 4. KEEP IN MIND
 
 ## Knowledge Gaps
-- **101 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+96 more)
+- **100 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+95 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -178,7 +178,7 @@ Nodes (3): IAPL Pol 13 We respect the environment  April 2025 Rev 0, 3. GOALS AN
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `IAPL Pol 20 Attendance and Working Hours Policy April 2026 Rev 0` connect `IAPL Pol 20 Attendance and Working Ho...` to `2. APPLICABILITY/SCOPE OF COVERAGE`, `IAPL Pol 02 Local Conveyance Policy O...`, `IAPL Pol 06 Leave Policy Original Apr...`, `TABLE OF CONTENTS`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `IAPL Pol 11 Code of Conduct April 2025 Rev 0` connect `IAPL Pol 11 Code of Conduct April 202...` to `2. APPLICABILITY/SCOPE OF COVERAGE`, `IAPL Pol 06 Leave Policy Original Apr...`, `TABLE OF CONTENTS`?**
   _High betweenness centrality (0.041) - this node is a cross-community bridge._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**

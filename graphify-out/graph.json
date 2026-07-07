@@ -884,20 +884,10 @@
       "norm_label": "db.js"
     },
     {
-      "label": "MOCK_FILE_PATH",
-      "file_type": "code",
-      "source_file": "lib/db.js",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "lib_db_mock_file_path",
-      "community": 5,
-      "norm_label": "mock_file_path"
-    },
-    {
       "label": "isMysqlConfigured()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "lib_db_ismysqlconfigured",
       "community": 5,
@@ -907,7 +897,7 @@
       "label": "initialMockDocuments",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L33",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "lib_db_initialmockdocuments",
       "community": 5,
@@ -917,7 +907,7 @@
       "label": "initDatabase()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L158",
+      "source_location": "L160",
       "_origin": "ast",
       "id": "lib_db_initdatabase",
       "community": 5,
@@ -927,7 +917,7 @@
       "label": "getDocuments()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L214",
+      "source_location": "L216",
       "_origin": "ast",
       "id": "lib_db_getdocuments",
       "community": 5,
@@ -937,7 +927,7 @@
       "label": "getDocumentById()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L245",
+      "source_location": "L247",
       "_origin": "ast",
       "id": "lib_db_getdocumentbyid",
       "community": 5,
@@ -947,7 +937,7 @@
       "label": "uploadDocument()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L281",
+      "source_location": "L283",
       "_origin": "ast",
       "id": "lib_db_uploaddocument",
       "community": 5,
@@ -957,7 +947,7 @@
       "label": "deleteDocument()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L326",
+      "source_location": "L328",
       "_origin": "ast",
       "id": "lib_db_deletedocument",
       "community": 5,
@@ -5281,16 +5271,6 @@
       "confidence_score": 1.0,
       "source": "lib_db",
       "target": "lib_db_ismysqlconfigured"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/db.js",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db",
-      "target": "lib_db_mock_file_path"
     },
     {
       "relation": "contains",
@@ -11263,5 +11243,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "118f0f3bc161a666ec6d1a127fac632c54d74476"
+  "built_at_commit": "3098b5edbd1b6ade0fc5f033568d2b59b4f243c1"
 }

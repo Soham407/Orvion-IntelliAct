@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "app/contact/page.js": {
-    "mtime": 1782546813.7939367,
-    "ast_hash": "e3bbfc214d9dcc0e2b7d24956d02f4b0",
+    "mtime": 1783051253.0352361,
+    "ast_hash": "99457ac29bb2f2c45fff89c5b31babcf",
     "semantic_hash": ""
   },
   "app/employee-portal/layout.js": {
@@ -130,8 +130,8 @@
     "semantic_hash": "6463d19cd051010037708fde341d5f0e"
   },
   "components/site-footer.js": {
-    "mtime": 1781548088.3061166,
-    "ast_hash": "16d88bb809202797004cda3a5efed625",
+    "mtime": 1783051435.8147352,
+    "ast_hash": "613f42717625d4c95087fff2a6a7b557",
     "semantic_hash": ""
   },
   "components/site-header.js": {
@@ -160,8 +160,8 @@
     "semantic_hash": ""
   },
   "lib/db.js": {
-    "mtime": 1781550049.1028116,
-    "ast_hash": "4d342e979a7cb4013023a4729d2cc374",
+    "mtime": 1783420677.6001053,
+    "ast_hash": "c2dcef6cee28b3cfbeece926c67c032a",
     "semantic_hash": ""
   },
   "lib/products-data.js": {
