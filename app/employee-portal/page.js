@@ -1283,7 +1283,9 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                       padding: "8px 16px",
                       fontSize: "0.82rem",
                       borderRadius: 8,
-                      border: "1.5px solid var(--line)"
+                      border: "1.5px solid var(--line)",
+                      color: "var(--ink)",
+                      backgroundColor: "transparent"
                     }}
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 14, height: 14 }}>

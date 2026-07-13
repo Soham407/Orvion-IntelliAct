@@ -57,6 +57,7 @@ export async function GET(request, context) {
           ? `inline; filename="${encodeURIComponent(doc.file_name)}"`
           : `attachment; filename="${encodeURIComponent(doc.file_name)}"`,
         "Content-Length": fileBuffer.length.toString(),
+        "Cache-Control": "public, max-age=31536000, immutable",
       },
     });
   } catch (error) {
