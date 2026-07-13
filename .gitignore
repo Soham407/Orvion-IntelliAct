@@ -19,3 +19,8 @@ graphify-out/converted/
 graphify-out/2026-*/
 graphify-out/cost.json
 
+
+.env
+deployment.zip
+.agents/
+scratch.js
