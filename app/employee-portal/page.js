@@ -186,7 +186,6 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [previewDoc, setPreviewDoc] = useState(null);
-  const [isMockDB, setIsMockDB] = useState(false);
   const [previewDocUrl, setPreviewDocUrl] = useState("");
 
   // Search & Filter state
@@ -219,18 +218,9 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       setLoading(true);
       const res = await fetch("/api/documents");
       if (!res.ok) throw new Error("Failed to fetch documents from database");
-      
-      const isMock = res.headers.get("x-mock-db") === "true";
-      setIsMockDB(isMock);
       const data = await res.json();
       
-      if (isMock) {
-        const { clientGetDocs } = await import("../../lib/client-db");
-        const clientData = await clientGetDocs(data);
-        setDocuments(clientData);
-      } else {
-        setDocuments(data);
-      }
+      setDocuments(data);
       setError("");
     } catch (err) {
       setError(err.message || "Something went wrong while loading files.");
@@ -265,13 +255,6 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
     }
 
     try {
-      if (isMockDB) {
-        const { clientDeleteDoc } = await import("../../lib/client-db");
-        await clientDeleteDoc(id);
-        fetchDocs();
-        return;
-      }
-
       const res = await fetch(`/api/documents/${id}`, {
         method: "DELETE",
       });
@@ -302,18 +285,13 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       formData.append("category", formCategory);
       formData.append("file", selectedFile);
 
-      if (isMockDB) {
-        const { clientUploadDoc } = await import("../../lib/client-db");
-        await clientUploadDoc(formData);
-      } else {
-        const res = await fetch("/api/documents", {
-          method: "POST",
-          body: formData,
-        });
-        if (!res.ok) {
-          const errorData = await res.json();
-          throw new Error(errorData.error || "Failed to upload document");
-        }
+      const res = await fetch("/api/documents", {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to upload document");
       }
 
       setUploadSuccess(true);
@@ -335,42 +313,16 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
 
   // Trigger file download using API route
   const handleDownload = async (id, fileName) => {
-    if (isMockDB) {
-      const { clientGetDocBlob } = await import("../../lib/client-db");
-      const blob = await clientGetDocBlob(id);
-      if (blob) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        return;
-      }
-    }
     window.location.href = `/api/documents/${id}/download`;
   };
 
   const handlePreview = async (doc) => {
     setPreviewDoc(doc);
-    if (isMockDB) {
-      const { clientGetDocBlob } = await import("../../lib/client-db");
-      const blob = await clientGetDocBlob(doc.id);
-      if (blob) {
-        setPreviewDocUrl(URL.createObjectURL(blob));
-        return;
-      }
-    }
     setPreviewDocUrl(`/api/documents/${doc.id}/download?inline=true`);
   };
 
   const closePreview = () => {
     setPreviewDoc(null);
-    if (isMockDB && previewDocUrl && previewDocUrl.startsWith('blob:')) {
-      URL.revokeObjectURL(previewDocUrl);
-    }
     setPreviewDocUrl("");
   };
 

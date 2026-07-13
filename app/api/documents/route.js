@@ -6,8 +6,7 @@ export async function GET() {
   try {
     const list = await getDocuments();
     return NextResponse.json(list, { 
-      status: 200,
-      headers: { "x-mock-db": isDbConfigured() ? "false" : "true" }
+      status: 200
     });
   } catch (error) {
     console.error("GET /api/documents error:", error);
