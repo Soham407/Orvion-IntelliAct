@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDocumentById } from "../../../../../lib/db";
+import { getSession } from "../../../../../lib/auth";
 
 
 // Helper to determine mime type
@@ -30,6 +31,9 @@ function getMimeType(fileType, fileName) {
 
 // GET /api/documents/[id]/download - Serve file content for download
 export async function GET(request, context) {
+  if (!getSession(request)) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
   try {
     const params = await context.params;
     const { id } = params;

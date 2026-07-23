@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 import { getDocuments, uploadDocument, isDbConfigured } from "../../../lib/db";
+import { getSession } from "../../../lib/auth";
 
-// GET /api/documents - Retrieve all documents metadata
-export async function GET() {
+// GET /api/documents - Retrieve all documents metadata (any logged-in portal user)
+export async function GET(request) {
+  if (!getSession(request)) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
   try {
     const list = await getDocuments();
     return NextResponse.json(list, { 
@@ -17,8 +21,11 @@ export async function GET() {
   }
 }
 
-// POST /api/documents - Upload a new document
+// POST /api/documents - Upload a new document (any logged-in portal user)
 export async function POST(request) {
+  if (!getSession(request)) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
   try {
     const formData = await request.formData();
     const title = formData.get("title")?.toString();

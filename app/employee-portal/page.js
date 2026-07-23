@@ -69,30 +69,28 @@ function LoginScreen({ onLogin }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    // Simulate authentication delay
-    setTimeout(() => {
-      const storedUsers = localStorage.getItem("oiapl-portal-users");
-      const users = storedUsers ? JSON.parse(storedUsers) : [
-        { username: "employee", password: "1234", role: "employee" },
-        { username: "admin", password: "5678", role: "admin" }
-      ];
-
-      const foundUser = users.find(
-        (u) => u.username.toLowerCase() === username.trim().toLowerCase() && u.password === password
-      );
-
-      if (foundUser) {
-        onLogin(foundUser);
-      } else {
+    try {
+      const res = await fetch("/api/portal/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: username.trim(), password }),
+      });
+      if (!res.ok) {
         setError("Invalid username or password. Please contact HR if you need assistance.");
         setLoading(false);
+        return;
       }
-    }, 800);
+      const user = await res.json();
+      onLogin(user);
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -210,7 +208,6 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   const [editingUser, setEditingUser] = useState(null); // null or username of editing user
   const [accError, setAccError] = useState("");
   const [accSuccess, setAccSuccess] = useState("");
-  const [showPasswords, setShowPasswords] = useState({}); // mapping: username -> boolean
 
   // Fetch documents list from API
   const fetchDocs = async () => {
@@ -229,11 +226,14 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
     }
   };
 
-  // Load and refresh accounts list from localStorage (Admin only)
-  const fetchAccounts = () => {
-    const stored = localStorage.getItem("oiapl-portal-users");
-    if (stored) {
-      setAccounts(JSON.parse(stored));
+  // Load and refresh accounts list from the server (Admin only)
+  const fetchAccounts = async () => {
+    try {
+      const res = await fetch("/api/portal/users");
+      if (!res.ok) throw new Error("Failed to load accounts");
+      setAccounts(await res.json());
+    } catch (err) {
+      setAccError(err.message || "Failed to load accounts.");
     }
   };
 
@@ -327,66 +327,52 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
   };
 
   // Handle adding/editing user accounts
-  const handleAccountSubmit = (e) => {
+  const handleAccountSubmit = async (e) => {
     e.preventDefault();
     setAccError("");
     setAccSuccess("");
 
-    if (!accUsername.trim() || !accPassword.trim()) {
+    const cleanUsername = accUsername.trim();
+    if (!cleanUsername || (!editingUser && !accPassword.trim())) {
       setAccError("Username and password are required.");
       return;
     }
 
-    const cleanUsername = accUsername.trim();
-    const stored = localStorage.getItem("oiapl-portal-users");
-    let usersList = stored ? JSON.parse(stored) : [];
-
-    if (editingUser) {
-      // Editing Mode
-      const otherUserExists = usersList.some(
-        (u) => u.username.toLowerCase() === cleanUsername.toLowerCase() && u.username.toLowerCase() !== editingUser.toLowerCase()
-      );
-      if (otherUserExists) {
-        setAccError(`Username "${cleanUsername}" is already taken by another account.`);
-        return;
+    try {
+      if (editingUser) {
+        const res = await fetch(`/api/portal/users/${encodeURIComponent(editingUser)}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: accPassword || undefined, role: accRole }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to update account");
+        setAccSuccess(`Account "${cleanUsername}" updated successfully!`);
+        setEditingUser(null);
+      } else {
+        const res = await fetch("/api/portal/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: cleanUsername, password: accPassword, role: accRole }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to create account");
+        setAccSuccess(`Account "${cleanUsername}" created successfully!`);
       }
 
-      usersList = usersList.map((u) => {
-        if (u.username.toLowerCase() === editingUser.toLowerCase()) {
-          return { username: cleanUsername, password: accPassword, role: accRole };
-        }
-        return u;
-      });
-
-      setAccSuccess(`Account "${cleanUsername}" updated successfully!`);
-      
-      // If updating currently logged in administrator, notify them? They can keep active session
-      setEditingUser(null);
-    } else {
-      // Adding Mode
-      const userExists = usersList.some(
-        (u) => u.username.toLowerCase() === cleanUsername.toLowerCase()
-      );
-      if (userExists) {
-        setAccError(`Account with username "${cleanUsername}" already exists.`);
-        return;
-      }
-
-      usersList.push({ username: cleanUsername, password: accPassword, role: accRole });
-      setAccSuccess(`Account "${cleanUsername}" created successfully!`);
+      setAccUsername("");
+      setAccPassword("");
+      setAccRole("employee");
+      fetchAccounts();
+    } catch (err) {
+      setAccError(err.message || "Something went wrong.");
     }
-
-    localStorage.setItem("oiapl-portal-users", JSON.stringify(usersList));
-    setAccUsername("");
-    setAccPassword("");
-    setAccRole("employee");
-    fetchAccounts();
   };
 
   const handleEditClick = (user) => {
     setEditingUser(user.username);
     setAccUsername(user.username);
-    setAccPassword(user.password);
+    setAccPassword("");
     setAccRole(user.role);
     setAccError("");
     setAccSuccess("");
@@ -401,7 +387,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
     setAccSuccess("");
   };
 
-  const handleAccountDelete = (usernameToDelete) => {
+  const handleAccountDelete = async (usernameToDelete) => {
     if (usernameToDelete.toLowerCase() === currentUsername.toLowerCase()) {
       alert("You cannot delete your own admin account while logged in.");
       return;
@@ -411,25 +397,21 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
       return;
     }
 
-    const stored = localStorage.getItem("oiapl-portal-users");
-    let usersList = stored ? JSON.parse(stored) : [];
-    usersList = usersList.filter((u) => u.username.toLowerCase() !== usernameToDelete.toLowerCase());
-    
-    localStorage.setItem("oiapl-portal-users", JSON.stringify(usersList));
-    setAccSuccess(`Account "${usernameToDelete}" deleted successfully.`);
-    
-    if (editingUser && editingUser.toLowerCase() === usernameToDelete.toLowerCase()) {
-      handleCancelEdit();
-    }
-    
-    fetchAccounts();
-  };
+    try {
+      const res = await fetch(`/api/portal/users/${encodeURIComponent(usernameToDelete)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to delete account");
 
-  const togglePasswordVisibility = (username) => {
-    setShowPasswords((prev) => ({
-      ...prev,
-      [username]: !prev[username],
-    }));
+      setAccSuccess(`Account "${usernameToDelete}" deleted successfully.`);
+      if (editingUser && editingUser.toLowerCase() === usernameToDelete.toLowerCase()) {
+        handleCancelEdit();
+      }
+      fetchAccounts();
+    } catch (err) {
+      setAccError(err.message || "Something went wrong.");
+    }
   };
 
   const getSubfolders = () => {
@@ -527,29 +509,29 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
           </div>
         </div>
 
-        {/* Tabs Bar (Only visible to Admins) */}
-        {userRole === "admin" && (
-          <div className="portal-tabs">
-            <button
-              className={`portal-tab-btn ${activeTab === "view" ? "active" : ""}`}
-              onClick={() => setActiveTab("view")}
-            >
-              Documents Board
-            </button>
-            <button
-              className={`portal-tab-btn ${activeTab === "manage" ? "active" : ""}`}
-              onClick={() => setActiveTab("manage")}
-            >
-              Upload & Control Panel
-            </button>
+        {/* Tabs Bar */}
+        <div className="portal-tabs">
+          <button
+            className={`portal-tab-btn ${activeTab === "view" ? "active" : ""}`}
+            onClick={() => setActiveTab("view")}
+          >
+            Documents Board
+          </button>
+          <button
+            className={`portal-tab-btn ${activeTab === "manage" ? "active" : ""}`}
+            onClick={() => setActiveTab("manage")}
+          >
+            Upload & Control Panel
+          </button>
+          {userRole === "admin" && (
             <button
               className={`portal-tab-btn ${activeTab === "accounts" ? "active" : ""}`}
               onClick={() => setActiveTab("accounts")}
             >
               Employee Accounts
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Tab 1: View Documents */}
         {activeTab === "view" && (
@@ -775,8 +757,8 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
           </>
         )}
 
-        {/* Tab 2: Upload & Control Panel (Admin Only) */}
-        {activeTab === "manage" && userRole === "admin" && (
+        {/* Tab 2: Upload & Control Panel (upload: all logged-in users, delete: admin only) */}
+        {activeTab === "manage" && (
           <div>
             <div className="portal-section-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -962,18 +944,20 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                               </svg>
                               Preview
                             </button>
-                            <button
-                              className="btn-delete"
-                              onClick={() => handleDelete(doc.id, doc.title)}
-                            >
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <polyline points="3 6 5 6 21 6" />
-                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                <line x1="10" y1="11" x2="10" y2="17" />
-                                <line x1="14" y1="11" x2="14" y2="17" />
-                              </svg>
-                              Delete
-                            </button>
+                            {userRole === "admin" && (
+                              <button
+                                className="btn-delete"
+                                onClick={() => handleDelete(doc.id, doc.title)}
+                              >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <polyline points="3 6 5 6 21 6" />
+                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                  <line x1="10" y1="11" x2="10" y2="17" />
+                                  <line x1="14" y1="11" x2="14" y2="17" />
+                                </svg>
+                                Delete
+                              </button>
+                            )}
                           </div>
                         </td>
                       </tr>
@@ -1030,18 +1014,19 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                       placeholder="e.g. sachin.samant"
                       value={accUsername}
                       onChange={(e) => setAccUsername(e.target.value)}
+                      disabled={!!editingUser}
                       required
                     />
                   </div>
                   <div className="portal-form-group">
-                    <label htmlFor="acc-password">Password *</label>
+                    <label htmlFor="acc-password">{editingUser ? "New Password (leave blank to keep current)" : "Password *"}</label>
                     <input
                       id="acc-password"
                       type="text"
-                      placeholder="Enter account password"
+                      placeholder={editingUser ? "Leave blank to keep current password" : "Enter account password"}
                       value={accPassword}
                       onChange={(e) => setAccPassword(e.target.value)}
-                      required
+                      required={!editingUser}
                     />
                   </div>
                 </div>
@@ -1101,7 +1086,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   <tr>
                     <th>Username</th>
                     <th>Access Role</th>
-                    <th>Password</th>
+                    <th>Created</th>
                     <th style={{ textAlign: "right" }}>Actions</th>
                   </tr>
                 </thead>
@@ -1129,37 +1114,9 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                         </span>
                       </td>
                       <td>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <span style={{ fontFamily: "monospace", fontSize: "0.95rem" }}>
-                            {showPasswords[user.username] ? user.password : "••••••••"}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => togglePasswordVisibility(user.username)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: "var(--muted)",
-                              cursor: "pointer",
-                              padding: 4,
-                              display: "inline-flex",
-                              alignItems: "center",
-                            }}
-                            title={showPasswords[user.username] ? "Hide password" : "Show password"}
-                          >
-                            {showPasswords[user.username] ? (
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 15, height: 15 }}>
-                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                                <line x1="1" y1="1" x2="23" y2="23" />
-                              </svg>
-                            ) : (
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: 15, height: 15 }}>
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                <circle cx="12" cy="12" r="3" />
-                              </svg>
-                            )}
-                          </button>
-                        </div>
+                        <span style={{ fontSize: "0.85rem", color: "var(--muted)" }}>
+                          {user.created_at ? new Date(user.created_at).toLocaleDateString() : "—"}
+                        </span>
                       </td>
                       <td style={{ textAlign: "right" }}>
                         <div style={{ display: "inline-flex", gap: 8 }}>
@@ -1349,56 +1306,50 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
 
 export default function EmployeePortalPage() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const [userRole, setUserRole] = useState("employee");
   const [currentUsername, setCurrentUsername] = useState("");
 
-  // Check session storage for auth state and initialize default users
+  // Restore session from the server-side signed cookie, if present
   useEffect(() => {
-    // Check and initialize localStorage users if not present
-    const storedUsers = localStorage.getItem("oiapl-portal-users");
-    if (!storedUsers) {
-      const defaultUsers = [
-        { username: "employee", password: "1234", role: "employee" },
-        { username: "admin", password: "5678", role: "admin" }
-      ];
-      localStorage.setItem("oiapl-portal-users", JSON.stringify(defaultUsers));
-    }
-
-    const isAuth = sessionStorage.getItem("oiapl-portal-auth");
-    if (isAuth === "true") {
-      setAuthenticated(true);
-      setUserRole(sessionStorage.getItem("oiapl-portal-role") || "employee");
-      setCurrentUsername(sessionStorage.getItem("oiapl-portal-username") || "");
-    }
+    fetch("/api/portal/session")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((session) => {
+        if (session) {
+          setAuthenticated(true);
+          setUserRole(session.role);
+          setCurrentUsername(session.username);
+        }
+      })
+      .finally(() => setCheckingSession(false));
   }, []);
 
   const handleLogin = (user) => {
     setAuthenticated(true);
     setUserRole(user.role);
     setCurrentUsername(user.username);
-    sessionStorage.setItem("oiapl-portal-auth", "true");
-    sessionStorage.setItem("oiapl-portal-role", user.role);
-    sessionStorage.setItem("oiapl-portal-username", user.username);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await fetch("/api/portal/logout", { method: "POST" });
     setAuthenticated(false);
     setUserRole("employee");
     setCurrentUsername("");
-    sessionStorage.removeItem("oiapl-portal-auth");
-    sessionStorage.removeItem("oiapl-portal-role");
-    sessionStorage.removeItem("oiapl-portal-username");
   };
+
+  if (checkingSession) {
+    return null;
+  }
 
   if (!authenticated) {
     return <LoginScreen onLogin={handleLogin} />;
   }
 
   return (
-    <Dashboard 
-      onLogout={handleLogout} 
-      userRole={userRole} 
-      currentUsername={currentUsername} 
+    <Dashboard
+      onLogout={handleLogout}
+      userRole={userRole}
+      currentUsername={currentUsername}
     />
   );
 }
