@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="arch-title arch-desc">
+  <title id="arch-title">Orvion IntelliAct System Architecture</title>
+  <desc id="arch-desc">Architectural diagram detailing Next.js 16 App Router, Auth middleware, API routes, and dual Supabase/Hostinger DB backend.</desc>
+
+  <defs>
+    <linearGradient id="arch-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <pattern id="arch-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1e293b" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="260" rx="16" fill="url(#arch-bg)" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="1200" height="260" rx="16" fill="url(#arch-grid)" />
+
+  <!-- Diagram Title -->
+  <text x="40" y="38" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">ARCHITECTURE &amp; DATA PIPELINE</text>
+
+  <!-- Step 1: Presentation & UI Layer -->
+  <g transform="translate(40, 56)">
+    <rect x="0" y="0" width="250" height="170" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1" />
+    <rect x="0" y="0" width="250" height="32" rx="10" fill="#1e293b" />
+    <rect x="0" y="20" width="250" height="12" fill="#1e293b" />
+    <text x="14" y="21" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Presentation Layer</text>
+    <circle cx="230" cy="16" r="4" fill="#38bdf8" />
+
+    <text x="14" y="54" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">Next.js 16 App Router</text>
+    <text x="14" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• GSAP Industrial Motion</text>
+    <text x="14" y="94" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• React 19 Server Components</text>
+    <text x="14" y="114" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Product &amp; Solution Catalogs</text>
+    <text x="14" y="134" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Responsive Industrial UI</text>
+    <text x="14" y="154" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">app/page.js · app/products</text>
+  </g>
+
+  <!-- Flow Connector 1 -->
+  <path d="M 290 141 L 330 141" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 4" />
+  <polygon points="330,137 338,141 330,145" fill="#38bdf8" />
+
+  <!-- Step 2: Auth & Middleware Layer -->
+  <g transform="translate(340, 56)">
+    <rect x="0" y="0" width="250" height="170" rx="10" fill="#111827" stroke="#6366f1" stroke-width="1" />
+    <rect x="0" y="0" width="250" height="32" rx="10" fill="#1e293b" />
+    <rect x="0" y="20" width="250" height="12" fill="#1e293b" />
+    <text x="14" y="21" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Auth &amp; Session Layer</text>
+    <circle cx="230" cy="16" r="4" fill="#6366f1" />
+
+    <text x="14" y="54" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">JWT &amp; Crypto Engine</text>
+    <text x="14" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• HMAC-SHA256 Session Token</text>
+    <text x="14" y="94" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• scrypt Password Hashing</text>
+    <text x="14" y="114" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• HTTP-Only Secure Cookies</text>
+    <text x="14" y="134" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Role-Based Permissions</text>
+    <text x="14" y="154" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">lib/auth.js · portal_session</text>
+  </g>
+
+  <!-- Flow Connector 2 -->
+  <path d="M 590 141 L 630 141" stroke="#6366f1" stroke-width="2" stroke-dasharray="4 4" />
+  <polygon points="630,137 638,141 630,145" fill="#6366f1" />
+
+  <!-- Step 3: API & Service Routes -->
+  <g transform="translate(640, 56)">
+    <rect x="0" y="0" width="230" height="170" rx="10" fill="#111827" stroke="#10b981" stroke-width="1" />
+    <rect x="0" y="0" width="230" height="32" rx="10" fill="#1e293b" />
+    <rect x="0" y="20" width="230" height="12" fill="#1e293b" />
+    <text x="14" y="21" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">API Endpoint Services</text>
+    <circle cx="210" cy="16" r="4" fill="#10b981" />
+
+    <text x="14" y="54" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">Next.js API Handlers</text>
+    <text x="14" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• /api/documents (CRUD)</text>
+    <text x="14" y="94" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• /api/portal (Auth/Users)</text>
+    <text x="14" y="114" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• /api/careers (SMTP Mailer)</text>
+    <text x="14" y="134" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• /api/keepalive (DB Ping)</text>
+    <text x="14" y="154" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">app/api/* · lib/careers-mail.js</text>
+  </g>
+
+  <!-- Flow Connector 3 -->
+  <path d="M 870 141 L 910 141" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+  <polygon points="910,137 918,141 910,145" fill="#10b981" />
+
+  <!-- Step 4: Dual Database Persistence -->
+  <g transform="translate(920, 56)">
+    <rect x="0" y="0" width="240" height="170" rx="10" fill="#111827" stroke="#f59e0b" stroke-width="1" />
+    <rect x="0" y="0" width="240" height="32" rx="10" fill="#1e293b" />
+    <rect x="0" y="20" width="240" height="12" fill="#1e293b" />
+    <text x="14" y="21" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Database Layer</text>
+    <circle cx="220" cy="16" r="4" fill="#f59e0b" />
+
+    <text x="14" y="54" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">1. Supabase (Service Role)</text>
+    <text x="24" y="70" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">RLS Vault (documents, portal_users)</text>
+
+    <text x="14" y="98" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">2. Hostinger MySQL</text>
+    <text x="24" y="114" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Production DB Deployment</text>
+
+    <text x="14" y="142" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">3. JSON Fallback</text>
+    <text x="24" y="158" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">lib/db-mock.json auto-migration</text>
+  </g>
+</svg>
