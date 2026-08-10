@@ -10,19 +10,19 @@
     "semantic_hash": "5750fe264e80008ab2da5c2cfebe33b3"
   },
   "app/api/documents/[id]/download/route.js": {
-    "mtime": 1780734543.9032907,
-    "ast_hash": "20770ee156610bbcf2c443e06e7e7357",
-    "semantic_hash": "20770ee156610bbcf2c443e06e7e7357"
+    "mtime": 1784790492.3857257,
+    "ast_hash": "45d48e1a620fd2da41c0bfba1385d3fa",
+    "semantic_hash": ""
   },
   "app/api/documents/[id]/route.js": {
-    "mtime": 1780565766.895123,
-    "ast_hash": "dadba7ab03845d10314a446094833738",
-    "semantic_hash": "dadba7ab03845d10314a446094833738"
+    "mtime": 1784790468.7131948,
+    "ast_hash": "501727bdaed3a8dd14738db2b3db3400",
+    "semantic_hash": ""
   },
   "app/api/documents/route.js": {
-    "mtime": 1780565711.2784908,
-    "ast_hash": "78793ca0a485dd2ac4dd88abd0cf3568",
-    "semantic_hash": "78793ca0a485dd2ac4dd88abd0cf3568"
+    "mtime": 1784790458.411588,
+    "ast_hash": "b4c2bf12cea9a4a0928e071943d56f0f",
+    "semantic_hash": ""
   },
   "app/company/[slug]/page.js": {
     "mtime": 1782706322.1050549,
@@ -40,13 +40,13 @@
     "semantic_hash": "cc42ce3f55b4615187c0530641028ba6"
   },
   "app/employee-portal/page.js": {
-    "mtime": 1781550061.623605,
-    "ast_hash": "dc6fc2b26f2019c100c92731a1b441c1",
+    "mtime": 1786365930.4358006,
+    "ast_hash": "3669e98d67bef098260faf271c4a7cc7",
     "semantic_hash": ""
   },
   "app/layout.js": {
-    "mtime": 1781546947.2171338,
-    "ast_hash": "ff5312cc4407c6980e663312c2128664",
+    "mtime": 1783495550.9841936,
+    "ast_hash": "b5e5e19daf9cf2fe8c717293c1af8271",
     "semantic_hash": ""
   },
   "app/page.js": {
@@ -130,8 +130,8 @@
     "semantic_hash": "6463d19cd051010037708fde341d5f0e"
   },
   "components/site-footer.js": {
-    "mtime": 1783051435.8147352,
-    "ast_hash": "613f42717625d4c95087fff2a6a7b557",
+    "mtime": 1784265523.2315302,
+    "ast_hash": "b16d84bc91202b4866ef9d081e519b78",
     "semantic_hash": ""
   },
   "components/site-header.js": {
@@ -154,14 +154,9 @@
     "ast_hash": "1c5e67b4978cf34f23e222bc9c6a7d72",
     "semantic_hash": ""
   },
-  "lib/db-mock.json": {
-    "mtime": 1781550051.8642206,
-    "ast_hash": "a938c3af5bf4312a76d7dc652496eac9",
-    "semantic_hash": ""
-  },
   "lib/db.js": {
-    "mtime": 1783420677.6001053,
-    "ast_hash": "c2dcef6cee28b3cfbeece926c67c032a",
+    "mtime": 1784790412.543376,
+    "ast_hash": "24f81b344514bdd22c30942b7440d175",
     "semantic_hash": ""
   },
   "lib/products-data.js": {
@@ -170,8 +165,8 @@
     "semantic_hash": ""
   },
   "lib/site-data.js": {
-    "mtime": 1782566601.8127732,
-    "ast_hash": "bbef22ee2f45b8da418ee399df5a26c8",
+    "mtime": 1783952460.9245934,
+    "ast_hash": "03277ab6965eca3c39aafc66a5e184a4",
     "semantic_hash": ""
   },
   "lib/solutions-data.js": {
@@ -180,19 +175,14 @@
     "semantic_hash": ""
   },
   "next.config.mjs": {
-    "mtime": 1777382013.0738928,
-    "ast_hash": "37e600604df2aee4e48c8bb96e78e950",
-    "semantic_hash": "37e600604df2aee4e48c8bb96e78e950"
+    "mtime": 1783495869.3425822,
+    "ast_hash": "3979014ff28878eb74c4960b19eed3fe",
+    "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1780619905.6073256,
-    "ast_hash": "413a1c6a6ef556c03f0c6e63f6d01e4e",
-    "semantic_hash": "413a1c6a6ef556c03f0c6e63f6d01e4e"
-  },
-  "schema.sql": {
-    "mtime": 1780565755.9726572,
-    "ast_hash": "cbc4ac5c0a5933ab8af11ad8fb2283bc",
-    "semantic_hash": "cbc4ac5c0a5933ab8af11ad8fb2283bc"
+    "mtime": 1783950747.4148436,
+    "ast_hash": "e620ae2024595f401f3df23d50e885cd",
+    "semantic_hash": ""
   },
   "tests/careers-mail.test.mjs": {
     "mtime": 1780619723.4377775,
@@ -209,145 +199,15 @@
     "ast_hash": "0bc020d491fca99550c1ea3de0a5f862",
     "semantic_hash": "0bc020d491fca99550c1ea3de0a5f862"
   },
-  "Branding.md": {
-    "mtime": 1777379976.9142766,
-    "ast_hash": "4e354882b00533634c95be038364b924",
-    "semantic_hash": "4e354882b00533634c95be038364b924"
-  },
-  "Old_website.md": {
-    "mtime": 1777379976.9143212,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
-  },
   "graphify-out/converted/Policies Summary_57ea2952.md": {
     "mtime": 1781545672.0265796,
     "ast_hash": "6357edec972225302d01d73a0ba60bf7",
     "semantic_hash": "6357edec972225302d01d73a0ba60bf7"
   },
-  "index.html": {
-    "mtime": 1781172291.623466,
-    "ast_hash": "78ba990b7c2b370d88cccbdc9999aaa4",
-    "semantic_hash": "78ba990b7c2b370d88cccbdc9999aaa4"
-  },
   "pnpm-workspace.yaml": {
     "mtime": 1781086128.6727467,
     "ast_hash": "1f039ee199418e716ce798ea90ebcf75",
     "semantic_hash": "1f039ee199418e716ce798ea90ebcf75"
-  },
-  "projects.html": {
-    "mtime": 1781172291.62797,
-    "ast_hash": "6c081608f5e1cf58f82c2e0c2313894f",
-    "semantic_hash": "6c081608f5e1cf58f82c2e0c2313894f"
-  },
-  "solutions.html": {
-    "mtime": 1781172291.6349535,
-    "ast_hash": "6585d57360c84e1cd1b5468431936c3c",
-    "semantic_hash": "6585d57360c84e1cd1b5468431936c3c"
-  },
-  "solutions_page_creation_skill.md": {
-    "mtime": 1780643445.4982674,
-    "ast_hash": "3a7818b9c49a3851ce3ff2ff7cd26e46",
-    "semantic_hash": "3a7818b9c49a3851ce3ff2ff7cd26e46"
-  },
-  "HR Policies/IAPL-Pol-01 Domestic Travel Policy_Original_Dec 2024_Rev-0.PDF": {
-    "mtime": 1779335638.0,
-    "ast_hash": "430979046db206ba10192826d9b4285b",
-    "semantic_hash": "430979046db206ba10192826d9b4285b"
-  },
-  "HR Policies/IAPL-Pol-02 Local Conveyance Policy_Original_Dec 2024_Rev-0.pdf": {
-    "mtime": 1735823138.0,
-    "ast_hash": "f4698607499f1af8ddc90d6775466488",
-    "semantic_hash": "f4698607499f1af8ddc90d6775466488"
-  },
-  "HR Policies/IAPL-Pol-03 Salary Advance Policy_Original_April_2026 Rev-1.pdf": {
-    "mtime": 1780909936.0,
-    "ast_hash": "0f6a46099e37ae9b16d9ac84e4ff1415",
-    "semantic_hash": "0f6a46099e37ae9b16d9ac84e4ff1415"
-  },
-  "HR Policies/IAPL-Pol-04 Notice Period Policy_Original_Dec 2024_Rev-0.pdf": {
-    "mtime": 1779334746.0,
-    "ast_hash": "ad97ca327dd8c0f21f987cfef835f788",
-    "semantic_hash": "ad97ca327dd8c0f21f987cfef835f788"
-  },
-  "HR Policies/IAPL-Pol-05 Resignation Policy_Original_Dec 2024_Rev-0.pdf": {
-    "mtime": 1735823739.0,
-    "ast_hash": "0fc01ac7b18b940d11805513054a77dc",
-    "semantic_hash": "0fc01ac7b18b940d11805513054a77dc"
-  },
-  "HR Policies/IAPL-Pol-06 Leave Policy_Original_April_2026_Rev-1.pdf": {
-    "mtime": 1780913194.0,
-    "ast_hash": "490f06564cc6112da01a414ffa4774db",
-    "semantic_hash": "490f06564cc6112da01a414ffa4774db"
-  },
-  "HR Policies/IAPL-Pol-09 Revenue Recognition Policy_Original_Dec 2024_Rev-0.pdf": {
-    "mtime": 1775035414.0,
-    "ast_hash": "a8bb8341c46307af00291e013c84b80d",
-    "semantic_hash": "a8bb8341c46307af00291e013c84b80d"
-  },
-  "HR Policies/IAPL-Pol-11 Code of Conduct_April_2025_Rev-0.pdf": {
-    "mtime": 1757736127.0,
-    "ast_hash": "5b1484e5440d75f89d1e5df4850a48aa",
-    "semantic_hash": "5b1484e5440d75f89d1e5df4850a48aa"
-  },
-  "HR Policies/IAPL-Pol-12 Safe and positive work environment_April_2025_Rev-0.pdf": {
-    "mtime": 1757736152.0,
-    "ast_hash": "454bc2e85670d0f15035d33c57b63d54",
-    "semantic_hash": "454bc2e85670d0f15035d33c57b63d54"
-  },
-  "HR Policies/IAPL-Pol-13 We respect the environment _April_2025_Rev-0.pdf": {
-    "mtime": 1757736174.0,
-    "ast_hash": "f773f93763517e5c14008f575e7355b1",
-    "semantic_hash": "f773f93763517e5c14008f575e7355b1"
-  },
-  "HR Policies/IAPL-Pol-14 CSR_April_2025_Rev-0.pdf": {
-    "mtime": 1757736362.0,
-    "ast_hash": "3d4d86a3f02414768bae9d1ec4bed8d1",
-    "semantic_hash": "3d4d86a3f02414768bae9d1ec4bed8d1"
-  },
-  "HR Policies/IAPL-Pol-16 Foreign Travel Policy_Original_April_2026_Rev-0.pdf": {
-    "mtime": 1780906363.0,
-    "ast_hash": "39ff1428ca2a3327bc45da913751fbf1",
-    "semantic_hash": "39ff1428ca2a3327bc45da913751fbf1"
-  },
-  "HR Policies/IAPL-Pol-17 Maternity Benefit Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780913907.0,
-    "ast_hash": "7b6036cb7c85735475d8c75c1a9ee875",
-    "semantic_hash": "7b6036cb7c85735475d8c75c1a9ee875"
-  },
-  "HR Policies/IAPL-Pol-18 Prevention of Sexual Harassment (POSH) Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780920538.0,
-    "ast_hash": "c2015a58c53769810e7c6dc661ed594b",
-    "semantic_hash": "c2015a58c53769810e7c6dc661ed594b"
-  },
-  "HR Policies/IAPL-Pol-19 Recruitment and Joining Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780921576.0,
-    "ast_hash": "3ad1f6f667a4aa03fead87e069fc7c05",
-    "semantic_hash": "3ad1f6f667a4aa03fead87e069fc7c05"
-  },
-  "HR Policies/IAPL-Pol-20 Attendance and Working Hours Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780923597.0,
-    "ast_hash": "99baea2a2ead36e76992f44f0403c96c",
-    "semantic_hash": "99baea2a2ead36e76992f44f0403c96c"
-  },
-  "HR Policies/IAPL-Pol-21 Whistleblower Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780924539.0,
-    "ast_hash": "418b1182a4f41494c5eddc3b0563d5ca",
-    "semantic_hash": "418b1182a4f41494c5eddc3b0563d5ca"
-  },
-  "HR Policies/IAPL-Pol-22 Remote Work -Work From Home Policy_April_2026_Rev-0.pdf": {
-    "mtime": 1780925712.0,
-    "ast_hash": "4a0ef8ada76df18ed6cb35286edee3d9",
-    "semantic_hash": "4a0ef8ada76df18ed6cb35286edee3d9"
-  },
-  "HR Policies/Signed HSE Policy.pdf": {
-    "mtime": 1757749198.0,
-    "ast_hash": "b28a95fd8822384cb6c21f901c838631",
-    "semantic_hash": "b28a95fd8822384cb6c21f901c838631"
-  },
-  "HR Policies/Signed Quality Policy.pdf": {
-    "mtime": 1757749203.0,
-    "ast_hash": "bed10020e13e485d63c66eb89b8cbd7b",
-    "semantic_hash": "bed10020e13e485d63c66eb89b8cbd7b"
   },
   "public/documents/Signed HSE Policy.pdf": {
     "mtime": 1781296545.4928343,
@@ -558,21 +418,6 @@
     "mtime": 1781172457.2498572,
     "ast_hash": "f12c92907f29a254963ab1567ae36728",
     "semantic_hash": "f12c92907f29a254963ab1567ae36728"
-  },
-  "Clients assets/Web site/ISO_14001_docs/ISO 14001-2015.PDF": {
-    "mtime": 1744980920.0,
-    "ast_hash": "207cdacf9703c29b46e3873315f6054d",
-    "semantic_hash": ""
-  },
-  "Clients assets/Web site/ISO_45001_Docs/ISO 45001-2018.PDF": {
-    "mtime": 1744980894.0,
-    "ast_hash": "55d957c30bca49d84e0d3db252070963",
-    "semantic_hash": ""
-  },
-  "Clients assets/Web site/ISO_9001_docs/ISO 9001-2015.PDF": {
-    "mtime": 1744980936.0,
-    "ast_hash": "79d56cd0d3f9921517b4f97cf744740c",
-    "semantic_hash": ""
   },
   "public/images for Orvion/1782356749_0.jpg": {
     "mtime": 1782357097.0,
@@ -792,6 +637,86 @@
   "public/images for Orvion/2149519873.jpg": {
     "mtime": 1782808752.002277,
     "ast_hash": "84c2eed92dc94e23f76ef3fcd67f593c",
+    "semantic_hash": ""
+  },
+  "app/api/keepalive/route.js": {
+    "mtime": 1784788824.6092002,
+    "ast_hash": "838e7ec8181029be5d76504c2af4bdf1",
+    "semantic_hash": ""
+  },
+  "app/api/portal/login/route.js": {
+    "mtime": 1784790418.9657736,
+    "ast_hash": "dde0e4f11226a9f37be9ea493391c246",
+    "semantic_hash": ""
+  },
+  "app/api/portal/logout/route.js": {
+    "mtime": 1784790422.898812,
+    "ast_hash": "01fd9aeaa04de7e11958370dc0be5190",
+    "semantic_hash": ""
+  },
+  "app/api/portal/session/route.js": {
+    "mtime": 1784790427.6657045,
+    "ast_hash": "76c9fda261cc96ab2ba1b4bfa8d2189f",
+    "semantic_hash": ""
+  },
+  "app/api/portal/users/[username]/route.js": {
+    "mtime": 1784790443.8453217,
+    "ast_hash": "35bdcfcaad0fa511120e567a7faf3a33",
+    "semantic_hash": ""
+  },
+  "app/api/portal/users/route.js": {
+    "mtime": 1784790435.4021564,
+    "ast_hash": "9357f45896a73265431683b014da0ee5",
+    "semantic_hash": ""
+  },
+  "lib/auth.js": {
+    "mtime": 1784790395.131769,
+    "ast_hash": "8d5cfff8194cc459ea456f80c905f517",
+    "semantic_hash": ""
+  },
+  "skills-lock.json": {
+    "mtime": 1784898542.9371943,
+    "ast_hash": "520ac812a7e3bfa0cef2909db3164422",
+    "semantic_hash": ""
+  },
+  "supabase/.temp/linked-project.json": {
+    "mtime": 1784789208.96145,
+    "ast_hash": "ee10faae188d299ac4803d26dd2801c5",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20260713132532_create_documents_table.sql": {
+    "mtime": 1783949155.8193035,
+    "ast_hash": "c4763b0f5cab7660a6ead2c3675b2713",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20260723000000_enable_rls_on_documents.sql": {
+    "mtime": 1784788812.2460063,
+    "ast_hash": "6cad493293ca01d6289f503e749e7dad",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20260723070558_create_portal_users.sql": {
+    "mtime": 1784790384.3706155,
+    "ast_hash": "023e52d6f3fba972343d81278f5ec604",
+    "semantic_hash": ""
+  },
+  "vercel.json": {
+    "mtime": 1783964825.2963703,
+    "ast_hash": "6e53248e008d03e98f09974dc570b401",
+    "semantic_hash": ""
+  },
+  "deployment_guide.md": {
+    "mtime": 1783579208.3187149,
+    "ast_hash": "0cf69bc4920f3f7a764e87f42474f721",
+    "semantic_hash": ""
+  },
+  "public/Index.txt": {
+    "mtime": 1783491584.0307724,
+    "ast_hash": "2fd972f385ccb210e3256644bbc8337a",
+    "semantic_hash": ""
+  },
+  "public/Robot.txt": {
+    "mtime": 1783491575.3686066,
+    "ast_hash": "ab5724120a234ab5418948ac4cd7cb55",
     "semantic_hash": ""
   }
 }

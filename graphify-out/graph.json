@@ -57,7 +57,7 @@
       "label": "getMimeType()",
       "file_type": "code",
       "source_file": "app/api/documents/[id]/download/route.js",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "download_route_getmimetype",
       "community": 5,
@@ -67,7 +67,7 @@
       "label": "GET()",
       "file_type": "code",
       "source_file": "app/api/documents/[id]/download/route.js",
-      "source_location": "L32",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "download_route_get",
       "community": 5,
@@ -87,7 +87,7 @@
       "label": "DELETE()",
       "file_type": "code",
       "source_file": "app/api/documents/[id]/route.js",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "id_route_delete",
       "community": 5,
@@ -107,7 +107,7 @@
       "label": "GET()",
       "file_type": "code",
       "source_file": "app/api/documents/route.js",
-      "source_location": "L5",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "documents_route_get",
       "community": 5,
@@ -117,9 +117,169 @@
       "label": "POST()",
       "file_type": "code",
       "source_file": "app/api/documents/route.js",
-      "source_location": "L19",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "documents_route_post",
+      "community": 5,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/keepalive/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "keepalive_route",
+      "community": 16,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/keepalive/route.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "keepalive_route_get",
+      "community": 16,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "login_route",
+      "community": 5,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "login_route_post",
+      "community": 5,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "logout_route",
+      "community": 5,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "logout_route_post",
+      "community": 5,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "session_route",
+      "community": 5,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "session_route_get",
+      "community": 5,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "username_route",
+      "community": 5,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "requireAdmin()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "username_route_requireadmin",
+      "community": 5,
+      "norm_label": "requireadmin()"
+    },
+    {
+      "label": "PATCH()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "username_route_patch",
+      "community": 5,
+      "norm_label": "patch()"
+    },
+    {
+      "label": "DELETE()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "username_route_delete",
+      "community": 5,
+      "norm_label": "delete()"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "users_route",
+      "community": 5,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "requireAdmin()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "users_route_requireadmin",
+      "community": 5,
+      "norm_label": "requireadmin()"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "users_route_get",
+      "community": 5,
+      "norm_label": "get()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "users_route_post",
       "community": 5,
       "norm_label": "post()"
     },
@@ -287,7 +447,7 @@
       "label": "Dashboard()",
       "file_type": "code",
       "source_file": "app/employee-portal/page.js",
-      "source_location": "L183",
+      "source_location": "L181",
       "_origin": "ast",
       "id": "employee_portal_page_dashboard",
       "community": 1,
@@ -297,7 +457,7 @@
       "label": "EmployeePortalPage()",
       "file_type": "code",
       "source_file": "app/employee-portal/page.js",
-      "source_location": "L1337",
+      "source_location": "L1309",
       "_origin": "ast",
       "id": "employee_portal_page_employeeportalpage",
       "community": 1,
@@ -317,7 +477,7 @@
       "label": "lusitana",
       "file_type": "code",
       "source_file": "app/layout.js",
-      "source_location": "L7",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "app_layout_lusitana",
       "community": 10,
@@ -327,7 +487,7 @@
       "label": "metadata",
       "file_type": "code",
       "source_file": "app/layout.js",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "app_layout_metadata",
       "community": 10,
@@ -337,7 +497,7 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "app/layout.js",
-      "source_location": "L69",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "app_layout_rootlayout",
       "community": 10,
@@ -774,6 +934,106 @@
       "norm_label": "solutionscarousel()"
     },
     {
+      "label": "auth.js",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_auth",
+      "community": 5,
+      "norm_label": "auth.js"
+    },
+    {
+      "label": "getSecret()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "lib_auth_getsecret",
+      "community": 5,
+      "norm_label": "getsecret()"
+    },
+    {
+      "label": "hashPassword()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "lib_auth_hashpassword",
+      "community": 5,
+      "norm_label": "hashpassword()"
+    },
+    {
+      "label": "verifyPassword()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "lib_auth_verifypassword",
+      "community": 5,
+      "norm_label": "verifypassword()"
+    },
+    {
+      "label": "sign()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "lib_auth_sign",
+      "community": 5,
+      "norm_label": "sign()"
+    },
+    {
+      "label": "createSessionToken()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "lib_auth_createsessiontoken",
+      "community": 5,
+      "norm_label": "createsessiontoken()"
+    },
+    {
+      "label": "verifySessionToken()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "lib_auth_verifysessiontoken",
+      "community": 5,
+      "norm_label": "verifysessiontoken()"
+    },
+    {
+      "label": "sessionCookie()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "lib_auth_sessioncookie",
+      "community": 5,
+      "norm_label": "sessioncookie()"
+    },
+    {
+      "label": "clearSessionCookie()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "lib_auth_clearsessioncookie",
+      "community": 5,
+      "norm_label": "clearsessioncookie()"
+    },
+    {
+      "label": "getSession()",
+      "file_type": "code",
+      "source_file": "lib/auth.js",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "lib_auth_getsession",
+      "community": 5,
+      "norm_label": "getsession()"
+    },
+    {
       "label": "careers-mail.js",
       "file_type": "code",
       "source_file": "lib/careers-mail.js",
@@ -884,40 +1144,20 @@
       "norm_label": "db.js"
     },
     {
-      "label": "isMysqlConfigured()",
+      "label": "isDbConfigured()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L10",
+      "source_location": "L4",
       "_origin": "ast",
-      "id": "lib_db_ismysqlconfigured",
+      "id": "lib_db_isdbconfigured",
       "community": 5,
-      "norm_label": "ismysqlconfigured()"
-    },
-    {
-      "label": "initialMockDocuments",
-      "file_type": "code",
-      "source_file": "lib/db.js",
-      "source_location": "L35",
-      "_origin": "ast",
-      "id": "lib_db_initialmockdocuments",
-      "community": 5,
-      "norm_label": "initialmockdocuments"
-    },
-    {
-      "label": "initDatabase()",
-      "file_type": "code",
-      "source_file": "lib/db.js",
-      "source_location": "L160",
-      "_origin": "ast",
-      "id": "lib_db_initdatabase",
-      "community": 5,
-      "norm_label": "initdatabase()"
+      "norm_label": "isdbconfigured()"
     },
     {
       "label": "getDocuments()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L216",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "lib_db_getdocuments",
       "community": 5,
@@ -927,7 +1167,7 @@
       "label": "getDocumentById()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L247",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "lib_db_getdocumentbyid",
       "community": 5,
@@ -937,7 +1177,7 @@
       "label": "uploadDocument()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L283",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "lib_db_uploaddocument",
       "community": 5,
@@ -947,11 +1187,61 @@
       "label": "deleteDocument()",
       "file_type": "code",
       "source_file": "lib/db.js",
-      "source_location": "L328",
+      "source_location": "L79",
       "_origin": "ast",
       "id": "lib_db_deletedocument",
       "community": 5,
       "norm_label": "deletedocument()"
+    },
+    {
+      "label": "getPortalUserByUsername()",
+      "file_type": "code",
+      "source_file": "lib/db.js",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "lib_db_getportaluserbyusername",
+      "community": 5,
+      "norm_label": "getportaluserbyusername()"
+    },
+    {
+      "label": "listPortalUsers()",
+      "file_type": "code",
+      "source_file": "lib/db.js",
+      "source_location": "L104",
+      "_origin": "ast",
+      "id": "lib_db_listportalusers",
+      "community": 5,
+      "norm_label": "listportalusers()"
+    },
+    {
+      "label": "createPortalUser()",
+      "file_type": "code",
+      "source_file": "lib/db.js",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "lib_db_createportaluser",
+      "community": 5,
+      "norm_label": "createportaluser()"
+    },
+    {
+      "label": "updatePortalUser()",
+      "file_type": "code",
+      "source_file": "lib/db.js",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "lib_db_updateportaluser",
+      "community": 5,
+      "norm_label": "updateportaluser()"
+    },
+    {
+      "label": "deletePortalUser()",
+      "file_type": "code",
+      "source_file": "lib/db.js",
+      "source_location": "L139",
+      "_origin": "ast",
+      "id": "lib_db_deleteportaluser",
+      "community": 5,
+      "norm_label": "deleteportaluser()"
     },
     {
       "label": "products-data.js",
@@ -1264,24 +1554,24 @@
       "norm_label": "dependencies"
     },
     {
-      "label": "gsap",
+      "label": "@supabase/supabase-js",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "package_dependencies_gsap",
+      "id": "package_dependencies_supabase_supabase_js",
       "community": 8,
-      "norm_label": "gsap"
+      "norm_label": "@supabase/supabase-js"
     },
     {
-      "label": "mysql2",
+      "label": "gsap",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "package_dependencies_mysql2",
+      "id": "package_dependencies_gsap",
       "community": 8,
-      "norm_label": "mysql2"
+      "norm_label": "gsap"
     },
     {
       "label": "next",
@@ -1324,6 +1614,36 @@
       "norm_label": "react-dom"
     },
     {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 8,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@playwright/test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "package_devdependencies_playwright_test",
+      "community": 8,
+      "norm_label": "@playwright/test"
+    },
+    {
+      "label": "playwright",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "package_devdependencies_playwright",
+      "community": 8,
+      "norm_label": "playwright"
+    },
+    {
       "label": "careers-mail.test.mjs",
       "file_type": "code",
       "source_file": "tests/careers-mail.test.mjs",
@@ -1334,134 +1654,94 @@
       "norm_label": "careers-mail.test.mjs"
     },
     {
-      "label": "graphify.md",
-      "file_type": "document",
-      "source_file": ".agents/rules/graphify.md",
+      "label": "vercel.json",
+      "file_type": "code",
+      "source_file": "vercel.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "rules_graphify",
+      "id": "vercel",
+      "community": 22,
+      "norm_label": "vercel.json"
+    },
+    {
+      "label": "crons",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "vercel_crons",
+      "community": 22,
+      "norm_label": "crons"
+    },
+    {
+      "label": "deployment_guide.md",
+      "file_type": "document",
+      "source_file": "deployment_guide.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "deployment_guide",
       "community": 14,
-      "norm_label": "graphify.md"
+      "norm_label": "deployment_guide.md"
     },
     {
-      "label": "graphify",
+      "label": "Complete Deployment & Migration Guide: Orvion IntelliAct",
       "file_type": "document",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": "L6",
+      "source_file": "deployment_guide.md",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "rules_graphify_graphify",
+      "id": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
       "community": 14,
-      "norm_label": "graphify"
+      "norm_label": "complete deployment & migration guide: orvion intelliact"
     },
     {
-      "label": "graphify.md",
+      "label": "Phase 1: Set Up the Database (Hostinger)",
       "file_type": "document",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "workflows_graphify",
-      "community": 14,
-      "norm_label": "graphify.md"
-    },
-    {
-      "label": "Workflow: graphify",
-      "file_type": "document",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "workflows_graphify_workflow_graphify",
-      "community": 14,
-      "norm_label": "workflow: graphify"
-    },
-    {
-      "label": "Branding.md",
-      "file_type": "document",
-      "source_file": "Branding.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "branding",
-      "community": 60,
-      "norm_label": "branding.md"
-    },
-    {
-      "label": "Old_website.md",
-      "file_type": "document",
-      "source_file": "Old_website.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "old_website",
-      "community": 61,
-      "norm_label": "old_website.md"
-    },
-    {
-      "label": "solutions_page_creation_skill.md",
-      "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "solutions_page_creation_skill",
-      "community": 6,
-      "norm_label": "solutions_page_creation_skill.md"
-    },
-    {
-      "label": "Skill: Creating Multi-Container Solution Pages",
-      "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages",
-      "community": 6,
-      "norm_label": "skill: creating multi-container solution pages"
-    },
-    {
-      "label": "\ud83d\udccb Layout Design Pattern",
-      "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
+      "source_file": "deployment_guide.md",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "solutions_page_creation_skill_layout_design_pattern",
-      "community": 6,
-      "norm_label": "\ud83d\udccb layout design pattern"
+      "id": "deployment_guide_phase_1_set_up_the_database_hostinger",
+      "community": 14,
+      "norm_label": "phase 1: set up the database (hostinger)"
     },
     {
-      "label": "\ud83d\udee0\ufe0f Step-by-Step Implementation Guide",
+      "label": "Phase 2: Link GoDaddy to Hostinger (Using DNS / A Record)",
       "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L17",
+      "source_file": "deployment_guide.md",
+      "source_location": "L22",
       "_origin": "ast",
-      "id": "solutions_page_creation_skill_step_by_step_implementation_guide",
-      "community": 6,
-      "norm_label": "\ud83d\udee0\ufe0f step-by-step implementation guide"
+      "id": "deployment_guide_phase_2_link_godaddy_to_hostinger_using_dns_a_record",
+      "community": 14,
+      "norm_label": "phase 2: link godaddy to hostinger (using dns / a record)"
     },
     {
-      "label": "Step 1: Update the Catalog Data",
+      "label": "Phase 3: Prepare the Code for Upload",
       "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L19",
+      "source_file": "deployment_guide.md",
+      "source_location": "L42",
       "_origin": "ast",
-      "id": "solutions_page_creation_skill_step_1_update_the_catalog_data",
-      "community": 6,
-      "norm_label": "step 1: update the catalog data"
+      "id": "deployment_guide_phase_3_prepare_the_code_for_upload",
+      "community": 14,
+      "norm_label": "phase 3: prepare the code for upload"
     },
     {
-      "label": "Step 2: Configure Route Page",
+      "label": "Phase 4: Deploy to Hostinger (Node.js)",
       "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L54",
+      "source_file": "deployment_guide.md",
+      "source_location": "L61",
       "_origin": "ast",
-      "id": "solutions_page_creation_skill_step_2_configure_route_page",
-      "community": 6,
-      "norm_label": "step 2: configure route page"
+      "id": "deployment_guide_phase_4_deploy_to_hostinger_node_js",
+      "community": 14,
+      "norm_label": "phase 4: deploy to hostinger (node.js)"
     },
     {
-      "label": "Step 3: Run Validation Build",
+      "label": "Phase 5: The Automatic Migration",
       "file_type": "document",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L147",
+      "source_file": "deployment_guide.md",
+      "source_location": "L91",
       "_origin": "ast",
-      "id": "solutions_page_creation_skill_step_3_run_validation_build",
-      "community": 6,
-      "norm_label": "step 3: run validation build"
+      "id": "deployment_guide_phase_5_the_automatic_migration",
+      "community": 14,
+      "norm_label": "phase 5: the automatic migration"
     },
     {
       "label": "Branding",
@@ -1888,7 +2168,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 3,
       "norm_label": "iapl pol 03 salary advance policy original april 2026 rev 1",
       "id": "hr_policies_iapl_pol_03_salary_advance_policy_original_april_2026_rev_1"
     },
@@ -1940,7 +2220,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 3,
       "norm_label": "3. eligibility and guidelines:",
       "id": "hr_policies_iapl_pol_03_salary_advance_policy_original_april_2026_rev_1_3_eligibility_and_guidelines"
     },
@@ -1953,7 +2233,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 3,
       "norm_label": "4. policy guidelines:",
       "id": "hr_policies_iapl_pol_03_salary_advance_policy_original_april_2026_rev_1_4_policy_guidelines"
     },
@@ -2863,7 +3143,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 2,
       "norm_label": "iapl pol 20 attendance and working hours policy april 2026 rev 0",
       "id": "hr_policies_iapl_pol_20_attendance_and_working_hours_policy_april_2026_rev_0"
     },
@@ -2928,7 +3208,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 2,
       "norm_label": "4. attendance and working hours",
       "id": "hr_policies_iapl_pol_20_attendance_and_working_hours_policy_april_2026_rev_0_4_attendance_and_working_hours"
     },
@@ -3500,7 +3780,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 2,
       "norm_label": "tt",
       "id": "products_tt"
     },
@@ -3513,7 +3793,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 2,
       "norm_label": "transmitter.",
       "id": "products_transmitter"
     },
@@ -3762,6 +4042,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/api/documents/[id]/download/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "download_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/[id]/download/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "download_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/[id]/download/route.js",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -3796,6 +4098,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/api/documents/[id]/download/route.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "download_route_get",
+      "target": "lib_auth_getsession"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/documents/[id]/download/route.js",
       "source_location": "L44",
       "weight": 1.0,
       "source": "download_route_get",
@@ -3810,6 +4123,28 @@
       "confidence_score": 1.0,
       "source": "id_route",
       "target": "id_route_delete"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/[id]/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "id_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/[id]/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "id_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -3832,6 +4167,17 @@
       "confidence_score": 1.0,
       "source": "id_route",
       "target": "lib_db_deletedocument"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/documents/[id]/route.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "id_route_delete",
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "calls",
@@ -3869,6 +4215,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/api/documents/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "documents_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "documents_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/route.js",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -3893,9 +4261,31 @@
       "source_file": "app/api/documents/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "source": "documents_route",
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/documents/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "documents_route",
       "target": "lib_db_uploaddocument"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/documents/route.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "documents_route_get",
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "calls",
@@ -3914,10 +4304,583 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/api/documents/route.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "documents_route_post",
+      "target": "lib_auth_getsession"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/documents/route.js",
       "source_location": "L49",
       "weight": 1.0,
       "source": "documents_route_post",
       "target": "lib_db_uploaddocument"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/keepalive/route.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "keepalive_route",
+      "target": "keepalive_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_auth_createsessiontoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_auth_sessioncookie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_auth_verifypassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "lib_db_getportaluserbyusername",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "login_route",
+      "target": "login_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "login_route_post",
+      "target": "lib_auth_createsessiontoken"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "login_route_post",
+      "target": "lib_auth_sessioncookie"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "login_route_post",
+      "target": "lib_auth_verifypassword"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/login/route.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "login_route_post",
+      "target": "lib_db_getportaluserbyusername"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "logout_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "logout_route",
+      "target": "lib_auth_clearsessioncookie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "logout_route",
+      "target": "logout_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/logout/route.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "logout_route_post",
+      "target": "lib_auth_clearsessioncookie"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "session_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "session_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "session_route",
+      "target": "session_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/session/route.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "session_route_get",
+      "target": "lib_auth_getsession"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_auth_hashpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_db_deleteportaluser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "lib_db_updateportaluser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "username_route_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "username_route_patch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "username_route",
+      "target": "username_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "username_route_delete",
+      "target": "username_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "username_route_patch",
+      "target": "username_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "username_route_requireadmin",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "username_route_patch",
+      "target": "lib_auth_hashpassword"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "username_route_patch",
+      "target": "lib_db_updateportaluser"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/[username]/route.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "username_route_delete",
+      "target": "lib_db_deleteportaluser"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_auth_hashpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_db_createportaluser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_db_getportaluserbyusername",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "lib_db_listportalusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "users_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "users_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "users_route",
+      "target": "users_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "users_route_get",
+      "target": "users_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "users_route_post",
+      "target": "users_route_requireadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "users_route_requireadmin",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "users_route_get",
+      "target": "lib_db_listportalusers"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "users_route_post",
+      "target": "lib_auth_hashpassword"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "users_route_post",
+      "target": "lib_db_createportaluser"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/portal/users/route.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "users_route_post",
+      "target": "lib_db_getportaluserbyusername"
     },
     {
       "relation": "imports_from",
@@ -5025,6 +5988,140 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_clearsessioncookie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_createsessiontoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_getsecret",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_hashpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_sessioncookie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_verifypassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "lib_auth",
+      "target": "lib_auth_verifysessiontoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "lib_auth_sign",
+      "target": "lib_auth_getsecret",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lib_auth_createsessiontoken",
+      "target": "lib_auth_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "lib_auth_verifysessiontoken",
+      "target": "lib_auth_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/auth.js",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "lib_auth_getsession",
+      "target": "lib_auth_verifysessiontoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lib/careers-mail.js",
       "source_location": "L7",
       "weight": 1.0,
@@ -5216,11 +6313,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "lib_db",
+      "target": "lib_db_createportaluser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/db.js",
       "source_location": "L315",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lib_db",
       "target": "lib_db_deletedocument"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/db.js",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "lib_db",
+      "target": "lib_db_deleteportaluser",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5246,31 +6363,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L147",
+      "source_location": "L93",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_initdatabase"
+      "target": "lib_db_getportaluserbyusername",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L33",
+      "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_initialmockdocuments"
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L8",
+      "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_ismysqlconfigured"
+      "target": "lib_db_listportalusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/db.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "lib_db",
+      "target": "lib_db_updateportaluser",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5287,99 +6414,66 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L318",
+      "source_location": "L81",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db_deletedocument",
-      "target": "lib_db_ismysqlconfigured"
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L237",
+      "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db_getdocumentbyid",
-      "target": "lib_db_ismysqlconfigured"
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L206",
+      "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_db_getdocuments",
-      "target": "lib_db_ismysqlconfigured"
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L148",
+      "source_location": "L94",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db_initdatabase",
-      "target": "lib_db_ismysqlconfigured"
+      "source": "lib_db_getportaluserbyusername",
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/db.js",
-      "source_location": "L273",
+      "source_location": "L105",
       "weight": 1.0,
-      "confidence_score": 1.0,
+      "source": "lib_db_listportalusers",
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/db.js",
+      "source_location": "L56",
+      "weight": 1.0,
       "source": "lib_db_uploaddocument",
-      "target": "lib_db_ismysqlconfigured"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/db.js",
-      "source_location": "L316",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db_deletedocument",
-      "target": "lib_db_initdatabase"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/db.js",
-      "source_location": "L235",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db_getdocumentbyid",
-      "target": "lib_db_initdatabase"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/db.js",
-      "source_location": "L204",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db_getdocuments",
-      "target": "lib_db_initdatabase"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/db.js",
-      "source_location": "L271",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_db_uploaddocument",
-      "target": "lib_db_initdatabase"
+      "target": "lib_db_isdbconfigured",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5555,6 +6649,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -5655,16 +6759,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_dependencies",
-      "target": "package_dependencies_mysql2"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
       "source_location": "L15",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -5702,204 +6796,104 @@
       "target": "package_dependencies_react_dom"
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 0.85,
-      "source": "rules_graphify_graphify",
-      "target": "rules_graphify"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "rules_graphify",
-      "target": "workflows_graphify"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "rules_graphify",
-      "target": "workflows_graphify_workflow_graphify"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "rules_graphify_graphify",
-      "target": "workflows_graphify"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".agents/rules/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "rules_graphify_graphify",
-      "target": "workflows_graphify_workflow_graphify"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "source_file": ".agents/workflows/graphify.md",
-      "source_location": null,
-      "weight": 1.0,
-      "confidence_score": 0.85,
-      "source": "workflows_graphify_workflow_graphify",
-      "target": "workflows_graphify"
+      "source": "package_dependencies",
+      "target": "package_dependencies_supabase_supabase_js",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_playwright",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_playwright_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "vercel.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "vercel",
+      "target": "vercel_crons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "deployment_guide.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "public/images/epc/lt.svg",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "epc_lt",
-      "target": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages"
+      "source": "deployment_guide",
+      "target": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
+      "source_file": "deployment_guide.md",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages",
-      "target": "solutions_page_creation_skill_layout_design_pattern"
+      "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "target": "deployment_guide_phase_1_set_up_the_database_hostinger",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L17",
+      "source_file": "deployment_guide.md",
+      "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill_skill_creating_multi_container_solution_pages",
-      "target": "solutions_page_creation_skill_step_by_step_implementation_guide"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_layout_design_pattern"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "solutions_page_creation_skill_layout_design_pattern",
-      "target": "products_tt"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_step_by_step_implementation_guide"
+      "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "target": "deployment_guide_phase_2_link_godaddy_to_hostinger_using_dns_a_record",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L19",
+      "source_file": "deployment_guide.md",
+      "source_location": "L42",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill_step_by_step_implementation_guide",
-      "target": "solutions_page_creation_skill_step_1_update_the_catalog_data"
+      "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "target": "deployment_guide_phase_3_prepare_the_code_for_upload",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L54",
+      "source_file": "deployment_guide.md",
+      "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill_step_by_step_implementation_guide",
-      "target": "solutions_page_creation_skill_step_2_configure_route_page"
+      "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "target": "deployment_guide_phase_4_deploy_to_hostinger_node_js",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": "L147",
+      "source_file": "deployment_guide.md",
+      "source_location": "L91",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "solutions_page_creation_skill_step_by_step_implementation_guide",
-      "target": "solutions_page_creation_skill_step_3_run_validation_build"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_step_1_update_the_catalog_data"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_step_2_configure_route_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "solutions_page_creation_skill.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "orvion_intelliact_solutions_page_creation_skill",
-      "target": "solutions_page_creation_skill_step_3_run_validation_build"
+      "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
+      "target": "deployment_guide_phase_5_the_automatic_migration",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -11243,5 +12237,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3098b5edbd1b6ade0fc5f033568d2b59b4f243c1"
+  "built_at_commit": "ed45617e548a0fccd33979222b2a79163a59ed0b"
 }

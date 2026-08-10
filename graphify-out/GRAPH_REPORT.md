@@ -1,16 +1,16 @@
-# Graph Report - Orvion-IntelliAct  (2026-07-07)
+# Graph Report - Orvion-IntelliAct  (2026-08-10)
 
 ## Corpus Check
-- 45 files · ~1,561,774 words
+- 52 files · ~1,549,401 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 315 nodes · 748 edges · 61 communities (22 shown, 39 thin omitted)
-- Extraction: 41% EXTRACTED · 59% INFERRED · 0% AMBIGUOUS · INFERRED: 441 edges (avg confidence: 0.85)
+- 343 nodes · 814 edges · 60 communities (21 shown, 39 thin omitted)
+- Extraction: 47% EXTRACTED · 53% INFERRED · 0% AMBIGUOUS · INFERRED: 433 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3098b5ed`
+- Built from commit: `ed45617e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,9 +31,9 @@
 - [[_COMMUNITY_IAPL Pol 14 CSR April 2025 Rev 0|IAPL Pol 14 CSR April 2025 Rev 0]]
 - [[_COMMUNITY_graphify|graphify]]
 - [[_COMMUNITY_layout.js|layout.js]]
-- [[_COMMUNITY_IAPL Pol 03 Salary Advance Policy Ori...|IAPL Pol 03 Salary Advance Policy Ori...]]
 - [[_COMMUNITY_IAPL Pol 12 Safe and positive work en...|IAPL Pol 12 Safe and positive work en...]]
 - [[_COMMUNITY_IAPL Pol 13 We respect the environmen...|IAPL Pol 13 We respect the environmen...]]
+- [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Signed HSE Policy|Signed HSE Policy]]
 - [[_COMMUNITY_Signed Quality Policy|Signed Quality Policy]]
 - [[_COMMUNITY_eil|eil]]
@@ -85,21 +85,21 @@
 10. `TABLE OF CONTENTS` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `lt` --conceptually_related_to--> `Skill: Creating Multi-Container Solution Pages`  [INFERRED]
-  public/images/epc/lt.svg → solutions_page_creation_skill.md
 - `IAPL Pol 14 CSR April 2025 Rev 0` --conceptually_related_to--> `csr`  [INFERRED]
   HR Policies/IAPL-Pol-14 CSR_April_2025_Rev-0.pdf → public/images/products/csr.jpg
-- `📋 Layout Design Pattern` --conceptually_related_to--> `TT`  [INFERRED]
-  solutions_page_creation_skill.md → public/images/products/TT.jpg
 - `PLC programming` --conceptually_related_to--> `program`  [INFERRED]
   index.html → public/images/solutions/program.jpg
 - `The impact of process automation on complex industrial operations` --conceptually_related_to--> `Comp`  [INFERRED]
   index.html → public/images/solutions/Comp.jpg
+- `The benefits of connecting automation systems to real-time insights` --conceptually_related_to--> `hts`  [INFERRED]
+  index.html → public/images/partners/hts.svg
+- `lt` --conceptually_related_to--> `Consultation &amp; Scoping`  [INFERRED]
+  public/images/epc/lt.svg → solutions.html
 
 ## Import Cycles
 - None detected.
 
-## Communities (61 total, 39 thin omitted)
+## Communities (60 total, 39 thin omitted)
 
 ### Community 0 - "page.js"
 Cohesion: 0.09
@@ -110,32 +110,32 @@ Cohesion: 0.10
 Nodes (18): LogoMarquee(), PageHero(), filters, ProjectsGrid(), SolutionsCarousel(), clientLogos, coreSolutions, coreValues (+10 more)
 
 ### Community 2 - "IAPL Pol 02 Local Conveyance Policy O..."
-Cohesion: 0.16
-Nodes (26): IAPL Pol 02 Local Conveyance Policy Original Dec 2024 Rev 0, 1.  OBJECTIVE, 3. POLICY GUIDELINES:, 4. APPROVALS AND CLAIM PROCESS, IAPL Pol 04 Notice Period Policy Original Dec 2024 Rev 0, 3. POLICY GUIDELINES:, 4. SHORTFALL OF NOTICE PERIOD, IAPL Pol 05 Resignation Policy Original Dec 2024 Rev 0 (+18 more)
+Cohesion: 0.13
+Nodes (30): IAPL Pol 02 Local Conveyance Policy Original Dec 2024 Rev 0, 1.  OBJECTIVE, 3. POLICY GUIDELINES:, 4. APPROVALS AND CLAIM PROCESS, IAPL Pol 04 Notice Period Policy Original Dec 2024 Rev 0, 3. POLICY GUIDELINES:, 4. SHORTFALL OF NOTICE PERIOD, IAPL Pol 05 Resignation Policy Original Dec 2024 Rev 0 (+22 more)
 
 ### Community 3 - "IAPL Pol 06 Leave Policy Original Apr..."
-Cohesion: 0.64
-Nodes (19): 1. OBJECTIVE, 1. OBJECTIVE, 1. OBJECTIVE, IAPL Pol 06 Leave Policy Original April 2026 Rev 1, 1. OBJECTIVE, 3. TYPES OF HOLIDAYS & LEAVES:, IAPL Pol 09 Revenue Recognition Policy Original Dec 2024 Rev 0, 1. OBJECTIVE (+11 more)
+Cohesion: 0.48
+Nodes (22): IAPL Pol 03 Salary Advance Policy Original April 2026 Rev 1, 1. OBJECTIVE, 3. ELIGIBILITY AND GUIDELINES:, 4. POLICY GUIDELINES:, 1. OBJECTIVE, 1. OBJECTIVE, IAPL Pol 06 Leave Policy Original April 2026 Rev 1, 1. OBJECTIVE (+14 more)
 
 ### Community 4 - "TABLE OF CONTENTS"
 Cohesion: 1.00
 Nodes (18): TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS, TABLE OF CONTENTS (+10 more)
 
 ### Community 5 - "route.js"
-Cohesion: 0.28
-Nodes (12): GET(), POST(), GET(), getMimeType(), DELETE(), deleteDocument(), getDocumentById(), getDocuments() (+4 more)
+Cohesion: 0.12
+Nodes (33): GET(), POST(), GET(), getMimeType(), DELETE(), clearSessionCookie(), createSessionToken(), getSecret() (+25 more)
 
 ### Community 6 - "IAPL Pol 20 Attendance and Working Ho..."
-Cohesion: 0.16
-Nodes (17): lt, IAPL Pol 20 Attendance and Working Hours Policy April 2026 Rev 0, 4. ATTENDANCE AND WORKING HOURS, solutions, Build &amp; Testing, Commissioning &amp; Support, Consultation &amp; Scoping, Engineering Design (+9 more)
+Cohesion: 0.29
+Nodes (7): lt, solutions, Build &amp; Testing, Commissioning &amp; Support, Consultation &amp; Scoping, Engineering Design, solutions page creation skill
 
 ### Community 7 - "IAPL Pol 11 Code of Conduct April 202..."
 Cohesion: 0.12
 Nodes (17): IAPL Pol 11 Code of Conduct April 2025 Rev 0, 3. OUR MORAL COMPASS, 4. OUR MOTIVATION, index, Core Services, Engineering the Futureof Industrial Automation, HMI design, How industrial control systems are modernizing plant performance (+9 more)
 
 ### Community 8 - "package.json"
-Cohesion: 0.12
-Nodes (16): dependencies, gsap, mysql2, next, nodemailer, react, react-dom, name (+8 more)
+Cohesion: 0.10
+Nodes (19): dependencies, gsap, next, nodemailer, react, react-dom, @supabase/supabase-js, devDependencies (+11 more)
 
 ### Community 9 - "2. APPLICABILITY/SCOPE OF COVERAGE"
 Cohesion: 1.00
@@ -157,9 +157,9 @@ Nodes (10): IAPL Pol 01 Domestic Travel Policy Original Dec 2024 Rev 0, 1. APPLI
 Cohesion: 0.50
 Nodes (4): IAPL Pol 14 CSR April 2025 Rev 0, 3. GUIDING PRINCIPLES, 4. SCOPE, csr
 
-### Community 16 - "IAPL Pol 03 Salary Advance Policy Ori..."
-Cohesion: 0.67
-Nodes (3): IAPL Pol 03 Salary Advance Policy Original April 2026 Rev 1, 3. ELIGIBILITY AND GUIDELINES:, 4. POLICY GUIDELINES:
+### Community 14 - "graphify"
+Cohesion: 0.29
+Nodes (6): Complete Deployment & Migration Guide: Orvion IntelliAct, Phase 1: Set Up the Database (Hostinger), Phase 2: Link GoDaddy to Hostinger (Using DNS / A Record), Phase 3: Prepare the Code for Upload, Phase 4: Deploy to Hostinger (Node.js), Phase 5: The Automatic Migration
 
 ### Community 17 - "IAPL Pol 12 Safe and positive work en..."
 Cohesion: 0.67
@@ -170,17 +170,15 @@ Cohesion: 0.67
 Nodes (3): IAPL Pol 13 We respect the environment  April 2025 Rev 0, 3. GOALS AND GUIDELINES, 4. KEEP IN MIND
 
 ## Knowledge Gaps
-- **100 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+95 more)
+- **109 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+104 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `IAPL Pol 20 Attendance and Working Hours Policy April 2026 Rev 0` connect `IAPL Pol 20 Attendance and Working Ho...` to `2. APPLICABILITY/SCOPE OF COVERAGE`, `IAPL Pol 02 Local Conveyance Policy O...`, `IAPL Pol 06 Leave Policy Original Apr...`, `TABLE OF CONTENTS`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `IAPL Pol 11 Code of Conduct April 2025 Rev 0` connect `IAPL Pol 11 Code of Conduct April 202...` to `2. APPLICABILITY/SCOPE OF COVERAGE`, `IAPL Pol 06 Leave Policy Original Apr...`, `TABLE OF CONTENTS`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+  _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
   _`TABLE OF CONTENTS` has 17 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
@@ -191,3 +189,5 @@ _Questions this graph is uniquely positioned to answer:_
   _`TABLE OF CONTENTS` has 17 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
   _`TABLE OF CONTENTS` has 17 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `contactChannels`, `officeLocations`, `engagementNotes` to the rest of the system?**
+  _109 weakly-connected nodes found - possible documentation gaps or missing edges._
