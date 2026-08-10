@@ -233,6 +233,8 @@ export default function CompanyDetailPage() {
   const { slug } = useParams();
   const page = companyPages.find((p) => p.slug === slug);
   const mainRef = useRef(null);
+  const [previewImage, setPreviewImage] = useState(null);
+  const isPreviewable = slug === "certification" || slug === "projects";
 
   if (!page) {
     notFound();
@@ -385,7 +387,8 @@ export default function CompanyDetailPage() {
                   alt={section.title}
                   width={900}
                   height={700}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${isPreviewable ? 'cursor-pointer' : ''}`}
+                  onClick={() => isPreviewable && setPreviewImage(section.image || page.image)}
                   onError={(e) => {
                     e.target.srcset = "";
                     e.target.src = page.image; // Fallback to main page image if specific one missing
@@ -413,6 +416,34 @@ export default function CompanyDetailPage() {
           </div>
         </div>
       </section>
+
+      {previewImage && (
+        <div 
+          className="image-preview-modal" 
+          onClick={() => setPreviewImage(null)}
+        >
+          <div className="image-preview-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="image-preview-close"
+              onClick={() => setPreviewImage(null)}
+              aria-label="Close preview"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <Image
+              src={previewImage}
+              alt="Preview"
+              width={1600}
+              height={2200}
+              className="image-preview-full"
+              style={{ objectFit: 'contain', width: '100%', height: '100%', maxHeight: '90vh' }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

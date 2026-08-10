@@ -307,7 +307,7 @@
       "label": "CareersApplicationForm()",
       "file_type": "code",
       "source_file": "app/company/[slug]/page.js",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "slug_page_careersapplicationform",
       "community": 0,
@@ -317,7 +317,7 @@
       "label": "CompanyDetailPage()",
       "file_type": "code",
       "source_file": "app/company/[slug]/page.js",
-      "source_location": "L231",
+      "source_location": "L232",
       "_origin": "ast",
       "id": "slug_page_companydetailpage",
       "community": 0,
@@ -907,7 +907,7 @@
       "label": "SiteHeader()",
       "file_type": "code",
       "source_file": "components/site-header.js",
-      "source_location": "L60",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "components_site_header_siteheader",
       "community": 10,
@@ -12527,5 +12527,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f70bd6b8a6cd993e4df77fea9ea2b7f2c35c5254"
+  "built_at_commit": "9fa8868158fe1244f7875dc30ae851e3e9a707ad"
 }

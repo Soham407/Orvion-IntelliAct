@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "app/company/[slug]/page.js": {
-    "mtime": 1782706322.1050549,
-    "ast_hash": "c881b4b3d6c238aa59317a34365fa3ea",
+    "mtime": 1786387772.0077763,
+    "ast_hash": "126a768d2d860f5080ab655a202a5e6a",
     "semantic_hash": ""
   },
   "app/contact/page.js": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "components/site-header.js": {
-    "mtime": 1781601165.2665555,
-    "ast_hash": "b3bc143ef440595089bdce6f92d14320",
+    "mtime": 1786387782.799146,
+    "ast_hash": "6ff50aff1c389e80bb58e0749f2f8660",
     "semantic_hash": ""
   },
   "components/solutions-carousel.js": {
@@ -150,8 +150,8 @@
     "semantic_hash": "8e82573d7e63f206943f58e0bdd8b5e9"
   },
   "lib/company-data.js": {
-    "mtime": 1782808876.06319,
-    "ast_hash": "1c5e67b4978cf34f23e222bc9c6a7d72",
+    "mtime": 1786387759.812252,
+    "ast_hash": "cc882b577663f368abfcd9c1a98f8ce6",
     "semantic_hash": ""
   },
   "lib/db.js": {
@@ -737,6 +737,21 @@
   ".github/assets/hero.svg": {
     "mtime": 1786367073.6188114,
     "ast_hash": "713b98840503802d0d9ab8f2c7462bc9",
+    "semantic_hash": ""
+  },
+  "Projects(PDF)/BPCL Bokaro Completion Certificate..pdf": {
+    "mtime": 1786387585.157257,
+    "ast_hash": "48fe210dd306895e5eab196bcfb92502",
+    "semantic_hash": ""
+  },
+  "Projects(PDF)/Orvion Intelliact_Project completion certificate_4902002174.pdf": {
+    "mtime": 1786387605.6064048,
+    "ast_hash": "ccc9ea39c2d85fab101d5c9586efe2f5",
+    "semantic_hash": ""
+  },
+  "Projects(PDF)/Project Completion Certificate.pdf": {
+    "mtime": 1786387622.4176416,
+    "ast_hash": "042838693b69ca1315b66647b602f2a9",
     "semantic_hash": ""
   }
 }
