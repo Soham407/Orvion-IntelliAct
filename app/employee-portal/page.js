@@ -558,6 +558,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   { id: "policy", name: "Policies" },
                   { id: "certificate", name: "Certificates" },
                   { id: "iso", name: "ISO" },
+                  { id: "placeholder", name: "Placeholder" },
                   { id: "general", name: "General" },
                 ].map((cat) => (
                   <button
@@ -649,7 +650,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                 )}
 
                 {/* Files in the current folder */}
-                {filteredDocs.filter(d => d.folder_path === currentFolder).length === 0 ? (
+                {filteredDocs.filter(d => currentFolder === "root" ? (!d.folder_path || d.folder_path === "root") : d.folder_path === currentFolder).length === 0 ? (
                   getSubfolders().length === 0 && (
                     <div style={{ textAlign: "center", padding: "60px 0", background: "var(--soft)", borderRadius: 14, border: "1px solid var(--line)" }}>
                       <p style={{ color: "var(--muted)", marginBottom: 0 }}>This folder is empty.</p>
@@ -658,7 +659,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                 ) : (
                   <div className="documents-grid">
                     {filteredDocs
-                      .filter(d => d.folder_path === currentFolder)
+                      .filter(d => currentFolder === "root" ? (!d.folder_path || d.folder_path === "root") : d.folder_path === currentFolder)
                       .map((doc) => (
                         <article className="document-card" key={doc.id}>
                           <div className={`document-icon ${doc.category}`}>
@@ -815,6 +816,7 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                       <option value="certificate">Company Certificate</option>
                       <option value="policy">Policy / Guideline</option>
                       <option value="iso">ISO Standard</option>
+                      <option value="placeholder">Placeholder</option>
                       <option value="general">General / Admin</option>
                     </select>
                   </div>
