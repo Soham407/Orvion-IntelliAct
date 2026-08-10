@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "app/company/[slug]/page.js": {
-    "mtime": 1786387772.0077763,
-    "ast_hash": "126a768d2d860f5080ab655a202a5e6a",
+    "mtime": 1786388824.8226192,
+    "ast_hash": "873cbd11d4dc4cc30be7f7cf5da2c383",
     "semantic_hash": ""
   },
   "app/contact/page.js": {
@@ -150,8 +150,8 @@
     "semantic_hash": "8e82573d7e63f206943f58e0bdd8b5e9"
   },
   "lib/company-data.js": {
-    "mtime": 1786387759.812252,
-    "ast_hash": "cc882b577663f368abfcd9c1a98f8ce6",
+    "mtime": 1786388812.6501842,
+    "ast_hash": "f5f357cd8cac23bf39e6c32ff38916b7",
     "semantic_hash": ""
   },
   "lib/db.js": {
@@ -752,6 +752,21 @@
   "Projects(PDF)/Project Completion Certificate.pdf": {
     "mtime": 1786387622.4176416,
     "ast_hash": "042838693b69ca1315b66647b602f2a9",
+    "semantic_hash": ""
+  },
+  "public/images/projects/bpcl-bokaro-v2.jpg": {
+    "mtime": 1786388769.867188,
+    "ast_hash": "37b7720a544c62cb4cb5b8dd810eafe2",
+    "semantic_hash": ""
+  },
+  "public/images/projects/completion-certificate-4902002174-v2.jpg": {
+    "mtime": 1786388803.4676604,
+    "ast_hash": "f7a380bbc1ef94135fc7e949ad46c29a",
+    "semantic_hash": ""
+  },
+  "public/images/projects/project-completion-certificate-v2.jpg": {
+    "mtime": 1786388770.0033398,
+    "ast_hash": "910c6858f631391eef8dd8bcca14de1b",
     "semantic_hash": ""
   }
 }
