@@ -558,7 +558,6 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                   { id: "policy", name: "Policies" },
                   { id: "certificate", name: "Certificates" },
                   { id: "iso", name: "ISO" },
-                  { id: "projects", name: "Projects" },
                   { id: "general", name: "General" },
                 ].map((cat) => (
                   <button
@@ -816,7 +815,6 @@ function Dashboard({ onLogout, userRole, currentUsername }) {
                       <option value="certificate">Company Certificate</option>
                       <option value="policy">Policy / Guideline</option>
                       <option value="iso">ISO Standard</option>
-                      <option value="projects">Projects</option>
                       <option value="general">General / Admin</option>
                     </select>
                   </div>
