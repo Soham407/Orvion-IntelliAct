@@ -53,6 +53,7 @@ const navItems = [
       { href: "/company/quality-policy", label: "Quality Policy" },
       { href: "/company/hse-policy", label: "HSE Policy" },
       { href: "/company/careers", label: "Careers" },
+      { href: "/company/projects", label: "Projects" },
     ]
   }
 ];

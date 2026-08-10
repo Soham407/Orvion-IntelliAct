@@ -1,16 +1,16 @@
 # Graph Report - Orvion-IntelliAct  (2026-08-10)
 
 ## Corpus Check
-- 52 files · ~1,549,401 words
+- 53 files · ~1,552,549 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 343 nodes · 814 edges · 60 communities (21 shown, 39 thin omitted)
-- Extraction: 47% EXTRACTED · 53% INFERRED · 0% AMBIGUOUS · INFERRED: 433 edges (avg confidence: 0.85)
+- 358 nodes · 828 edges · 61 communities (22 shown, 39 thin omitted)
+- Extraction: 48% EXTRACTED · 52% INFERRED · 0% AMBIGUOUS · INFERRED: 433 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ed45617e`
+- Built from commit: `f70bd6b8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -71,6 +71,7 @@
 - [[_COMMUNITY_loop|loop]]
 - [[_COMMUNITY_Smart|Smart]]
 - [[_COMMUNITY_Training|Training]]
+- [[_COMMUNITY_Community 60|Community 60]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `TABLE OF CONTENTS` - 18 edges
@@ -99,7 +100,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 39 thin omitted)
+## Communities (61 total, 39 thin omitted)
 
 ### Community 0 - "page.js"
 Cohesion: 0.09
@@ -169,8 +170,12 @@ Nodes (3): IAPL Pol 12 Safe and positive work environment April 2025 Rev 0, 3. A
 Cohesion: 0.67
 Nodes (3): IAPL Pol 13 We respect the environment  April 2025 Rev 0, 3. GOALS AND GUIDELINES, 4. KEEP IN MIND
 
+### Community 60 - "Community 60"
+Cohesion: 0.13
+Nodes (14): 1. Supabase Vault (Recommended), 2. Hostinger MySQL Auto-Migration Fallback, Careers SMTP Mailer, Core Capabilities, Database Strategy & Migration, Deployment, Employee Portal & Security, Installation & Local Run (+6 more)
+
 ## Knowledge Gaps
-- **109 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+104 more)
+- **121 isolated node(s):** `contactChannels`, `officeLocations`, `engagementNotes`, `responsePoints`, `metadata` (+116 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -178,7 +183,7 @@ Nodes (3): IAPL Pol 13 We respect the environment  April 2025 Rev 0, 3. GOALS AN
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `IAPL Pol 11 Code of Conduct April 2025 Rev 0` connect `IAPL Pol 11 Code of Conduct April 202...` to `2. APPLICABILITY/SCOPE OF COVERAGE`, `IAPL Pol 06 Leave Policy Original Apr...`, `TABLE OF CONTENTS`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
   _`TABLE OF CONTENTS` has 17 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
@@ -190,4 +195,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 17 inferred relationships involving `TABLE OF CONTENTS` (e.g. with `TABLE OF CONTENTS` and `TABLE OF CONTENTS`) actually correct?**
   _`TABLE OF CONTENTS` has 17 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `contactChannels`, `officeLocations`, `engagementNotes` to the rest of the system?**
-  _109 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _121 weakly-connected nodes found - possible documentation gaps or missing edges._

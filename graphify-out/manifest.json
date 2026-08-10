@@ -40,8 +40,8 @@
     "semantic_hash": "cc42ce3f55b4615187c0530641028ba6"
   },
   "app/employee-portal/page.js": {
-    "mtime": 1786365930.4358006,
-    "ast_hash": "3669e98d67bef098260faf271c4a7cc7",
+    "mtime": 1786367425.5605433,
+    "ast_hash": "aa8ec81c21292a7b375960e5410219b3",
     "semantic_hash": ""
   },
   "app/layout.js": {
@@ -717,6 +717,26 @@
   "public/Robot.txt": {
     "mtime": 1783491575.3686066,
     "ast_hash": "ab5724120a234ab5418948ac4cd7cb55",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786367073.6189775,
+    "ast_hash": "90f64cb1ed16dc47286edcbedb02ffa8",
+    "semantic_hash": ""
+  },
+  ".github/assets/architecture.svg": {
+    "mtime": 1786367073.6185179,
+    "ast_hash": "1f8f5a0bea8fbdec2acf66ca78a88405",
+    "semantic_hash": ""
+  },
+  ".github/assets/features.svg": {
+    "mtime": 1786367073.6186638,
+    "ast_hash": "c5685471c720e021065aa9ec3db2307a",
+    "semantic_hash": ""
+  },
+  ".github/assets/hero.svg": {
+    "mtime": 1786367073.6188114,
+    "ast_hash": "713b98840503802d0d9ab8f2c7462bc9",
     "semantic_hash": ""
   }
 }

@@ -15,6 +15,7 @@ function getCompanyImageVariant(pageSlug, image) {
     pageSlug === "certification" ||
     pageSlug === "quality-policy" ||
     pageSlug === "hse-policy" ||
+    pageSlug === "projects" ||
     image?.includes("1 year") ||
     image?.includes("policy")
   ) {

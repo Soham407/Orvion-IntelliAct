@@ -457,7 +457,7 @@
       "label": "EmployeePortalPage()",
       "file_type": "code",
       "source_file": "app/employee-portal/page.js",
-      "source_location": "L1309",
+      "source_location": "L1307",
       "_origin": "ast",
       "id": "employee_portal_page_employeeportalpage",
       "community": 1,
@@ -1672,6 +1672,156 @@
       "id": "vercel_crons",
       "community": 22,
       "norm_label": "crons"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 60,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "readme_overview",
+      "community": 60,
+      "norm_label": "overview"
+    },
+    {
+      "label": "Core Capabilities",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "readme_core_capabilities",
+      "community": 60,
+      "norm_label": "core capabilities"
+    },
+    {
+      "label": "System Architecture",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "readme_system_architecture",
+      "community": 60,
+      "norm_label": "system architecture"
+    },
+    {
+      "label": "Quick Start",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "readme_quick_start",
+      "community": 60,
+      "norm_label": "quick start"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "readme_prerequisites",
+      "community": 60,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Installation & Local Run",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "readme_installation_local_run",
+      "community": 60,
+      "norm_label": "installation & local run"
+    },
+    {
+      "label": "Database Strategy & Migration",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "readme_database_strategy_migration",
+      "community": 60,
+      "norm_label": "database strategy & migration"
+    },
+    {
+      "label": "1. Supabase Vault (Recommended)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "readme_1_supabase_vault_recommended",
+      "community": 60,
+      "norm_label": "1. supabase vault (recommended)"
+    },
+    {
+      "label": "2. Hostinger MySQL Auto-Migration Fallback",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "readme_2_hostinger_mysql_auto_migration_fallback",
+      "community": 60,
+      "norm_label": "2. hostinger mysql auto-migration fallback"
+    },
+    {
+      "label": "Employee Portal & Security",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "readme_employee_portal_security",
+      "community": 60,
+      "norm_label": "employee portal & security"
+    },
+    {
+      "label": "Careers SMTP Mailer",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "readme_careers_smtp_mailer",
+      "community": 60,
+      "norm_label": "careers smtp mailer"
+    },
+    {
+      "label": "Deployment",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L138",
+      "_origin": "ast",
+      "id": "readme_deployment",
+      "community": 60,
+      "norm_label": "deployment"
+    },
+    {
+      "label": "Testing & Quality Assurance",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L152",
+      "_origin": "ast",
+      "id": "readme_testing_quality_assurance",
+      "community": 60,
+      "norm_label": "testing & quality assurance"
+    },
+    {
+      "label": "Repository Structure",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "readme_repository_structure",
+      "community": 60,
+      "norm_label": "repository structure"
     },
     {
       "label": "deployment_guide.md",
@@ -4044,9 +4194,9 @@
       "source_file": "app/api/documents/[id]/download/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "download_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4055,9 +4205,9 @@
       "source_file": "app/api/documents/[id]/download/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "download_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "imports_from",
@@ -4131,9 +4281,9 @@
       "source_file": "app/api/documents/[id]/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4142,9 +4292,9 @@
       "source_file": "app/api/documents/[id]/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "id_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "imports_from",
@@ -4217,9 +4367,9 @@
       "source_file": "app/api/documents/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "documents_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4228,9 +4378,9 @@
       "source_file": "app/api/documents/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "documents_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "imports_from",
@@ -4261,9 +4411,9 @@
       "source_file": "app/api/documents/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "documents_route",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "imports",
@@ -4326,9 +4476,9 @@
       "source_file": "app/api/keepalive/route.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "keepalive_route",
-      "target": "keepalive_route_get",
-      "confidence_score": 1.0
+      "target": "keepalive_route_get"
     },
     {
       "relation": "imports_from",
@@ -4337,9 +4487,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4348,9 +4498,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_auth_createsessiontoken",
-      "confidence_score": 1.0
+      "target": "lib_auth_createsessiontoken"
     },
     {
       "relation": "imports",
@@ -4359,9 +4509,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_auth_sessioncookie",
-      "confidence_score": 1.0
+      "target": "lib_auth_sessioncookie"
     },
     {
       "relation": "imports",
@@ -4370,9 +4520,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_auth_verifypassword",
-      "confidence_score": 1.0
+      "target": "lib_auth_verifypassword"
     },
     {
       "relation": "imports_from",
@@ -4381,9 +4531,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_db",
-      "confidence_score": 1.0
+      "target": "lib_db"
     },
     {
       "relation": "imports",
@@ -4392,9 +4542,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "lib_db_getportaluserbyusername",
-      "confidence_score": 1.0
+      "target": "lib_db_getportaluserbyusername"
     },
     {
       "relation": "contains",
@@ -4402,9 +4552,9 @@
       "source_file": "app/api/portal/login/route.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "login_route",
-      "target": "login_route_post",
-      "confidence_score": 1.0
+      "target": "login_route_post"
     },
     {
       "relation": "calls",
@@ -4457,9 +4607,9 @@
       "source_file": "app/api/portal/logout/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "logout_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4468,9 +4618,9 @@
       "source_file": "app/api/portal/logout/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "logout_route",
-      "target": "lib_auth_clearsessioncookie",
-      "confidence_score": 1.0
+      "target": "lib_auth_clearsessioncookie"
     },
     {
       "relation": "contains",
@@ -4478,9 +4628,9 @@
       "source_file": "app/api/portal/logout/route.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "logout_route",
-      "target": "logout_route_post",
-      "confidence_score": 1.0
+      "target": "logout_route_post"
     },
     {
       "relation": "calls",
@@ -4500,9 +4650,9 @@
       "source_file": "app/api/portal/session/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "session_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4511,9 +4661,9 @@
       "source_file": "app/api/portal/session/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "session_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "contains",
@@ -4521,9 +4671,9 @@
       "source_file": "app/api/portal/session/route.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "session_route",
-      "target": "session_route_get",
-      "confidence_score": 1.0
+      "target": "session_route_get"
     },
     {
       "relation": "calls",
@@ -4543,9 +4693,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4554,9 +4704,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "imports",
@@ -4565,9 +4715,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_auth_hashpassword",
-      "confidence_score": 1.0
+      "target": "lib_auth_hashpassword"
     },
     {
       "relation": "imports_from",
@@ -4576,9 +4726,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_db",
-      "confidence_score": 1.0
+      "target": "lib_db"
     },
     {
       "relation": "imports",
@@ -4587,9 +4737,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_db_deleteportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_deleteportaluser"
     },
     {
       "relation": "imports",
@@ -4598,9 +4748,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "lib_db_updateportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_updateportaluser"
     },
     {
       "relation": "contains",
@@ -4608,9 +4758,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "username_route_delete",
-      "confidence_score": 1.0
+      "target": "username_route_delete"
     },
     {
       "relation": "contains",
@@ -4618,9 +4768,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "username_route_patch",
-      "confidence_score": 1.0
+      "target": "username_route_patch"
     },
     {
       "relation": "contains",
@@ -4628,9 +4778,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route",
-      "target": "username_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "username_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4639,9 +4789,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route_delete",
-      "target": "username_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "username_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4650,9 +4800,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route_patch",
-      "target": "username_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "username_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4661,9 +4811,9 @@
       "source_file": "app/api/portal/users/[username]/route.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "username_route_requireadmin",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "calls",
@@ -4705,9 +4855,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_auth",
-      "confidence_score": 1.0
+      "target": "lib_auth"
     },
     {
       "relation": "imports",
@@ -4716,9 +4866,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "imports",
@@ -4727,9 +4877,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_auth_hashpassword",
-      "confidence_score": 1.0
+      "target": "lib_auth_hashpassword"
     },
     {
       "relation": "imports_from",
@@ -4738,9 +4888,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_db",
-      "confidence_score": 1.0
+      "target": "lib_db"
     },
     {
       "relation": "imports",
@@ -4749,9 +4899,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_db_createportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_createportaluser"
     },
     {
       "relation": "imports",
@@ -4760,9 +4910,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_db_getportaluserbyusername",
-      "confidence_score": 1.0
+      "target": "lib_db_getportaluserbyusername"
     },
     {
       "relation": "imports",
@@ -4771,9 +4921,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "lib_db_listportalusers",
-      "confidence_score": 1.0
+      "target": "lib_db_listportalusers"
     },
     {
       "relation": "contains",
@@ -4781,9 +4931,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "users_route_get",
-      "confidence_score": 1.0
+      "target": "users_route_get"
     },
     {
       "relation": "contains",
@@ -4791,9 +4941,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "users_route_post",
-      "confidence_score": 1.0
+      "target": "users_route_post"
     },
     {
       "relation": "contains",
@@ -4801,9 +4951,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route",
-      "target": "users_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "users_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4812,9 +4962,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route_get",
-      "target": "users_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "users_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4823,9 +4973,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route_post",
-      "target": "users_route_requireadmin",
-      "confidence_score": 1.0
+      "target": "users_route_requireadmin"
     },
     {
       "relation": "calls",
@@ -4834,9 +4984,9 @@
       "source_file": "app/api/portal/users/route.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "users_route_requireadmin",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "calls",
@@ -5991,9 +6141,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_clearsessioncookie",
-      "confidence_score": 1.0
+      "target": "lib_auth_clearsessioncookie"
     },
     {
       "relation": "contains",
@@ -6001,9 +6151,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_createsessiontoken",
-      "confidence_score": 1.0
+      "target": "lib_auth_createsessiontoken"
     },
     {
       "relation": "contains",
@@ -6011,9 +6161,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_getsecret",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsecret"
     },
     {
       "relation": "contains",
@@ -6021,9 +6171,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_getsession",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsession"
     },
     {
       "relation": "contains",
@@ -6031,9 +6181,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_hashpassword",
-      "confidence_score": 1.0
+      "target": "lib_auth_hashpassword"
     },
     {
       "relation": "contains",
@@ -6041,9 +6191,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_sessioncookie",
-      "confidence_score": 1.0
+      "target": "lib_auth_sessioncookie"
     },
     {
       "relation": "contains",
@@ -6051,9 +6201,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_sign",
-      "confidence_score": 1.0
+      "target": "lib_auth_sign"
     },
     {
       "relation": "contains",
@@ -6061,9 +6211,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_verifypassword",
-      "confidence_score": 1.0
+      "target": "lib_auth_verifypassword"
     },
     {
       "relation": "contains",
@@ -6071,9 +6221,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth",
-      "target": "lib_auth_verifysessiontoken",
-      "confidence_score": 1.0
+      "target": "lib_auth_verifysessiontoken"
     },
     {
       "relation": "calls",
@@ -6082,9 +6232,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth_sign",
-      "target": "lib_auth_getsecret",
-      "confidence_score": 1.0
+      "target": "lib_auth_getsecret"
     },
     {
       "relation": "calls",
@@ -6093,9 +6243,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth_createsessiontoken",
-      "target": "lib_auth_sign",
-      "confidence_score": 1.0
+      "target": "lib_auth_sign"
     },
     {
       "relation": "calls",
@@ -6104,9 +6254,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth_verifysessiontoken",
-      "target": "lib_auth_sign",
-      "confidence_score": 1.0
+      "target": "lib_auth_sign"
     },
     {
       "relation": "calls",
@@ -6115,9 +6265,9 @@
       "source_file": "lib/auth.js",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_auth_getsession",
-      "target": "lib_auth_verifysessiontoken",
-      "confidence_score": 1.0
+      "target": "lib_auth_verifysessiontoken"
     },
     {
       "relation": "contains",
@@ -6315,9 +6465,9 @@
       "source_file": "lib/db.js",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_createportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_createportaluser"
     },
     {
       "relation": "contains",
@@ -6335,9 +6485,9 @@
       "source_file": "lib/db.js",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_deleteportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_deleteportaluser"
     },
     {
       "relation": "contains",
@@ -6365,9 +6515,9 @@
       "source_file": "lib/db.js",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_getportaluserbyusername",
-      "confidence_score": 1.0
+      "target": "lib_db_getportaluserbyusername"
     },
     {
       "relation": "contains",
@@ -6375,9 +6525,9 @@
       "source_file": "lib/db.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "contains",
@@ -6385,9 +6535,9 @@
       "source_file": "lib/db.js",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_listportalusers",
-      "confidence_score": 1.0
+      "target": "lib_db_listportalusers"
     },
     {
       "relation": "contains",
@@ -6395,9 +6545,9 @@
       "source_file": "lib/db.js",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db",
-      "target": "lib_db_updateportaluser",
-      "confidence_score": 1.0
+      "target": "lib_db_updateportaluser"
     },
     {
       "relation": "contains",
@@ -6416,9 +6566,9 @@
       "source_file": "lib/db.js",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_deletedocument",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "calls",
@@ -6427,9 +6577,9 @@
       "source_file": "lib/db.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_getdocumentbyid",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "calls",
@@ -6438,9 +6588,9 @@
       "source_file": "lib/db.js",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_getdocuments",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "calls",
@@ -6449,9 +6599,9 @@
       "source_file": "lib/db.js",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_getportaluserbyusername",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "calls",
@@ -6460,9 +6610,9 @@
       "source_file": "lib/db.js",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_listportalusers",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "calls",
@@ -6471,9 +6621,9 @@
       "source_file": "lib/db.js",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_db_uploaddocument",
-      "target": "lib_db_isdbconfigured",
-      "confidence_score": 1.0
+      "target": "lib_db_isdbconfigured"
     },
     {
       "relation": "contains",
@@ -6651,9 +6801,9 @@
       "source_file": "package.json",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_devdependencies",
-      "confidence_score": 1.0
+      "target": "package_devdependencies"
     },
     {
       "relation": "contains",
@@ -6801,9 +6951,9 @@
       "source_file": "package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_supabase_supabase_js",
-      "confidence_score": 1.0
+      "target": "package_dependencies_supabase_supabase_js"
     },
     {
       "relation": "contains",
@@ -6811,9 +6961,9 @@
       "source_file": "package.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_playwright",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_playwright"
     },
     {
       "relation": "contains",
@@ -6821,9 +6971,9 @@
       "source_file": "package.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_playwright_test",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_playwright_test"
     },
     {
       "relation": "contains",
@@ -6831,9 +6981,149 @@
       "source_file": "vercel.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "vercel",
-      "target": "vercel_crons",
-      "confidence_score": 1.0
+      "target": "vercel_crons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_careers_smtp_mailer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_core_capabilities"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_database_strategy_migration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L138",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_deployment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_employee_portal_security"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_overview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_quick_start"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_repository_structure"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_system_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L152",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_testing_quality_assurance"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_quick_start",
+      "target": "readme_installation_local_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_quick_start",
+      "target": "readme_prerequisites"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_database_strategy_migration",
+      "target": "readme_1_supabase_vault_recommended"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_database_strategy_migration",
+      "target": "readme_2_hostinger_mysql_auto_migration_fallback"
     },
     {
       "relation": "contains",
@@ -6841,9 +7131,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide",
-      "target": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "confidence_score": 1.0
+      "target": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact"
     },
     {
       "relation": "contains",
@@ -6851,9 +7141,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "target": "deployment_guide_phase_1_set_up_the_database_hostinger",
-      "confidence_score": 1.0
+      "target": "deployment_guide_phase_1_set_up_the_database_hostinger"
     },
     {
       "relation": "contains",
@@ -6861,9 +7151,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "target": "deployment_guide_phase_2_link_godaddy_to_hostinger_using_dns_a_record",
-      "confidence_score": 1.0
+      "target": "deployment_guide_phase_2_link_godaddy_to_hostinger_using_dns_a_record"
     },
     {
       "relation": "contains",
@@ -6871,9 +7161,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "target": "deployment_guide_phase_3_prepare_the_code_for_upload",
-      "confidence_score": 1.0
+      "target": "deployment_guide_phase_3_prepare_the_code_for_upload"
     },
     {
       "relation": "contains",
@@ -6881,9 +7171,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "target": "deployment_guide_phase_4_deploy_to_hostinger_node_js",
-      "confidence_score": 1.0
+      "target": "deployment_guide_phase_4_deploy_to_hostinger_node_js"
     },
     {
       "relation": "contains",
@@ -6891,9 +7181,9 @@
       "source_file": "deployment_guide.md",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "deployment_guide_complete_deployment_migration_guide_orvion_intelliact",
-      "target": "deployment_guide_phase_5_the_automatic_migration",
-      "confidence_score": 1.0
+      "target": "deployment_guide_phase_5_the_automatic_migration"
     },
     {
       "relation": "references",
@@ -12237,5 +12527,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ed45617e548a0fccd33979222b2a79163a59ed0b"
+  "built_at_commit": "f70bd6b8a6cd993e4df77fea9ea2b7f2c35c5254"
 }
