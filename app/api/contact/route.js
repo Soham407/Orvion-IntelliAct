@@ -35,8 +35,10 @@ export async function POST(request) {
       message || "No project scope provided.",
     ].join("\n");
 
-    if (!isSmtpConfigured) {
-      console.warn("SMTP settings are missing. Gracefully falling back. Message received:", {
+    const port = Number.parseInt(portValue, 10);
+    if (!isSmtpConfigured || !Number.isFinite(port)) {
+      // Never report success when nothing was sent; log the inquiry so it can be recovered from server logs.
+      console.error("POST /api/contact: SMTP is not configured (need SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, MAIL_FROM). Inquiry not sent:", {
         name,
         company,
         email,
@@ -45,12 +47,11 @@ export async function POST(request) {
         message,
       });
       return NextResponse.json(
-        { message: "Message received successfully (graceful fallback)." },
-        { status: 201 }
+        { error: "We couldn't send your message right now. Please email info@intelliactind.com directly." },
+        { status: 503 }
       );
     }
 
-    const port = Number.parseInt(portValue, 10);
     const transporter = nodemailer.createTransport({
       host,
       port,
