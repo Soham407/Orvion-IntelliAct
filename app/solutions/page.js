@@ -44,7 +44,7 @@ export default function SolutionsPage() {
         eyebrow="Industrial Expertise"
         title="Engineered Automation Solutions"
         description="Automation architectures, process optimization, safety controls, warehouse logistics, and monitoring systems built for complex industrial operations."
-        image="/images for Orvion/Process Optimization Solutions.png"
+        image="/images for Orvion/Process Optimization Solutions.webp"
         imageAlt="Industrial automation solution environment"
         stats={[]}
       />
